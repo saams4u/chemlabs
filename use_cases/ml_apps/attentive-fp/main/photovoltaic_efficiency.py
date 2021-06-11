@@ -19,10 +19,6 @@ torch.nn.Module.dump_patches = True
 import numpy as np
 import pandas as pd
 
-# from sklearn.metrics import roc_auc_score, matthews_corrcoef, recall_score, accuracy_score, r2_score
-# from sklearn.metrics import mean_squared_error, mean_absolute_error, precision_score, precision_recall_curve
-# from sklearn.metrics import auc, f1_score
-
 from rdkit import Chem
 from rdkit.Chem import AllChem, QED, rdMolDescriptors, MolSurf, rdDepictor
 from rdkit.Chem.Draw import SimilarityMaps, rdMolDraw2D
@@ -43,15 +39,15 @@ import network.AttentiveFP.getFeatures, network.AttentiveFP.getFeatures_aromatic
 from network.AttentiveFP.getFeatures import save_smiles_dicts, get_smiles_array
 from network.AttentiveFP.AttentiveLayers import Fingerprint
 
-task_name = 'Malaria Bioactivity'
-tasks = ['Loge EC50']
+task_name = 'Photovoltaic efficiency'
+tasks = ['PCE']
 
-raw_filename = "dataset/malaria-processed.csv"
+raw_filename = "dataset/cep-processed.csv"
 feature_filename = raw_filename.replace('.csv','.pickle')
 filename = raw_filename.replace('.csv','')
 prefix_filename = raw_filename.split('/')[-1].replace('.csv','')
 
-smiles_tasks_df = pd.read_csv(raw_filename, names = ["Loge EC50", "smiles"])
+smiles_tasks_df = pd.read_csv(raw_filename)
 smilesList = smiles_tasks_df.smiles.values
 print("number of all smiles: ",len(smilesList))
 
@@ -76,9 +72,7 @@ for smiles in smilesList:
 
 print("number of successfully processed smiles: ", len(remained_smiles))
 smiles_tasks_df = smiles_tasks_df[smiles_tasks_df["smiles"].isin(remained_smiles)]
-
-print(smiles_tasks_df)
-smiles_tasks_df['cano_smiles'] = canonical_smiles_list
+smiles_tasks_df['cano_smiles'] =canonical_smiles_list
 
 plt.figure(figsize=(5, 3))
 sns.set(font_scale=1.5)
@@ -87,18 +81,18 @@ ax = sns.distplot(atom_num_dist, bins=28, kde=False)
 plt.tight_layout()
 plt.savefig("atom_num_dist_"+prefix_filename+".png",dpi=200)
 
-random_seed = 68
+random_seed = 888
 start_time = str(time.ctime()).replace(':','-').replace(' ','_')
 
 batch_size = 200
 epochs = 800
 
-p_dropout= 0.03
+p_dropout= 0.15
 fingerprint_dim = 200
 
-weight_decay = 4.3 # also known as l2_regularization_lambda
-learning_rate = 4
-radius = 2
+weight_decay = 4.5 # also known as l2_regularization_lambda
+learning_rate = 3.6
+radius = 3
 T = 1
 
 per_task_output_units_num = 1 # for regression model
@@ -108,20 +102,19 @@ output_units_num = len(tasks) * per_task_output_units_num
 remained_df = smiles_tasks_df[smiles_tasks_df["cano_smiles"].isin(feature_dicts['smiles_to_atom_mask'].keys())]
 uncovered_df = smiles_tasks_df.drop(remained_df.index)
 
-test_df = remained_df.sample(frac=0.2,random_state=random_seed)
+test_df = remained_df.sample(frac=1/5,random_state=random_seed)
 train_df = remained_df.drop(test_df.index)
 
 train_df = train_df.reset_index(drop=True)
 test_df = test_df.reset_index(drop=True)
 
-print(len(test_df), sorted(test_df.cano_smiles.values))
+print(len(test_df),sorted(test_df.cano_smiles.values))
 
 x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([canonical_smiles_list[0]],feature_dicts)
+loss_function = nn.MSELoss()
 
 num_atom_features = x_atom.shape[-1]
 num_bond_features = x_bonds.shape[-1]
-
-loss_function = nn.MSELoss()
 
 model = Fingerprint(radius, T, num_atom_features, num_bond_features,
             fingerprint_dim, output_units_num, p_dropout)
@@ -134,7 +127,6 @@ optimizer = optim.Adam(model.parameters(), 10**-learning_rate, weight_decay=10**
 
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
 params = sum([np.prod(p.size()) for p in model_parameters])
-
 print(params)
 
 for name, param in model.named_parameters():
@@ -153,7 +145,7 @@ def train(model, dataset, optimizer, loss_function):
     for i in range(0, dataset.shape[0], batch_size):
         batch = valList[i:i+batch_size]
         batch_list.append(batch)   
-        
+
     for counter, batch in enumerate(batch_list):
         batch_df = dataset.loc[batch,:]
         smiles_list = batch_df.cano_smiles.values
@@ -177,28 +169,24 @@ def eval(model, dataset):
     for i in range(0, dataset.shape[0], batch_size):
         batch = valList[i:i+batch_size]
         batch_list.append(batch) 
-
     for counter, batch in enumerate(batch_list):
         batch_df = dataset.loc[batch,:]
         smiles_list = batch_df.cano_smiles.values
-
         print(batch_df)
         y_val = batch_df[tasks[0]].values
         
         x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array(smiles_list,feature_dicts)
         atoms_prediction, mol_prediction = model(torch.Tensor(x_atom),torch.Tensor(x_bonds),torch.cuda.LongTensor(x_atom_index),torch.cuda.LongTensor(x_bond_index),torch.Tensor(x_mask))
-        
         MAE = F.l1_loss(mol_prediction, torch.Tensor(y_val).view(-1,1), reduction='none')        
         MSE = F.mse_loss(mol_prediction, torch.Tensor(y_val).view(-1,1), reduction='none')
-        
         print(x_mask[:2],atoms_prediction.shape, mol_prediction,MSE)
         
         test_MAE_list.extend(MAE.data.squeeze().cpu().numpy())
         test_MSE_list.extend(MSE.data.squeeze().cpu().numpy())
-
+        
     return np.array(test_MAE_list).mean(), np.array(test_MSE_list).mean()
 
-best_param = {}
+best_param ={}
 best_param["train_epoch"] = 0
 best_param["test_epoch"] = 0
 best_param["train_MSE"] = 9e8
@@ -211,24 +199,25 @@ for epoch in range(800):
     if train_MSE < best_param["train_MSE"]:
         best_param["train_epoch"] = epoch
         best_param["train_MSE"] = train_MSE
-
     if test_MSE < best_param["test_MSE"]:
         best_param["test_epoch"] = epoch
         best_param["test_MSE"] = test_MSE
-
-        if test_MSE < 1.1:
+        if test_MSE < 0.9:
              torch.save(model, 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt')
     if (epoch - best_param["train_epoch"] >2) and (epoch - best_param["test_epoch"] >18):        
         break
-        
     print(epoch, train_MSE, test_MSE)
+    
     train(model, train_df, optimizer, loss_function)
 
-best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt')
-best_model_dict = best_model.state_dict()
-best_model_wts = copy.deepcopy(best_model_dict)
+# evaluate model
+best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt')     
 
-model.load_state_dict(best_model_wts)
-(best_model.align[0].weight == model.align[0].weight).all()
-test_MAE, test_MSE = eval(model, test_df)
-print("best epoch:", best_param["test_epoch"],"\n", "test MSE:", test_MSE)
+# best_model_dict = best_model.state_dict()
+# best_model_wts = copy.deepcopy(best_model_dict)
+
+# model.load_state_dict(best_model_wts)
+# (best_model.align[0].weight == model.align[0].weight).all()
+
+test_MAE, test_MSE = eval(best_model, test_df)
+print("best epoch:",best_param["test_epoch"],"\n","test MSE:",test_MSE)
