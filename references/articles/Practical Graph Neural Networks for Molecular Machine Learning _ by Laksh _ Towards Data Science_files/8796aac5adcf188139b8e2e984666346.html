@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://towardsdatascience.com/media/8796aac5adcf188139b8e2e984666346 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>GC models – Medium</title><meta name="description" content="You can&#39;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./3bb74f589c8affc967c3970450b628da.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-ab3fc29e40b8e21f977a65dbb1934c0d.css"><div id="gist100163090" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-models-py" class="file my-2">
+    
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8" data-paste-markdown-skip="">
+      <tbody><tr>
+        <td id="file-models-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-models-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">torch_geometric</span>.<span class="pl-s1">nn</span> <span class="pl-k">import</span> <span class="pl-v">MessagePassing</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-models-py-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">torch_scatter</span> <span class="pl-k">import</span> <span class="pl-s1">scatter_add</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-models-py-LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-k">from</span> <span class="pl-s1">torch_geometric</span>.<span class="pl-s1">utils</span> <span class="pl-k">import</span> <span class="pl-s1">add_self_loops</span>, <span class="pl-s1">degree</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-models-py-LC4" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-models-py-LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-k">class</span> <span class="pl-v">NeuralLoop</span>(<span class="pl-v">MessagePassing</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-models-py-LC6" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>, <span class="pl-s1">atom_features</span>, <span class="pl-s1">fp_size</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-models-py-LC7" class="blob-code blob-code-inner js-file-line">        <span class="pl-en">super</span>(<span class="pl-v">NeuralLoop</span>, <span class="pl-s1">self</span>).<span class="pl-en">__init__</span>(<span class="pl-s1">aggr</span><span class="pl-c1">=</span><span class="pl-s">'add'</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-models-py-LC8" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-v">H</span> <span class="pl-c1">=</span> <span class="pl-s1">nn</span>.<span class="pl-v">Linear</span>(<span class="pl-s1">atom_features</span>, <span class="pl-s1">atom_features</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-models-py-LC9" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-v">W</span> <span class="pl-c1">=</span> <span class="pl-s1">nn</span>.<span class="pl-v">Linear</span>(<span class="pl-s1">atom_features</span>, <span class="pl-s1">fp_size</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-models-py-LC10" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-models-py-LC11" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">forward</span>(<span class="pl-s1">self</span>, <span class="pl-s1">x</span>, <span class="pl-s1">edge_index</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-models-py-LC12" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"># x shape: [Number of atoms in molecule, Number of atom features]; [N, in_channels]</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-models-py-LC13" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"># edge_index shape: [2, E]; E is the number of edges</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-models-py-LC14" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">edge_index</span>, <span class="pl-s1">_</span> <span class="pl-c1">=</span> <span class="pl-en">add_self_loops</span>(<span class="pl-s1">edge_index</span>, <span class="pl-s1">num_nodes</span><span class="pl-c1">=</span><span class="pl-s1">x</span>.<span class="pl-en">size</span>(<span class="pl-c1">0</span>))</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-models-py-LC15" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-s1">self</span>.<span class="pl-en">propagate</span>(<span class="pl-s1">edge_index</span>, <span class="pl-s1">size</span><span class="pl-c1">=</span>(<span class="pl-s1">x</span>.<span class="pl-en">size</span>(<span class="pl-c1">0</span>), <span class="pl-s1">x</span>.<span class="pl-en">size</span>(<span class="pl-c1">0</span>)), <span class="pl-s1">x</span><span class="pl-c1">=</span><span class="pl-s1">x</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-models-py-LC16" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-models-py-LC17" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">message</span>(<span class="pl-s1">self</span>, <span class="pl-s1">x_j</span>, <span class="pl-s1">edge_index</span>, <span class="pl-s1">size</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-models-py-LC18" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"># We simply sum all the neighbouring nodes (including self-loops)</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-models-py-LC19" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"># This is done implicitly by PyTorch-Geometric :)</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-models-py-LC20" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-s1">x_j</span> </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-models-py-LC21" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-models-py-LC22" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">update</span>(<span class="pl-s1">self</span>, <span class="pl-s1">v</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-models-py-LC23" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-models-py-LC24" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">updated_atom_features</span> <span class="pl-c1">=</span> <span class="pl-s1">self</span>.<span class="pl-v">H</span>(<span class="pl-s1">v</span>).<span class="pl-en">sigmoid</span>()</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-models-py-LC25" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">updated_fingerprint</span> <span class="pl-c1">=</span> <span class="pl-s1">self</span>.<span class="pl-v">W</span>(<span class="pl-s1">updated_atom_features</span>).<span class="pl-en">softmax</span>(<span class="pl-s1">dim</span><span class="pl-c1">=</span><span class="pl-c1">-</span><span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-models-py-LC26" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-models-py-LC27" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-s1">updated_atom_features</span>, <span class="pl-s1">updated_fingerprint</span> <span class="pl-c"># shape [N, atom_features]</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-models-py-LC28" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-models-py-LC29" class="blob-code blob-code-inner js-file-line"><span class="pl-k">class</span> <span class="pl-v">NeuralFP</span>(<span class="pl-s1">nn</span>.<span class="pl-v">Module</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-models-py-LC30" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>, <span class="pl-s1">atom_features</span><span class="pl-c1">=</span><span class="pl-c1">52</span>, <span class="pl-s1">fp_size</span><span class="pl-c1">=</span><span class="pl-c1">2048</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-models-py-LC31" class="blob-code blob-code-inner js-file-line">        <span class="pl-en">super</span>(<span class="pl-v">NeuralFP</span>, <span class="pl-s1">self</span>).<span class="pl-en">__init__</span>()</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-models-py-LC32" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-models-py-LC33" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">atom_features</span> <span class="pl-c1">=</span> <span class="pl-c1">52</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-models-py-LC34" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">fp_size</span> <span class="pl-c1">=</span> <span class="pl-c1">2048</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-models-py-LC35" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-models-py-LC36" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">loop1</span> <span class="pl-c1">=</span> <span class="pl-v">NeuralLoop</span>(<span class="pl-s1">atom_features</span><span class="pl-c1">=</span><span class="pl-s1">atom_features</span>, <span class="pl-s1">fp_size</span><span class="pl-c1">=</span><span class="pl-s1">fp_size</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-models-py-LC37" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">loop2</span> <span class="pl-c1">=</span> <span class="pl-v">NeuralLoop</span>(<span class="pl-s1">atom_features</span><span class="pl-c1">=</span><span class="pl-s1">atom_features</span>, <span class="pl-s1">fp_size</span><span class="pl-c1">=</span><span class="pl-s1">fp_size</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-models-py-LC38" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">self</span>.<span class="pl-s1">loops</span> <span class="pl-c1">=</span> <span class="pl-s1">nn</span>.<span class="pl-v">ModuleList</span>([<span class="pl-s1">self</span>.<span class="pl-s1">loop1</span>, <span class="pl-s1">self</span>.<span class="pl-s1">loop2</span>])</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="file-models-py-LC39" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="file-models-py-LC40" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">forward</span>(<span class="pl-s1">self</span>, <span class="pl-s1">data</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="file-models-py-LC41" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">fingerprint</span> <span class="pl-c1">=</span> <span class="pl-s1">torch</span>.<span class="pl-en">zeros</span>((<span class="pl-s1">data</span>.<span class="pl-s1">batch</span>.<span class="pl-s1">shape</span>[<span class="pl-c1">0</span>], <span class="pl-s1">self</span>.<span class="pl-s1">fp_size</span>), <span class="pl-s1">dtype</span><span class="pl-c1">=</span><span class="pl-s1">torch</span>.<span class="pl-s1">float</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="file-models-py-LC42" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="file-models-py-LC43" class="blob-code blob-code-inner js-file-line">        <span class="pl-s1">out</span> <span class="pl-c1">=</span> <span class="pl-s1">data</span>.<span class="pl-s1">x</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="file-models-py-LC44" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">for</span> <span class="pl-s1">idx</span>, <span class="pl-s1">loop</span> <span class="pl-c1">in</span> <span class="pl-en">enumerate</span>(<span class="pl-s1">self</span>.<span class="pl-s1">loops</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L45" class="blob-num js-line-number" data-line-number="45"></td>
+        <td id="file-models-py-LC45" class="blob-code blob-code-inner js-file-line">            <span class="pl-s1">updated_atom_features</span>, <span class="pl-s1">updated_fingerprint</span> <span class="pl-c1">=</span> <span class="pl-en">loop</span>(<span class="pl-s1">out</span>, <span class="pl-s1">data</span>.<span class="pl-s1">edge_index</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L46" class="blob-num js-line-number" data-line-number="46"></td>
+        <td id="file-models-py-LC46" class="blob-code blob-code-inner js-file-line">            <span class="pl-s1">out</span> <span class="pl-c1">=</span> <span class="pl-s1">updated_atom_features</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L47" class="blob-num js-line-number" data-line-number="47"></td>
+        <td id="file-models-py-LC47" class="blob-code blob-code-inner js-file-line">            <span class="pl-s1">fingerprint</span> <span class="pl-c1">+=</span> <span class="pl-s1">updated_fingerprint</span></td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L48" class="blob-num js-line-number" data-line-number="48"></td>
+        <td id="file-models-py-LC48" class="blob-code blob-code-inner js-file-line">            </td>
+      </tr>
+      <tr>
+        <td id="file-models-py-L49" class="blob-num js-line-number" data-line-number="49"></td>
+        <td id="file-models-py-LC49" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> <span class="pl-en">scatter_add</span>(<span class="pl-s1">fingerprint</span>, <span class="pl-s1">data</span>.<span class="pl-s1">batch</span>, <span class="pl-s1">dim</span><span class="pl-c1">=</span><span class="pl-c1">0</span>)</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/aced125/3bb74f589c8affc967c3970450b628da/raw/3470eb8c8cf89022d84831e5b8b65308152c807e/models.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/aced125/3bb74f589c8affc967c3970450b628da#file-models-py">models.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; if (document) {document.domain = document.domain;}function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height);var elements = document.getElementsByClassName("gist-data"); for (var i = 0; i < elements.length; i++) {elements[i].style.overflow = "visible"}resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {try {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);} catch(error) {console.log('maybeResize error: ', error)}}maybeResize();</script></body></html>

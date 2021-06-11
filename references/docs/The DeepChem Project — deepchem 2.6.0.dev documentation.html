@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://deepchem.readthedocs.io/en/latest/ -->
+<html class="writer-html5" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The DeepChem Project — deepchem 2.6.0.dev documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/pygments.css" type="text/css">
+  <link rel="stylesheet" href="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/theme_overrides.css" type="text/css">
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="https://deepchem.readthedocs.io/en/latest/index.html">
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" async="" src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/analytics.js"></script><script type="text/javascript" id="documentation_options" data-url_root="./" src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/documentation_options.js"></script>
+        <script src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/jquery.js"></script>
+        <script src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/underscore.js"></script>
+        <script src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/doctools.js"></script>
+        <script async="async" src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="https://deepchem.readthedocs.io/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://deepchem.readthedocs.io/en/latest/search.html">
+    <link rel="next" title="Installation" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html"> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-05-13T15:30:58Z", "builder": "sphinx", "canonical_url": null, "commit": "6ab2a69f", "docroot": "/docs/source/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "index", "programming_language": "words", "project": "deepchem", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+<script src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/ethicalads.min.js" type="text/javascript" async="" id="ethicaladsjs"></script><script src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/js" type="text/javascript" async=""></script><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-weight:normal;font-style:normal;leter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em 0.5em 1em;padding:1em;background:rgba(0,0,0,0.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:0.8em}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,0.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,0.07)}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,0.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type="image"].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type="image"].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type="image"].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type="image"].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type="image"].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type="image"].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type="image"].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type="image"].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type="image"].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type="text"].loaded,.ea-type-text{font-size:14px}[data-ea-type="text"].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type="text"].loaded .ea-callout,.ea-type-text .ea-callout{margin:0.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}
+</style><script src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/saved_resource" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav" style="">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://deepchem.readthedocs.io/en/latest/#" class="icon icon-home"> deepchem
+          
+
+          
+            
+            <img src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/logo.png" class="logo" alt="Logo">
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://deepchem.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html"><span class="toctree-expand"></span>Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html#stable-version">Stable version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html#nightly-build-version">Nightly build version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html#google-colab">Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html#docker">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html#from-source-with-conda">From source with conda</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/requirements.html"><span class="toctree-expand"></span>Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/requirements.html#hard-requirements">Hard requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/requirements.html#soft-requirements">Soft requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html"><span class="toctree-expand"></span>Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html#data-handling">Data Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html#feature-engineering">Feature Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html#data-splitting">Data Splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html#model-training-and-evaluating">Model Training and Evaluating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html#more-tutorials">More Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html"><span class="toctree-expand"></span>Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html#delaney-esol"><span class="toctree-expand"></span>Delaney (ESOL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html#multitaskregressor">MultitaskRegressor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html#graphconvmodel">GraphConvModel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html#chembl"><span class="toctree-expand"></span>ChEMBL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html#id2">MultitaskRegressor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html#id3">GraphConvModel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/issues.html"><span class="toctree-expand"></span>Known Issues &amp; Limitations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/issues.html#broken-features">Broken features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/issues.html#experimental-features">Experimental features</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/licence.html">Licensing and Commercial Uses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html"><span class="toctree-expand"></span>Contibuting to DeepChem as a Scientist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#scientist-faq"><span class="toctree-expand"></span>Scientist FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#wouldn-t-it-be-better-for-my-career-to-make-my-own-package-rather-than-use-deepchem">Wouldn’t it be better for my career to make my own package rather than use DeepChem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#is-there-a-deepchem-pi">Is there a DeepChem PI?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#do-i-need-to-add-deepchem-team-members-as-co-authors-to-my-paper">Do I need to add DeepChem team members as co-authors to my paper?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#i-want-to-establish-my-scientific-niche-how-can-i-do-that-as-a-deepchem-contributor-won-t-my-contribution-be-lost-in-the-noise">I want to establish my scientific niche. How can I do that as a DeepChem contributor? Won’t my contribution be lost in the noise?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#i-m-an-aspiring-scientist-not-part-of-a-lab-can-i-join-deepchem">I’m an aspiring scientist, not part of a lab. Can I join DeepChem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#is-there-deepchem-grant-money">Is there DeepChem Grant Money?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#i-m-an-industry-researcher-can-i-participate-too">I’m an industry researcher. Can I participate too?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#what-about-intellectual-property">What about intellectual property?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#if-i-use-deepchem-on-my-organization-s-data-do-i-have-to-release-the-data">If I use DeepChem on my organization’s data, do I have to release the data?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#what-if-i-want-to-release-data-can-deepchem-help">What if I want to release data? Can DeepChem help?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#is-moleculenet-just-about-molecules">Is MoleculeNet just about molecules?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html#does-moleculenet-allow-for-releasing-data-under-different-licenses">Does MoleculeNet allow for releasing data under different licenses?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html"><span class="toctree-expand"></span>Coding Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html#code-formatting">Code Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html#linting">Linting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html#docstrings">Docstrings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html#unit-tests">Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html#testing-machine-learning-models">Testing Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html#type-annotations">Type Annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html"><span class="toctree-expand"></span>Infrastructures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#github">GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#conda-forge">Conda Forge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#docker-hub">Docker Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#pypi">PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#amazon-web-services"><span class="toctree-expand"></span>Amazon Web Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#s3">S3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#route-53">Route 53</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#certificate-manager">Certificate Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#github-pages">GitHub Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#godaddy">GoDaddy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html#digital-ocean">Digital Ocean</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html"><span class="toctree-expand"></span>Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#datasets"><span class="toctree-expand"></span>Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#numpydataset">NumpyDataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#diskdataset">DiskDataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#imagedataset">ImageDataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#data-loaders"><span class="toctree-expand"></span>Data Loaders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#csvloader">CSVLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#usercsvloader">UserCSVLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#imageloader">ImageLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#jsonloader">JsonLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#sdfloader">SDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#fastaloader">FASTALoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#inmemoryloader">InMemoryLoader</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#data-classes"><span class="toctree-expand"></span>Data Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#graph-data">Graph Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#base-classes-for-develop"><span class="toctree-expand"></span>Base Classes (for develop)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#dataset">Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html#dataloader">DataLoader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html"><span class="toctree-expand"></span>MoleculeNet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#contributing-a-new-dataset-to-moleculenet">Contributing a new dataset to MoleculeNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#bace-dataset">BACE Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#bbbc-datasets">BBBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#bbbp-datasets">BBBP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#cell-counting-datasets">Cell Counting Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#chembl-datasets">Chembl Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#chembl25-datasets">Chembl25 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#clearance-datasets">Clearance Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#clintox-datasets">Clintox Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#delaney-datasets">Delaney Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#factors-datasets">Factors Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#hiv-datasets">HIV Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#hopv-datasets">HOPV Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#hppb-datasets">HPPB Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#kaggle-datasets">KAGGLE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#kinase-datasets">Kinase Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#lipo-datasets">Lipo Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#materials-datasets">Materials Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#muv-datasets">MUV Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#nci-datasets">NCI Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#pcba-datasets">PCBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#pdbbind-datasets">PDBBIND Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#ppb-datasets">PPB Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#qm7-datasets">QM7 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#qm8-datasets">QM8 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#qm9-datasets">QM9 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#sampl-datasets">SAMPL Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#sider-datasets">SIDER Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#thermosol-datasets">Thermosol Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#tox21-datasets">Tox21 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#toxcast-datasets">Toxcast Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#uspto-datasets">USPTO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#uv-datasets">UV Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#zinc15-datasets">ZINC15 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html#platinum-adsorption-dataset">Platinum Adsorption Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html"><span class="toctree-expand"></span>Featurizers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molecule-featurizers"><span class="toctree-expand"></span>Molecule Featurizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#graph-convolution-featurizers"><span class="toctree-expand"></span>Graph Convolution Featurizers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#convmolfeaturizer">ConvMolFeaturizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#weavefeaturizer">WeaveFeaturizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molganfeaturizer">MolGanFeaturizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molgraphconvfeaturizer">MolGraphConvFeaturizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#pagtnmolgraphfeaturizer">PagtnMolGraphFeaturizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#maccskeysfingerprint">MACCSKeysFingerprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#circularfingerprint">CircularFingerprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#pubchemfingerprint">PubChemFingerprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#mol2vecfingerprint">Mol2VecFingerprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#rdkitdescriptors">RDKitDescriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#mordreddescriptors">MordredDescriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#coulombmatrix">CoulombMatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#coulombmatrixeig">CoulombMatrixEig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#atomcoordinates">AtomCoordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#bpsymmetryfunctioninput">BPSymmetryFunctionInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#smilestoseq">SmilesToSeq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#smilestoimage">SmilesToImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#onehotfeaturizer">OneHotFeaturizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#rawfeaturizer">RawFeaturizer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molecular-complex-featurizers"><span class="toctree-expand"></span>Molecular Complex Featurizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#rdkitgridfeaturizer">RdkitGridFeaturizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#atomicconvfeaturizer">AtomicConvFeaturizer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#inorganic-crystal-featurizers"><span class="toctree-expand"></span>Inorganic Crystal Featurizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#materialcompositionfeaturizer"><span class="toctree-expand"></span>MaterialCompositionFeaturizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#elementpropertyfingerprint">ElementPropertyFingerprint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#elemnetfeaturizer">ElemNetFeaturizer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#materialstructurefeaturizer"><span class="toctree-expand"></span>MaterialStructureFeaturizer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#sinecoulombmatrix">SineCoulombMatrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#cgcnnfeaturizer">CGCNNFeaturizer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#lcnnfeaturizer">LCNNFeaturizer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#id54">MaterialCompositionFeaturizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molecule-tokenizers"><span class="toctree-expand"></span>Molecule Tokenizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#smilestokenizer">SmilesTokenizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#basicsmilestokenizer">BasicSmilesTokenizer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#other-featurizers"><span class="toctree-expand"></span>Other Featurizers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#bindingpocketfeaturizer">BindingPocketFeaturizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#userdefinedfeaturizer">UserDefinedFeaturizer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#base-featurizers-for-develop"><span class="toctree-expand"></span>Base Featurizers (for develop)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#featurizer">Featurizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molecularfeaturizer">MolecularFeaturizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#id57">MaterialCompositionFeaturizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#id58">MaterialStructureFeaturizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#complexfeaturizer">ComplexFeaturizer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html"><span class="toctree-expand"></span>Splitters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#general-splitters"><span class="toctree-expand"></span>General Splitters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#randomsplitter">RandomSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#randomgroupsplitter">RandomGroupSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#randomstratifiedsplitter">RandomStratifiedSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#singletaskstratifiedsplitter">SingletaskStratifiedSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#indexsplitter">IndexSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#specifiedsplitter">SpecifiedSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#tasksplitter">TaskSplitter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#molecule-splitters"><span class="toctree-expand"></span>Molecule Splitters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#scaffoldsplitter">ScaffoldSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#molecularweightsplitter">MolecularWeightSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#maxminsplitter">MaxMinSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#butinasplitter">ButinaSplitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#fingerprintsplitter">FingerprintSplitter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html#base-splitter-for-develop">Base Splitter (for develop)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html"><span class="toctree-expand"></span>Transformers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#general-transformers"><span class="toctree-expand"></span>General Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#normalizationtransformer">NormalizationTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#minmaxtransformer">MinMaxTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#clippingtransformer">ClippingTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#logtransformer">LogTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#cdftransformer">CDFTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#powertransformer">PowerTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#balancingtransformer">BalancingTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#duplicatebalancingtransformer">DuplicateBalancingTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#imagetransformer">ImageTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#featurizationtransformer">FeaturizationTransformer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#specified-usecase-transformers"><span class="toctree-expand"></span>Specified Usecase Transformers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#coulombfittransformer">CoulombFitTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#irvtransformer">IRVTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#dagtransformer">DAGTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#anitransformer">ANITransformer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html#base-transformer-for-develop">Base Transformer (for develop)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html"><span class="toctree-expand"></span>Model Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#model-cheatsheet">Model Cheatsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#model">Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#scikit-learn-models"><span class="toctree-expand"></span>Scikit-Learn Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#sklearnmodel">SklearnModel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#gradient-boosting-models"><span class="toctree-expand"></span>Gradient Boosting Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#gbdtmodel">GBDTModel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#deep-learning-infrastructure"><span class="toctree-expand"></span>Deep Learning Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#losses">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#optimizers">Optimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#keras-models"><span class="toctree-expand"></span>Keras Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#kerasmodel">KerasModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#multitaskregressor">MultitaskRegressor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#multitaskfittransformregressor">MultitaskFitTransformRegressor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#multitaskclassifier">MultitaskClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#tensorflowmultitaskirvclassifier">TensorflowMultitaskIRVClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#robustmultitaskclassifier">RobustMultitaskClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#robustmultitaskregressor">RobustMultitaskRegressor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#progressivemultitaskclassifier">ProgressiveMultitaskClassifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#progressivemultitaskregressor">ProgressiveMultitaskRegressor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#weavemodel">WeaveModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#dtnnmodel">DTNNModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#dagmodel">DAGModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#graphconvmodel">GraphConvModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#mpnnmodel">MPNNModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#basicmolganmodel">BasicMolGANModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#scscoremodel">ScScoreModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#seqtoseq">SeqToSeq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#gan"><span class="toctree-expand"></span>GAN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#wgan">WGAN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#cnn">CNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#textcnnmodel">TextCNNModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#atomicconvmodel">AtomicConvModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#smiles2vec">Smiles2Vec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#chemception">ChemCeption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#normalizingflowmodel">NormalizingFlowModel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#pytorch-models"><span class="toctree-expand"></span>PyTorch Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#torchmodel">TorchModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#cgcnnmodel">CGCNNModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#gatmodel">GATModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#gcnmodel">GCNModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#attentivefpmodel">AttentiveFPModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#id39">MPNNModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#lcnnmodel">LCNNModel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metrics.html"><span class="toctree-expand"></span>Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metrics.html#metric-utilities">Metric Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metrics.html#metric-shape-handling">Metric Shape Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metrics.html#metric-functions">Metric Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metrics.html#metric-class">Metric Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/hyper.html"><span class="toctree-expand"></span>Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/hyper.html#hyperparameter-optimization-api">Hyperparameter Optimization API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/hyper.html#grid-hyperparameter-optimization">Grid Hyperparameter Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/hyper.html#gaussian-process-hyperparameter-optimization">Gaussian Process Hyperparameter Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metalearning.html"><span class="toctree-expand"></span>Metalearning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metalearning.html#metalearner">MetaLearner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metalearning.html#maml">MAML</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/rl.html"><span class="toctree-expand"></span>Reinforcement Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/rl.html#environments">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/rl.html#policies">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/rl.html#a2c">A2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/rl.html#ppo">PPO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/docking.html"><span class="toctree-expand"></span>Docking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/docking.html#binding-pocket-discovery">Binding Pocket Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/docking.html#pose-generation">Pose Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/docking.html#id4">Docking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/docking.html#pose-scoring">Pose Scoring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html"><span class="toctree-expand"></span>Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#data-utilities"><span class="toctree-expand"></span>Data Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#array-utilities">Array Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#data-directory">Data Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#url-handling">URL Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#file-handling">File Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#molecular-utilities">Molecular Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#molecular-fragment-utilities">Molecular Fragment Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#coordinate-box-utilities">Coordinate Box Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#evaluation-utils">Evaluation Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#genomic-utilities">Genomic Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#geometry-utilities">Geometry Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#hash-function-utilities">Hash Function Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#voxel-utils">Voxel Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#graph-convolution-utilities">Graph Convolution Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#debug-utilities">Debug Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#docking-utilities"><span class="toctree-expand"></span>Docking Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html#print-threshold">Print Threshold</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://deepchem.readthedocs.io/en/latest/#">deepchem</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://deepchem.readthedocs.io/en/latest/#" class="icon icon-home"></a> »</li>
+        
+      <li>The DeepChem Project</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/deepchem/deepchem/blob/master/docs/source/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-deepchem-project">
+<h1>The DeepChem Project<a class="headerlink" href="https://deepchem.readthedocs.io/en/latest/#the-deepchem-project" title="Permalink to this headline">¶</a></h1>
+<embed>
+  <a href="https://github.com/deepchem/deepchem">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png">
+  </a>
+<p><strong>The DeepChem project aims to democratize deep learning for science.</strong></p>
+<div class="section" id="what-is-deepchem">
+<h2>What is DeepChem?<a class="headerlink" href="https://deepchem.readthedocs.io/en/latest/#what-is-deepchem" title="Permalink to this headline">¶</a></h2>
+<p>The DeepChem project aims to build high quality tools to democratize
+the use of deep learning in the sciences. The origin of DeepChem
+focused on applications of deep learning to chemistry, but the project
+has slowly evolved past its roots to broader applications of deep
+learning to the sciences.</p>
+<p>The core <a class="reference external" href="https://github.com/deepchem/deepchem">DeepChem Repo</a> serves as a monorepo that organizes the DeepChem suite of scientific tools.
+As the project matures, smaller more focused tool will be surfaced in more targeted repos.
+DeepChem is primarily developed in Python, but we are experimenting with adding support for other languages.</p>
+<p>What are some of the things you can use DeepChem to do? Here’s a few examples:</p>
+<ul class="simple">
+<li><p>Predict the solubility of small drug-like molecules</p></li>
+<li><p>Predict binding affinity for small molecule to protein targets</p></li>
+<li><p>Predict physical properties of simple materials</p></li>
+<li><p>Analyze protein structures and extract useful descriptors</p></li>
+<li><p>Count the number of cells in a microscopy image</p></li>
+<li><p>More coming soon…</p></li>
+</ul>
+<p>We should clarify one thing up front though. DeepChem is a machine
+learning library, so it gives you the tools to solve each of the
+applications mentioned above yourself. DeepChem may or may not have
+prebaked models which can solve these problems out of the box.</p>
+<p>Over time, we hope to grow the set of scientific applications DeepChem
+can address. This means we need lots of help! If you’re a scientist
+who’s interested in open source, please pitch on building DeepChem.</p>
+</div>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="https://deepchem.readthedocs.io/en/latest/#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>The fastest way to get up and running with DeepChem is to run it on
+Google Colab. Check out one of the <a class="reference external" href="https://github.com/deepchem/deepchem/tree/master/examples/tutorials">DeepChem Tutorials</a> or this
+<a class="reference external" href="https://forum.deepchem.io/t/getting-deepchem-running-in-colab/81/7">forum post</a> for Colab quick start guides.</p>
+<p>If you’d like to install DeepChem locally,
+we recommend installing deepchem which is nightly version and RDKit.
+RDKit is a soft requirement package, but many useful methods depend on it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install tensorflow~<span class="o">=</span><span class="m">2</span>.4
+pip install --pre deepchem
+conda install -y -c conda-forge rdkit
+</pre></div>
+</div>
+<p>Then open your python and try running.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">deepchem</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="about-us">
+<h2>About Us<a class="headerlink" href="https://deepchem.readthedocs.io/en/latest/#about-us" title="Permalink to this headline">¶</a></h2>
+<p>DeepChem is managed by a team of open source contributors. Anyone is free to join and contribute!
+DeepChem has weekly developer calls. You can find <a class="reference external" href="https://forum.deepchem.io/search?q=Minutes%20order%3Alatest">meeting minutes</a> on our <a class="reference external" href="https://forum.deepchem.io/">forums</a>.</p>
+<p>DeepChem developer calls are open to the public!
+To listen in, please email <a class="reference external" href="mailto:X.Y%40gmail.com">X<span>.</span>Y<span>@</span>gmail<span>.</span>com</a>, where X=bharath and Y=ramsundar to introduce yourself and ask for an invite.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<div class="line-block">
+<div class="line">Join our <a class="reference external" href="https://gitter.im/deepchem/Lobby">community gitter</a> to discuss DeepChem.</div>
+<div class="line">Sign up for our <a class="reference external" href="https://forum.deepchem.io/">forums</a> to talk about research, development, and general questions.</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/get_started/issues.html">Known Issues &amp; Limitations</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/licence.html">Licensing and Commercial Uses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/scientists.html">Contibuting to DeepChem as a Scientist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/coding.html">Coding Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/development_guide/infra.html">Infrastructures</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/moleculenet.html">MoleculeNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html">Featurizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/splitters.html">Splitters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/transformers.html">Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html">Model Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#scikit-learn-models">Scikit-Learn Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#gradient-boosting-models">Gradient Boosting Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#deep-learning-infrastructure">Deep Learning Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#keras-models">Keras Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/models.html#pytorch-models">PyTorch Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/hyper.html">Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/metalearning.html">Metalearning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/rl.html">Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/docking.html">Docking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://deepchem.readthedocs.io/en/latest/api_reference/utils.html">Utilities</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="https://deepchem.readthedocs.io/en/latest/get_started/installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr><div><div id="rtd-sidebar" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" data-ea-manual="true" class="ethical-rtd loaded" data-ea-keywords="biology|deep-learning|drug-discovery|materials-science|only words|quantum-chemistry|readthedocs-project-575348|readthedocs-project-deepchem" data-ea-campaign-types="community|house|paid"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://server.ethicalads.io/proxy/click/1470/9e6e333d-cd17-482e-bd52-dbe99c78ceae/" rel="nofollow" target="_blank" class="ethical-image-link"><img src="./The DeepChem Project — deepchem 2.6.0.dev documentation_files/NVIDIA-RTX-Ampere-A6000-NVLinks_3Q-Front_Left_1mYCyTp.png"></a><div class="ethical-text"><a href="https://server.ethicalads.io/proxy/click/1470/9e6e333d-cd17-482e-bd52-dbe99c78ceae/" rel="nofollow" target="_blank"><strong>NVIDIA RTX™ A6000 GPU Cloud VMs </strong><span>Lambda Cloud  — Tensorflow, PyTorch &amp; CUDA preinstalled.</span><strong> Sign Up</strong></a></div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2020, deepchem-contributors.
+      <span class="commit">
+        
+        Revision <code>6ab2a69f</code>.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="https://deepchem.readthedocs.io/en/latest/">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="https://deepchem.readthedocs.io/en/stable/">stable</a></dd>
+        
+        
+        
+        <dd><a href="https://deepchem.readthedocs.io/en/2.5.0/">2.5.0</a></dd>
+        
+        
+        
+        <dd><a href="https://deepchem.readthedocs.io/en/2.4.0/">2.4.0</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://deepchem.readthedocs.io/_/downloads/en/latest/pdf/">PDF</a></dd>
+        
+        <dd><a href="https://deepchem.readthedocs.io/_/downloads/en/latest/htmlzip/">HTML</a></dd>
+        
+        <dd><a href="https://deepchem.readthedocs.io/_/downloads/en/latest/epub/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/deepchem/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/deepchem/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/deepchem/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/deepchem/deepchem/blob/master/docs/source/index.rst">View</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/deepchem/deepchem/edit/master/docs/source/index.rst">Edit</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/deepchem/search/" method="get">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      
+      
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+<span id="copylAddress" style="display: inline-block; position: absolute; left: -9999em;"></span></body></html>

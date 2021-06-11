@@ -1,0 +1,279 @@
+#comment-box {
+  width: 0;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow-y: auto;
+  background-color: #fff;
+  box-shadow: -10px -10px 30px #888888;
+  transition: width 0.5s;
+  margin-top: 88px;
+  z-index: 5;
+  visibility: hidden;
+}
+
+#comment-box .comment-box-wrapper {
+  margin-bottom: 25px;
+}
+
+#comment-box .comment-box-wrapper.hidden {
+  margin: 0;
+}
+
+#comment-box .info {
+  padding: 8px;
+  background-color: #FFFFE0;
+  margin-bottom: 15px;
+}
+
+#comment-box .info.hidden {
+  padding: 0;
+  margin: 0;
+}
+
+#comment-box .comment-input-action {
+  margin-top: 12px;
+  text-align: right;
+}
+
+#comment-box .comment-input-action .btn-default,
+#comment-box .comment-input-action .btn-link{
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+#comment-box .comment-input-action .btn-link{
+  color: #737981;
+  font-size: 13px;
+}
+
+#comment-box .comment-input-action .btn-default {
+  background-color: #1bd281;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+#comment-box .comments-content {
+  display: none;
+  position: relative;
+}
+
+#comment-box .comments-content .comment-container {
+  border-bottom: 1px solid #e6e7e9;
+}
+
+#comment-box .comments-content .comment-container:last-child {
+  border-bottom: none;
+}
+
+#comment-box .comments-content .comment-container.in-moderation {
+  background-color: #FFFFE0;
+}
+
+#comment-box .comments-content .comment {
+  padding: 5px 0;
+  display: flex;
+}
+
+#comment-box .comments-content .comment-header {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#comment-box .comments-content .comment-header hr {
+  right: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin: 0;
+  z-index: -1;
+}
+
+#comment-box .comments-content .comment-header span {
+  font-size: 18px;
+  color: #222635;
+  display: inline-block;
+  background: #fff;
+  font-weight: 500;
+}
+
+#comment-box .comments-content .comment-header span:before {
+  color: #29a8ff;
+  font-size: 30px;
+  vertical-align: middle;
+  margin-left: 0;
+}
+
+#comment-box .comments-content .comment-header .icon-comment {
+  padding-right: 10px;
+}
+
+#comment-box .comments-content .avatar-column {
+  margin-right: 10px;
+}
+
+#comment-box .comments-content .content-column {
+  flex-grow: 1;
+}
+
+#comment-box .comments-content .avatar-column img {
+  width: 35px;
+  /* To make the alt text not overflow */
+  max-width: 35px;
+  border-radius: 50%;
+}
+
+#comment-box .comments-content .comment-author {
+  font-weight: 500;
+  font-size: 12px;
+  color: #6e6f73;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+#comment-box .comments-content .comment-author a {
+  color: #29a8ff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+#comment-box .comments-content .comment-author a,
+#comment-box .comments-content .comment-author span {
+  margin-right: 5px;
+}
+
+#comment-box .comments-content .comment-author .reply:after {
+  content: "•";
+}
+
+#comment-box .comments-content .comment-author .collapsible-button  {
+  padding: 0;
+}
+
+#comment-box .comments-content .comment-author .collapsible-button i {
+  display: none;
+}
+
+#comment-box .comments-content .comment-author .collapsible-button[aria-expanded="true"] i.icon-minus-squared-alt {
+  display: block;
+}
+
+#comment-box .comments-content .comment-author .collapsible-button[aria-expanded="false"] i.icon-plus-squared-alt {
+  display: block;
+}
+
+#comment-box .comments-content .like-and-tools {
+  float: right;
+}
+
+#comment-box .comments-content .like-and-tools .icon-thumbs-up:before {
+  font-size: 16px;
+  color: #1bd281;
+}
+
+#comment-box .comments-content .like-and-tools .liked {
+  color: #1bd281
+}
+
+#comment-box .comments-content .like-and-tools .cog {
+  display: inline-block;
+}
+
+
+#comment-box .comments-content .comment-body p {
+  color: #545454;
+  font-weight: 400;
+  margin-right: 30px;
+  line-height: 1.25;
+  font-size: 15px;
+}
+
+#comment-box .comments-content .comment-tools .comment-reply {
+  padding: 0;
+  color: #29a8ff;
+  font-weight: 500;
+}
+
+#comment-box .comments-content .icon-reply-3 {
+  margin-right: 5px;
+}
+
+#comment-box .comments-content button {
+  border: 0;
+  background-color: transparent;
+}
+
+#comment-box .comments-content .child-comment {
+  border-top: 1px solid #e6e7e9;
+  margin-top: 5px;
+}
+
+#comment-box .comments-content .reply-container,
+#comment-box .comments-content .edit-container {
+  display: none;
+}
+
+#comment-box .comments-content .reply-container .reply-editor,
+#comment-box .comments-content .edit-container .edit-editor {
+
+  margin-top: 10px;
+}
+
+#comment-box .comments-content .reply-container.active,
+#comment-box .comments-content .edit-container.active {
+  display: block;
+}
+
+.comments-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #eee;
+  opacity: 0.5;
+  display: none;
+  z-index: 5;
+}
+
+#comment-box.active,
+#comment-box .active {
+  display: block;
+  visibility: visible;
+}
+
+.comments-overlay.active {
+  display: block;
+}
+
+#comment-box.active {
+  width: 75%;
+  padding: 15px 25px;
+}
+
+/* A white box so that when the comments minimize, it doesn't scrunch up all the text and make it look weird. */
+#comment-box:after {
+  content: ' ';
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 6;
+  visibility: visible;
+}
+
+#comment-box.active:after {
+  display: none;
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #comment-box.active {
+    width: 50%;
+  }
+}

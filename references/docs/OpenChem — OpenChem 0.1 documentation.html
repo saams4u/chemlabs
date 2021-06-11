@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://mariewelt.github.io/OpenChem/html/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenChem — OpenChem 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="./OpenChem — OpenChem 0.1 documentation_files/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="./OpenChem — OpenChem 0.1 documentation_files/documentation_options.js"></script>
+        <script src="./OpenChem — OpenChem 0.1 documentation_files/jquery.js"></script>
+        <script src="./OpenChem — OpenChem 0.1 documentation_files/underscore.js"></script>
+        <script src="./OpenChem — OpenChem 0.1 documentation_files/doctools.js"></script>
+        <script src="./OpenChem — OpenChem 0.1 documentation_files/language_data.js"></script>
+        
+    
+    <script type="text/javascript" src="./OpenChem — OpenChem 0.1 documentation_files/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./OpenChem — OpenChem 0.1 documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./OpenChem — OpenChem 0.1 documentation_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://mariewelt.github.io/OpenChem/html/genindex.html">
+    <link rel="search" title="Search" href="https://mariewelt.github.io/OpenChem/html/search.html">
+    <link rel="next" title="Installation instructions" href="https://mariewelt.github.io/OpenChem/html/installation_instructions.html"> 
+<script type="text/javascript" async="" src="./OpenChem — OpenChem 0.1 documentation_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body class="wy-body-for-nav" style=""><div id="MathJax_Message" style="display: none;"></div>
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://mariewelt.github.io/OpenChem/html/index.html#">
+          
+
+          
+            
+            <img src="./OpenChem — OpenChem 0.1 documentation_files/logo.png" class="logo" alt="Logo">
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://mariewelt.github.io/OpenChem/html/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="https://mariewelt.github.io/OpenChem/html/index.html#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/installation_instructions.html"><span class="toctree-expand"></span>Installation instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/installation_instructions.html#general-installation">General installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/installation_instructions.html#installation-with-docker">Installation with Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/how_to_run_tutorial.html"><span class="toctree-expand"></span>How to define and train models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/how_to_run_tutorial.html#arguments-for-launch-py">Arguments for launch.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/how_to_run_tutorial.html#arguments-for-run-py">Arguments for run.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/how_to_run_tutorial.html#configuration-file">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/how_to_run_tutorial.html#launching-jobs">Launching jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/blocks.html"><span class="toctree-expand"></span>Tutorials and Recipes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/getting_started.html"><span class="toctree-expand"></span>Getting started with building models in OpenChem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/getting_started.html#loading-data">Loading data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/getting_started.html#creating-pytorch-dataset">Creating PyTorch dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/getting_started.html#creating-openchem-model-and-specifying-parameters">Creating OpenChem model and specifying parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/getting_started.html#training-the-model">Training the model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/gcnn_tutorial.html"><span class="toctree-expand"></span>GraphCNN for predicting logP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/gcnn_tutorial.html#defining-node-attributes">Defining node attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/gcnn_tutorial.html#loading-data">Loading data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/gcnn_tutorial.html#defining-model-architechture">Defining model architechture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/gcnn_tutorial.html#training-and-evaluating-the-model">Training and evaluating the model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/tox21_tutorial.html"><span class="toctree-expand"></span>Tox21 Challenge</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/tox21_tutorial.html#loading-data">Loading data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/tox21_tutorial.html#defining-evaluation-function">Defining evaluation function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/tox21_tutorial.html#defining-model-architechture">Defining model architechture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/tox21_tutorial.html#training-and-evaluating-the-model">Training and evaluating the model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/blocks.html"><span class="toctree-expand"></span>API documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/models.html"><span class="toctree-expand"></span>models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/models.html#module-models.openchem_model">openchem_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/models.html#module-models.Smiles2Label">Smiles2Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/models.html#module-models.Graph2Label">Graph2Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/models.html#module-models.MoleculeProtein2Label">MoleculeProtein2Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/models.html#vanilla-model">vanilla_model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.html"><span class="toctree-expand"></span>modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.encoders.html"><span class="toctree-expand"></span>encoders</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.encoders.html#module-modules.encoders.openchem_encoder">openchem_encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.encoders.html#module-modules.encoders.rnn_encoder">rnn_encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.encoders.html#cnn-encoder">cnn_encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.encoders.html#gcnn-encoder">gcnn_encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.embeddings.html"><span class="toctree-expand"></span>embeddings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.embeddings.html#module-modules.embeddings.openchem_embedding">openchem_embedding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.embeddings.html#module-modules.embeddings.basic_embedding">basic_embedding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.embeddings.html#positional-embedding">positional_embedding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/modules.mlp.html">mlp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/layers.html"><span class="toctree-expand"></span>layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/layers.html#module-layers.conv_bn_relu">conv_bn_relu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/layers.html#module-layers.gcn">gcn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html"><span class="toctree-expand"></span>data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html#module-data.smiles_data_layer">smiles_data_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html#graph-data-layer">graph_data_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html#module-data.smiles_protein_data_layer">smiles_protein_data_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html#module-data.vanilla_data_layer">vanilla_data_layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html#module-data.smiles_enumerator">smiles_enumerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/data.html#module-data.utils">utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/criterion.html"><span class="toctree-expand"></span>criterion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/criterion.html#module-openchem.criterion.multitask_loss">multitask_loss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/optimizer.html"><span class="toctree-expand"></span>optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/optimizer.html#module-optimizer.openchem_optimizer">openchem_optimizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/optimizer.html#module-optimizer.openchem_lr_scheduler">openchem_lr_scheduler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/utils.html"><span class="toctree-expand"></span>utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/utils.html#module-openchem.utils.graph">graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/utils.html#id1">utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/api-docs/utils.html#logger">logger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://mariewelt.github.io/OpenChem/html/index.html#">OpenChem</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://mariewelt.github.io/OpenChem/html/index.html#">Docs</a> »</li>
+        
+      <li>OpenChem</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/Mariewelt/OpenChem" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="openchem">
+<h1>OpenChem<a class="headerlink" href="https://mariewelt.github.io/OpenChem/html/index.html#openchem" title="Permalink to this headline">¶</a></h1>
+<p>OpenChem is a deep learning toolkit for Computational Chemistry with <a class="reference external" href="https://pytorch.org/docs/stable/index.html">PyTorch</a> backend.</p>
+<p><strong>Main features</strong></p>
+<ul class="simple">
+<li><p>Modular design with unified API, so that modulescan be easily combined with each other.</p></li>
+<li><p>OpenChem is easy-to-use: new models are built with only configuration file.</p></li>
+<li><p>Fast training with multi-gpu support.</p></li>
+<li><p>Utilities for data preprocessing.</p></li>
+<li><p>Tensorboard support.</p></li>
+</ul>
+<p><a class="reference internal" href="https://mariewelt.github.io/OpenChem/html/tutorials/blocks.html#api-docs"><span class="std std-ref">API documentation</span></a>.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://mariewelt.github.io/OpenChem/html/installation_instructions.html" class="btn btn-neutral float-right" title="Installation instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2018, Mariya Popova
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #99badd;
+    }
+  </style>
+
+
+
+<span id="copylAddress" style="display: inline-block; position: absolute; left: -9999em;"></span></body></html>

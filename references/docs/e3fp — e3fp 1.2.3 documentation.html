@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://e3fp.readthedocs.io/en/latest/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>e3fp — e3fp 1.2.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" async="" src="./e3fp — e3fp 1.2.3 documentation_files/analytics.js"></script><script type="text/javascript" async="" src="./e3fp — e3fp 1.2.3 documentation_files/js"></script><script type="text/javascript" async="" src="./e3fp — e3fp 1.2.3 documentation_files/analytics.js"></script><script async="" src="./e3fp — e3fp 1.2.3 documentation_files/analytics.js"></script><script type="text/javascript" src="./e3fp — e3fp 1.2.3 documentation_files/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="./e3fp — e3fp 1.2.3 documentation_files/documentation_options.js"></script>
+        <script src="./e3fp — e3fp 1.2.3 documentation_files/jquery.js"></script>
+        <script src="./e3fp — e3fp 1.2.3 documentation_files/underscore.js"></script>
+        <script src="./e3fp — e3fp 1.2.3 documentation_files/doctools.js"></script>
+        <script async="async" src="./e3fp — e3fp 1.2.3 documentation_files/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="./e3fp — e3fp 1.2.3 documentation_files/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./e3fp — e3fp 1.2.3 documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./e3fp — e3fp 1.2.3 documentation_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://e3fp.readthedocs.io/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://e3fp.readthedocs.io/en/latest/search.html">
+    <link rel="next" title="Overview of E3FP" href="https://e3fp.readthedocs.io/en/latest/overview.html"> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="./e3fp — e3fp 1.2.3 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-01-14T23:23:53Z", "builder": "sphinx", "canonical_url": null, "commit": "b5561102", "docroot": "/doc/source/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "index", "programming_language": "py", "project": "e3fp", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "UA-55163959-2", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="./e3fp — e3fp 1.2.3 documentation_files/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+<script src="./e3fp — e3fp 1.2.3 documentation_files/js(1)" type="text/javascript" async=""></script><script src="./e3fp — e3fp 1.2.3 documentation_files/ethicalads.min.js" type="text/javascript" async="" id="ethicaladsjs"></script><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-weight:normal;font-style:normal;leter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em 0.5em 1em;padding:1em;background:rgba(0,0,0,0.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:0.8em}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,0.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,0.07)}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,0.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type="image"].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type="image"].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type="image"].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type="image"].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type="image"].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type="image"].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type="image"].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type="image"].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type="image"].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type="text"].loaded,.ea-type-text{font-size:14px}[data-ea-type="text"].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type="text"].loaded .ea-callout,.ea-type-text .ea-callout{margin:0.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}
+</style><script src="./e3fp — e3fp 1.2.3 documentation_files/saved_resource" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav" style="">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://e3fp.readthedocs.io/en/latest/index.html#" class="icon icon-home"> e3fp
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://e3fp.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/overview.html">Overview of E3FP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/install.html">Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/usage/index.html">Usage and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/dev/index.html">Developer Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/api/index.html">e3fp API</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div id="rtd-sidebar" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" data-ea-manual="true" class="ethical-rtd ethical-dark-theme loaded" data-ea-keywords="3d|cheminformatics|e3fp|fingerprint|molecular|python|readthedocs-project-141283|readthedocs-project-e3fp" data-ea-campaign-types="community|house"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://server.ethicalads.io/proxy/click/194/910d95d8-6286-458a-b546-0cb17aed55ff/" rel="nofollow" target="_blank" class="ethical-image-link"><img src="./e3fp — e3fp 1.2.3 documentation_files/english-house_RILBxkP.png"></a><div class="ethical-text"><a href="https://server.ethicalads.io/proxy/click/194/910d95d8-6286-458a-b546-0cb17aed55ff/" rel="nofollow" target="_blank"><b>Reach over 7 million devs</b> each month when you advertise with Read the Docs</a>.</div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div><img src="./e3fp — e3fp 1.2.3 documentation_files/saved_resource(1)" class="ea-pixel"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://e3fp.readthedocs.io/en/latest/index.html#">e3fp</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://e3fp.readthedocs.io/en/latest/index.html#">Docs</a> »</li>
+        
+      <li>e3fp</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/keiserlab/e3fp/blob/master/doc/source/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="e3fp">
+<h1>e3fp<a class="headerlink" href="https://e3fp.readthedocs.io/en/latest/index.html#e3fp" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Release</dt>
+<dd class="field-odd"><p>1.2.3</p>
+</dd>
+<dt class="field-even">Date</dt>
+<dd class="field-even"><p>Jan 14, 2021</p>
+</dd>
+</dl>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="https://e3fp.readthedocs.io/en/latest/index.html#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/overview.html">Overview of E3FP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/overview.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/overview.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/overview.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/overview.html#citing-e3fp">Citing E3FP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/install.html">Setup and Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/install.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/install.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/install.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/usage/index.html">Usage and Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/usage/config.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/usage/cli.html">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/usage/pipeline.html">Pipeline Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/usage/fingerprints/index.html">Using Fingerprints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/dev/index.html">Developer Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/dev/index.html#authoring-code">Authoring Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/dev/index.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/dev/index.html#releasing-code">Releasing Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/api/index.html">e3fp API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://e3fp.readthedocs.io/en/latest/api/e3fp.html">e3fp package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://e3fp.readthedocs.io/en/latest/overview.html" class="btn btn-neutral float-right" title="Overview of E3FP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Seth Axen
+      
+        <span class="commit">
+          Revision <code>b5561102</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="https://e3fp.readthedocs.io/en/latest/">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="https://e3fp.readthedocs.io/en/stable/">stable</a></dd>
+        
+        
+        
+        <dd><a href="https://e3fp.readthedocs.io/en/v1.2.3/">v1.2.3</a></dd>
+        
+        
+        
+        <dd><a href="https://e3fp.readthedocs.io/en/v1.2.2/">v1.2.2</a></dd>
+        
+        
+        
+        <dd><a href="https://e3fp.readthedocs.io/en/v1.2.1/">v1.2.1</a></dd>
+        
+        
+        
+        <dd><a href="https://e3fp.readthedocs.io/en/v1.2.0/">v1.2.0</a></dd>
+        
+        
+        
+        <dd><a href="https://e3fp.readthedocs.io/en/1.1/">1.1</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://e3fp.readthedocs.io/_/downloads/en/latest/pdf/">PDF</a></dd>
+        
+        <dd><a href="https://e3fp.readthedocs.io/_/downloads/en/latest/htmlzip/">HTML</a></dd>
+        
+        <dd><a href="https://e3fp.readthedocs.io/_/downloads/en/latest/epub/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/e3fp/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/e3fp/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/e3fp/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/keiserlab/e3fp/blob/master/doc/source/index.rst">View</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/keiserlab/e3fp/edit/master/doc/source/index.rst">Edit</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/e3fp/search/" method="get">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      
+      
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55163959-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<span id="copylAddress" style="display: inline-block; position: absolute; left: -9999em;"></span></body></html>

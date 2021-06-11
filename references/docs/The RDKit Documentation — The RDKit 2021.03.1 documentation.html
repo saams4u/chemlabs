@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://www.rdkit.org/docs/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The RDKit Documentation — The RDKit 2021.03.1 documentation</title>
+    <link rel="stylesheet" href="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/pygments.css" type="text/css">
+    <script id="documentation_options" data-url_root="./" src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/documentation_options.js"></script>
+    <script src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/jquery.js"></script>
+    <script src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/underscore.js"></script>
+    <script src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/doctools.js"></script>
+    <script src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="https://www.rdkit.org/docs/genindex.html">
+    <link rel="search" title="Search" href="https://www.rdkit.org/docs/search.html">
+    <link rel="next" title="An overview of the RDKit" href="https://www.rdkit.org/docs/Overview.html"> 
+  <script type="text/javascript" async="" src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head><body style=""><div id="MathJax_Message" style="display: none;"></div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://www.rdkit.org/docs/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="https://www.rdkit.org/docs/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="https://www.rdkit.org/docs/Overview.html" title="An overview of the RDKit" accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="https://www.rdkit.org/docs/#">The RDKit 2021.03.1 documentation</a> »</li>
+        <li class="nav-item nav-item-this"><a href="https://www.rdkit.org/docs/">The RDKit Documentation</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-rdkit-documentation">
+<h1>The RDKit Documentation<a class="headerlink" href="https://www.rdkit.org/docs/#the-rdkit-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html">An overview of the RDKit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#what-is-it">What is it?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#open-source-toolkit-for-cheminformatics">Open source toolkit for cheminformatics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#operational">Operational:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#history">History:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#integration-with-other-open-source-projects">Integration with other open-source projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#usage-by-other-open-source-projects">Usage by other open-source projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#the-contrib-directory">The Contrib Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#footnotes">Footnotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Overview.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#cross-platform-under-anaconda-python-fastest-install">Cross-platform under anaconda python (fastest install)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#introduction-to-anaconda">Introduction to anaconda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#how-to-get-conda">How to get conda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#how-to-install-rdkit-with-conda">How to install RDKit with Conda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#how-to-build-from-source-with-conda">How to build from source with Conda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#macos-10-12-sierra-python-3-environment">macOS 10.12 (Sierra): Python 3 environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#linux-x86-64-python-3-environment">Linux x86_64: Python 3 environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#installing-and-using-postgresql-and-the-rdkit-postgresql-cartridge-from-a-conda-environment">Installing and using PostgreSQL and the RDKit PostgreSQL cartridge from a conda environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#linux-and-os-x">Linux and OS X</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#installation-from-repositories">Installation from repositories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#ubuntu-12-04-and-later">Ubuntu 12.04 and later</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#fedora-centos-and-rhel">Fedora, CentOS, and RHEL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#os-x">OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#building-from-source">Building from Source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#installing-prerequisites-from-source">Installing prerequisites from source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#building-the-rdkit">Building the RDKit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#testing-the-build-optional-but-recommended">Testing the build (optional, but recommended)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#advanced">Advanced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#frequently-encountered-problems">Frequently Encountered Problems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#id1">Recommended extras</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#installation-from-source">Installation from source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#extra-software-to-install">Extra software to install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#setup-and-preparation">Setup and Preparation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#building-from-the-command-line-recommended">Building from the command line (recommended)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#id2">Testing the Build (optional, but recommended)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Install.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html">Getting Started with the RDKit in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#important-note">Important note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#what-is-this">What is this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#reading-and-writing-molecules">Reading and Writing Molecules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#reading-single-molecules">Reading single molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#reading-sets-of-molecules">Reading sets of molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#writing-molecules">Writing molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#writing-sets-of-molecules">Writing sets of molecules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#working-with-molecules">Working with Molecules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#looping-over-atoms-and-bonds">Looping over Atoms and Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#ring-information">Ring Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#modifying-molecules">Modifying molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#working-with-2d-molecules-generating-depictions">Working with 2D molecules: Generating Depictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#working-with-3d-molecules">Working with 3D Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#preserving-molecules">Preserving Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#drawing-molecules">Drawing Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#metadata-in-molecule-images">Metadata in Molecule Images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#substructure-searching">Substructure Searching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#stereochemistry-in-substructure-matches">Stereochemistry in substructure matches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#atom-map-indices-in-smarts">Atom Map Indices in SMARTS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#advanced-substructure-matching">Advanced substructure matching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#chemical-transformations">Chemical Transformations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#substructure-based-transformations">Substructure-based transformations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#murcko-decomposition">Murcko Decomposition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#maximum-common-substructure">Maximum Common Substructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#fingerprinting-and-molecular-similarity">Fingerprinting and Molecular Similarity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#topological-fingerprints">Topological Fingerprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#maccs-keys">MACCS Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#atom-pairs-and-topological-torsions">Atom Pairs and Topological Torsions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#morgan-fingerprints-circular-fingerprints">Morgan Fingerprints (Circular Fingerprints)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#explaining-bits-from-morgan-fingerprints">Explaining bits from Morgan Fingerprints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#generating-images-of-fingerprint-bits">Generating images of fingerprint bits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#picking-diverse-molecules-using-fingerprints">Picking Diverse Molecules Using Fingerprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#generating-similarity-maps-using-fingerprints">Generating Similarity Maps Using Fingerprints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#descriptor-calculation">Descriptor Calculation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#visualization-of-descriptors">Visualization of Descriptors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#chemical-reactions">Chemical Reactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#drawing-chemical-reactions">Drawing Chemical Reactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#advanced-reaction-functionality">Advanced Reaction Functionality</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#protecting-atoms">Protecting Atoms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#recap-implementation">Recap Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#brics-implementation">BRICS Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#other-fragmentation-approaches">Other fragmentation approaches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#chemical-features-and-pharmacophores">Chemical Features and Pharmacophores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#chemical-features">Chemical Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#d-pharmacophore-fingerprints">2D Pharmacophore Fingerprints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#molecular-fragments">Molecular Fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#r-group-decomposition">R-Group Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#non-chemical-functionality">Non-Chemical Functionality</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#bit-vectors">Bit vectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#discrete-value-vectors">Discrete value vectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#d-grids">3D grids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#points">Points</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#getting-help">Getting Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#advanced-topics-warnings">Advanced Topics/Warnings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#editing-molecules">Editing Molecules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#miscellaneous-tips-and-hints">Miscellaneous Tips and Hints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#chem-vs-allchem">Chem vs AllChem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#the-sssr-problem">The SSSR Problem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#list-of-available-descriptors">List of Available Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#list-of-available-3d-descriptors">List of Available 3D Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#list-of-available-fingerprints">List of Available Fingerprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#feature-definitions-used-in-the-morgan-fingerprints">Feature Definitions Used in the Morgan Fingerprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInPython.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html">The RDKit Book</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#misc-cheminformatics-topics">Misc Cheminformatics Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#aromaticity">Aromaticity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#the-rdkit-aromaticity-model">The RDKit Aromaticity Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#the-simple-aromaticity-model">The Simple Aromaticity Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#the-mdl-aromaticity-model">The MDL Aromaticity Model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#smiles-support-and-extensions">SMILES Support and Extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#id2">Aromaticity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#dative-bonds">Dative bonds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#ring-closures">Ring closures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#specifying-atoms-by-atomic-number">Specifying atoms by atomic number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#cxsmiles-extensions">CXSMILES extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#smarts-support-and-extensions">SMARTS Support and Extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#hybridization-queries">Hybridization queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#id5">Dative bonds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#heteroatom-neighbor-queries">Heteroatom neighbor queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#range-queries">Range queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#smarts-reference">SMARTS Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#mol-sdf-support-and-extensions">Mol/SDF Support and Extensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#ring-finding-and-sssr">Ring Finding and SSSR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#stereochemistry">Stereochemistry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#types-of-stereochemistry-supported">Types of stereochemistry supported</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#identification-of-potential-stereoatoms-stereobonds">Identification of potential stereoatoms/stereobonds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#assignment-of-absolute-stereochemistry">Assignment of absolute stereochemistry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#stereogenic-atoms-bonds">Stereogenic atoms/bonds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#brief-description-of-the-findpotentialstereo-algorithm">Brief description of the <code class="docutils literal notranslate"><span class="pre">findPotentialStereo()</span></code> algorithm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#chemical-reaction-handling">Chemical Reaction Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#reaction-smarts">Reaction SMARTS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#some-features">Some features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#chirality">Chirality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#rules-and-warnings">Rules and warnings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#the-feature-definition-file-format">The Feature Definition File Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#chemical-features">Chemical Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#syntax-of-the-fdef-file">Syntax of the FDef file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#atomtype-definitions">AtomType definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#feature-definitions">Feature definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#additional-syntax-notes">Additional syntax notes:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#atom-weights-and-feature-locations">Atom weights and feature locations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#frequently-asked-question-s">Frequently Asked Question(s)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#representation-of-pharmacophore-fingerprints">Representation of Pharmacophore Fingerprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#atom-atom-matching-in-substructure-queries">Atom-Atom Matching in Substructure Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#molecular-sanitization">Molecular Sanitization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#magic-property-values">“Magic” Property Values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#romol-mol-in-python">ROMol  (Mol in Python)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#atom">Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#thread-safety-and-the-rdkit">Thread safety and the RDKit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#what-has-been-tested">What has been tested</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#known-problems">Known Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#implementation-of-the-tpsa-descriptor">Implementation of the TPSA Descriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#atom-properties-and-sdf-files">Atom Properties and SDF files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#support-for-enhanced-stereochemistry">Support for Enhanced Stereochemistry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#representation">Representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#use-cases">Use cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#enhanced-stereochemistry-and-substructure-search">Enhanced Stereochemistry and substructure search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#query-features-in-molecule-drawings">Query Features in Molecule Drawings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#query-bonds">Query Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#query-atoms">Query Atoms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#conformer-generation">Conformer Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#parameters-controlling-conformer-generation">Parameters Controlling Conformer Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#additional-information-about-the-fingerprints">Additional Information About the Fingerprints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#rdkit-fingerprints">RDKit Fingerprints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#fingerprint-specific-options">Fingerprint-specific options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#pattern-fingerprints">Pattern Fingerprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#atom-pair-and-topological-torsion-fingerprints">Atom-Pair and Topological Torsion Fingerprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#morgan-and-feature-morgan-fingerprints">Morgan and Feature Morgan Fingerprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#layered-fingerprints">Layered Fingerprints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/RDKit_Book.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html">RDKit Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#what-is-this">What is this?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#what-gets-included">What gets included?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#feedback-and-contributing">Feedback and Contributing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#drawing-molecules-jupyter">Drawing Molecules (Jupyter)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#include-an-atom-index">Include an Atom Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#include-a-calculation">Include a Calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#include-stereo-annotations">Include Stereo Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#black-and-white-molecules">Black and White Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#highlight-a-substructure-in-a-molecule">Highlight a Substructure in a Molecule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#without-implicit-hydrogens">Without Implicit Hydrogens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#with-abbreviations">With Abbreviations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#bonds-and-bonding">Bonds and Bonding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#hybridization-type-and-count">Hybridization Type and Count</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#rings-aromaticity-and-kekulization">Rings, Aromaticity, and Kekulization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#count-ring-systems">Count Ring Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#identify-aromatic-rings">Identify Aromatic Rings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#identify-aromatic-atoms">Identify Aromatic Atoms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#stereochemistry">Stereochemistry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#identifying-stereochemistry">Identifying Stereochemistry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#manipulating-molecules">Manipulating Molecules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#create-fragments">Create Fragments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#largest-fragment">Largest Fragment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#sidechain-core-enumeration">Sidechain-Core Enumeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#neutralizing-molecules">Neutralizing Molecules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#substructure-matching">Substructure Matching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#functional-group-with-smarts-queries">Functional Group with SMARTS queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#macrocycles-with-smarts-queries">Macrocycles with SMARTS queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#returning-substructure-matches-as-smiles">Returning Substructure Matches as SMILES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#within-the-same-fragment">Within the Same Fragment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#descriptor-calculations">Descriptor Calculations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#molecule-hash-strings">Molecule Hash Strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#contiguous-rotable-bonds">Contiguous Rotable Bonds</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#writing-molecules">Writing Molecules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#kekule-smiles">Kekule SMILES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#isomeric-smiles-without-isotopes">Isomeric SMILES without isotopes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#reactions">Reactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#reversing-reactions">Reversing Reactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#reaction-fingerprints-and-similarity">Reaction Fingerprints and Similarity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#error-messages">Error Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#explicit-valence-error-partial-sanitization">Explicit Valence Error - Partial Sanitization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#detect-chemistry-problems">Detect Chemistry Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#miscellaneous-topics">Miscellaneous Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#explicit-valence-and-number-of-hydrogens">Explicit Valence and Number of Hydrogens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#wiener-index">Wiener Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#organometallics-with-dative-bonds">Organometallics with Dative Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#enumerate-smiles">Enumerate SMILES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#reorder-atoms">Reorder Atoms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#conformer-generation-with-etkdg">Conformer Generation with ETKDG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cookbook.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html">The RDKit database cartridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#what-is-this">What is this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#creating-databases">Creating databases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#creating-a-database-from-a-file">Creating a database from a file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#loading-chembl">Loading ChEMBL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#substructure-searches">Substructure searches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#smarts-based-queries">SMARTS-based queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#using-stereochemistry">Using Stereochemistry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#tuning-queries">Tuning queries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#similarity-searches">Similarity searches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#adjusting-the-similarity-cutoff">Adjusting the similarity cutoff</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#using-the-mcs-code">Using the MCS code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#reference-guide">Reference Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#new-types">New Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#operators">Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#similarity-search">Similarity search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#substructure-and-exact-structure-search">Substructure and exact structure search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#molecule-comparison">Molecule comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#fingerprint-related">Fingerprint Related</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#molecule-related">Molecule Related</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#other">Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#using-the-cartridge-from-python">Using the Cartridge from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/Cartridge.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html">Backwards incompatible changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2021-03">Release 2021.03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#changes-to-conformer-generation">Changes to conformer generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#changes-to-r-group-decomposition-results">Changes to R-Group Decomposition results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#reactions-now-produce-stereonone-instead-of-stereoany-for-unspecified-double-bonds">Reactions now produce STEREONONE instead of STEREOANY for unspecified double bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#moving-moltosvg">Moving MolToSVG()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2020-09">Release 2020.09</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#changes-in-the-chemistry-model-updated-for-release-2020-09-2">Changes in the chemistry model [UPDATED for release 2020.09.2]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#findmcs-can-now-return-single-atom-mcss">FindMCS can now return single atom MCSs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#new-return-type-for-tautomer-enumeration">New return type for tautomer enumeration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#default-precision-for-coordgen">Default precision for coordgen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#change-in-uncharge-behavior-for-inorganic-acids">Change in uncharge() behavior for inorganic acids</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2020-03">Release 2020.03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#use-of-chirality-with-in-postgresql-cartridge">Use of chirality with <code class="docutils literal notranslate"><span class="pre">@=</span></code> in PostgreSQL cartridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#handling-of-empty-invalid-files-in-molsuppliers">Handling of empty/invalid files in MolSuppliers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#renaming-a-cmake-option">Renaming a cmake option</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2019-09">Release 2019.09</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#updated-van-der-waals-radii">Updated van der Waals radii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#r-atoms-in-mol-blocks-are-now-converted-into-queries">“R” atoms in mol blocks are now converted into * queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#pandastools-loadsdf-uses-isomeric-smiles">PandasTools.LoadSDF() uses isomeric SMILES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#new-fingerprinter-defaults-changed">New fingerprinter defaults changed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2019-03">Release 2019.03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2018-09">Release 2018.09</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#getatomsmiles-generates-isomeric-smiles-by-default"><code class="docutils literal notranslate"><span class="pre">GetAtomSmiles()</span></code> generates isomeric SMILES by default</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#changes-to-ringmatchesringonly-option-in-the-mcs-code">Changes to ringMatchesRingOnly option in the MCS code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#the-conformation-generation-code-now-uses-etkdg-by-default-when-called-from-python">The conformation generation code now uses ETKDG by default when called from Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#release-2018-03">Release 2018.03</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#moltosmiles-generates-isomeric-smiles-by-default"><code class="docutils literal notranslate"><span class="pre">MolToSmiles()</span></code> generates isomeric SMILES by default</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#moltomolblock-generates-a-2d-conformation-when-the-includestereo-flag-is-set"><code class="docutils literal notranslate"><span class="pre">MolToMolBlock()</span></code> generates a 2D conformation when the <code class="docutils literal notranslate"><span class="pre">includeStereo</span></code> flag is set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#the-conformation-generation-code-now-uses-etkdg-by-default">The conformation generation code now uses ETKDG by default</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/BackwardsIncompatibleChanges.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/api-docs.html">Python API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.html">rdkit package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.Avalon.html">rdkit.Avalon package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.Chem.html">rdkit.Chem package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.DataManip.html">rdkit.DataManip package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.DataStructs.html">rdkit.DataStructs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.Dbase.html">rdkit.Dbase package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.DistanceGeometry.html">rdkit.DistanceGeometry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.ForceField.html">rdkit.ForceField package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.Geometry.html">rdkit.Geometry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.ML.html">rdkit.ML package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.Numerics.html">rdkit.Numerics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.SimDivFilters.html">rdkit.SimDivFilters package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.VLib.html">rdkit.VLib package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.utils.html">rdkit.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.rdBase.html">rdkit.rdBase module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.RDConfig.html">rdkit.RDConfig module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.RDLogger.html">rdkit.RDLogger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.RDPaths.html">rdkit.RDPaths module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.RDRandom.html">rdkit.RDRandom module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.TestRunner.html">rdkit.TestRunner module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.six.html">rdkit.six module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/source/rdkit.html#module-rdkit">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html">Getting Started with the RDKit in C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#what-is-this">What is this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#building-and-running-c-rdkit-programs">Building and Running C++ RDKit Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#should-you-use-c-or-python">Should You Use C++ or Python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#memory-management">Memory Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#the-molecule-classes">The Molecule Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#reading-and-writing-molecules">Reading and Writing Molecules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#reading-single-molecules">Reading Single Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#reading-sets-of-molecules">Reading sets of molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#writing-molecules">Writing molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#writing-sets-of-molecules">Writing sets of molecules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#working-with-molecules">Working with Molecules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#looping-over-atoms-and-bonds">Looping over Atoms and Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#ring-information">Ring Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#modifying-molecules">Modifying molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#working-with-2d-molecules-generating-depictions">Working with 2D molecules: Generating Depictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#working-with-3d-molecules">Working with 3D Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#preserving-molecules">Preserving Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#drawing-molecules">Drawing Molecules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#substructure-searching">Substructure Searching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#stereochemistry-in-substructure-matches">Stereochemistry in substructure matches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#atom-map-indices-in-smarts">Atom Map Indices in SMARTS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#a-name-thesssrproblem-a-the-sssr-problem"></a><a name="TheSSSRProblem"></a>The SSSR Problem</li>
+<li class="toctree-l2"><a class="reference internal" href="https://www.rdkit.org/docs/GettingStartedInC++.html#footnotes">Footnotes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="additional-information">
+<h1>Additional Information<a class="headerlink" href="https://www.rdkit.org/docs/#additional-information" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://www.rdkit.org/docs/cppapi/index.html">C++ API Documentation</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="https://www.rdkit.org/docs/#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="https://www.rdkit.org/docs/genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="https://www.rdkit.org/docs/py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="https://www.rdkit.org/docs/search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="https://www.rdkit.org/docs/#">
+              <img class="logo" src="./The RDKit Documentation — The RDKit 2021.03.1 documentation_files/logo.png" alt="Logo">
+            </a></p>
+  <h3><a href="https://www.rdkit.org/docs/#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="https://www.rdkit.org/docs/#">The RDKit Documentation</a></li>
+<li><a class="reference internal" href="https://www.rdkit.org/docs/#additional-information">Additional Information</a></li>
+<li><a class="reference internal" href="https://www.rdkit.org/docs/#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="https://www.rdkit.org/docs/Overview.html" title="next chapter">An overview of the RDKit</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="https://www.rdkit.org/docs/_sources/index.rst.txt" rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="https://www.rdkit.org/docs/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel">
+      <input type="submit" value="Go">
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="https://www.rdkit.org/docs/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="https://www.rdkit.org/docs/py-modindex.html" title="Python Module Index">modules</a> |</li>
+        <li class="right">
+          <a href="https://www.rdkit.org/docs/Overview.html" title="An overview of the RDKit">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="https://www.rdkit.org/docs/#">The RDKit 2021.03.1 documentation</a> »</li>
+        <li class="nav-item nav-item-this"><a href="https://www.rdkit.org/docs/">The RDKit Documentation</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        © Copyright 2021, Greg Landrum.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+    </div>
+  
+<span id="copylAddress" style="display: inline-block; position: absolute; left: -9999em;"></span></body></html>

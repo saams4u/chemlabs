@@ -1,0 +1,23 @@
+# DeepChem
+https://deepchem.readthedocs.io/en/latest/
+
+# SELFIES
+https://selfies-mirror.readthedocs.io/en/latest/
+
+# OpenChem
+https://mariewelt.github.io/OpenChem/html/index.html
+
+# DeepPurpose
+https://deeppurpose.readthedocs.io/en/latest/
+
+# RDKit
+https://www.rdkit.org/docs/
+
+# Chemprop
+https://chemprop.readthedocs.io/en/latest/
+
+# PyTorch Geometric
+https://pytorch-geometric.readthedocs.io/en/latest/
+
+# e3fp
+https://e3fp.readthedocs.io/en/latest/

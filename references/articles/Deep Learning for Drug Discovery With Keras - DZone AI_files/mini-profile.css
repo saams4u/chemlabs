@@ -1,0 +1,148 @@
+.popover.author-info-popover {
+  max-width: none;
+  padding: 0;
+}
+
+.author-info-popover .popover-content {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0;
+  max-width: 350px;
+  position: relative;
+}
+
+.mini-profile {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  height: 100%;
+}
+
+.mini-content {
+  padding: 15px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.mini-content .main-content {
+  margin-right: 10px;
+  flex-grow: 1;
+}
+.mini-content .main-content .username {
+  color: #29A8FF;
+  font-size: 20px;
+}
+.mini-content .main-content .icon-core-1 {
+  font-size: 18px;
+  cursor: pointer;
+}
+.mini-content .main-content .mbv-award {
+  display: inline-block;
+  cursor: pointer;
+}
+.mini-content .main-content .mbv-award .icon-mvb-1,
+.mini-content .main-content .mbv-award .icon-staff {
+  color: #1BD281;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.mini-content .main-content .mvb-partner {
+  margin-left: 0;
+  color: #8468ea;
+}
+
+
+.mini-content .main-content span [class^="icon-"]:before,
+.mini-content .main-content span [class*="icon-"]:before {
+  width: auto;
+}
+
+.mini-content .main-content .mbv-award .icon-staff {
+  color: #F4BD25;
+}
+
+.mini-content .main-content .job,
+.mini-content .main-content .website {
+  color: #737981;
+}
+
+.mini-content .main-content .website i {
+  margin-left: -5px;
+  margin-right: 3px;
+}
+
+.mini-content .main-content .job {
+  font-size: 1.1em;
+}
+.mini-content .main-content .bio {
+  margin-top: 10px;
+  max-height: 6em;
+  display: block;
+  overflow: hidden;
+  font-weight: 300;
+  line-height: 1.25;
+}
+.mini-content .main-content .expertize {
+  margin-top: 10px;
+}
+.mini-content .right-content {
+  width: 95px;
+  text-align: center;
+}
+.mini-content .right-content img {
+  width: 100%;
+}
+.mini-content .right-content button {
+  margin-top: 10px;
+}
+.mini-content .right-content .social-links {
+  font-size: 1.2em;
+  margin-top: 8px;
+  display: inline-block;
+}
+.mini-content .right-content .social-links i {
+  cursor: pointer;
+}
+.mini-content .right-content .social-links .icon-linkedin {
+  color: #29A8FF;
+}
+.mini-content .right-content .social-links .icon-twitter {
+  color: #41bec4;
+}
+.mini-footer {
+  font-family: helvetica, arial;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #29A8FF;
+  display: table;
+  table-layout: fixed;
+}
+
+.mini-footer span {
+  display: table-cell;
+  text-align: center;
+  color: white;
+  height: 100%;
+  line-height: 1.4em;
+  padding: 10px 0 6px 0;
+}
+
+.mini-footer span:not(:first-of-type) {
+  border-left: 1px solid white;
+}
+.mini-footer span strong {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.5em;
+}
+.mini-footer span strong.stronger {
+  font-size: 1.9em;
+}
+.mvb-partner {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 18px;
+}

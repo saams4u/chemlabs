@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://towardsdatascience.com/media/6efdfe1456e8c9c56ae1a87e34c362cd -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>model_train.py – Medium</title><meta name="description" content="You can&#39;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./bb0f3e939cdc303340f00dea60ed36df.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-ab3fc29e40b8e21f977a65dbb1934c0d.css"><div id="gist104234931" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-model_train-py" class="file my-2">
+    
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8" data-paste-markdown-skip="">
+      <tbody><tr>
+        <td id="file-model_train-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-model_train-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">model</span>.<span class="pl-en">train</span>(<span class="pl-s1">train</span>, <span class="pl-s1">val</span>, <span class="pl-s1">test</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-model_train-py-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-model_train-py-LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># ------ Output ------</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-model_train-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Let's use 1 GPU!</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-model_train-py-LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># --- Data Preparation ---</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-model_train-py-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># --- Go for Training ---</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-model_train-py-LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-c">#Training at Epoch 1 iteration 0 with loss 30.3964. Total time 0.0 hours</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-model_train-py-LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Training at Epoch 1 iteration 100 with loss 0.59583. Total time 0.01277 hours</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-model_train-py-LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Validation at Epoch 1 , MSE: 0.79965 , Pearson Correlation: 0.34392 with p-value: 3.23317 , Concordance Index: 0.67805</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-model_train-py-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># .....</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-model_train-py-LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># --- Go for Testing ---</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-model_train-py-LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Testing MSE: 0.5567689292029449 , Pearson Correlation: 0.5585790614300189 with p-value: 0.0 , Concordance Index: 0.783525396597284</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-model_train-py-LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># --- Training Finished ---</span></td>
+      </tr>
+      <tr>
+        <td id="file-model_train-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-model_train-py-LC14" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># --------------------</span></td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/kexinhuang12345/bb0f3e939cdc303340f00dea60ed36df/raw/92549e951f7fef0b2fa8a8a35588549698dfe4d0/model_train.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/kexinhuang12345/bb0f3e939cdc303340f00dea60ed36df#file-model_train-py">model_train.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; if (document) {document.domain = document.domain;}function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height);var elements = document.getElementsByClassName("gist-data"); for (var i = 0; i < elements.length; i++) {elements[i].style.overflow = "visible"}resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {try {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);} catch(error) {console.log('maybeResize error: ', error)}}maybeResize();</script></body></html>

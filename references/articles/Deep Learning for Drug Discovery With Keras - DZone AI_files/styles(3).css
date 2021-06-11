@@ -1,0 +1,206 @@
+#ftl-footer .row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#ftl-footer .footerContainer {
+  max-width: 1230px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+#ftl-footer .footerWidget {
+  width: 100%;
+  margin-left: 0;
+}
+#ftl-footer .footerOuter {
+  background-color: #292B31;
+  border-top: 0;
+}
+#ftl-footer .row .left {
+  padding-left: 0;
+}
+#ftl-footer .row .top-section {
+  margin-bottom: 10px;
+  padding-left: 0;
+}
+#ftl-footer .row .top-section div {
+  padding-left: 0;
+}
+#ftl-footer .row .bottom-section {
+  padding-left: 0;
+}
+#ftl-footer .row .bottom-section div {
+  padding-left: 0;
+}
+#ftl-footer .row div .section-header {
+  font-weight: 600;
+  text-transform: none;
+  font-size: 14px;
+  color: #737981;
+  margin-bottom: 0;
+}
+#ftl-footer .row div ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5em;
+  color: #e9ebee;
+}
+#ftl-footer .row div ul li a {
+  color: #e9ebee !important;
+}
+#ftl-footer .row div .bottom-top-list {
+  margin-bottom: 20px;
+}
+#ftl-footer .row .signup_wrap p {
+  text-align: left;
+  text-transform: none;
+  color: #929497;
+  font-size: 17px;
+  font-weight: 300;
+  padding-bottom: 14px;
+}
+#ftl-footer .row .social-media-icons {
+  width: auto;
+  float: left;
+  margin-top: -10px;
+  padding: 0;
+  margin-left: -4px;
+  display: none;
+}
+#ftl-footer .row .social-media-icons .icons-only {
+  padding: 20px 5px !important;
+  background: transparent;
+}
+#ftl-footer .row .social-media-icons .icons-only li {
+  margin-right: 3px;
+}
+#ftl-footer .row .social-media-icons .icons-only li:last-of-type {
+  margin-right: 0;
+}
+#ftl-footer .row .social-media-icons .icons-only i {
+  color: white;
+}
+#ftl-footer .row .social-media-icons .social-dropdown {
+  padding: 10px 21px 10px 15px;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+#ftl-footer .row .right {
+  padding-left: 0;
+  padding-right: 0;
+}
+#ftl-footer .row .connect-text {
+  display: inline;
+  font-size: 18px;
+  margin-right: 10px;
+  padding-top: 10px;
+  font-weight: 600;
+  float: left;
+  text-transform: none;
+  color: #29A8FF;
+}
+#ftl-footer .powered-by {
+  padding: 0;
+  margin-top: 10px;
+}
+#ftl-footer .powered-by p {
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  color: #737981;
+}
+#ftl-footer .powered-by a {
+  vertical-align: text-bottom;
+}
+#ftl-footer .powered-by img {
+  width: 150px;
+  margin-top: -5px;
+  vertical-align: bottom;
+}
+#ftl-footer .footer-mobile {
+  display: none !important;
+}
+#ftl-footer .footer-wide {
+  display: block !important;
+}
+#ftl-footer .footer {
+  background-color: #292B31 !important;
+  border-top: 0 solid #ffffff !important;
+}
+#ftl-footer .icons-only {
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  padding: 0 5px;
+  cursor: pointer;
+}
+#ftl-footer .icons-only li {
+  list-style: none;
+  display: inline-block;
+  font-size: 18px;
+  width: 30px;
+  color: #ffffff;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 1.75;
+  height: 30px;
+}
+#ftl-footer .icons-only .rss-icon {
+  background: #FF6600;
+}
+#ftl-footer .icons-only .rss-icon a {
+  color: #ffffff;
+}
+#ftl-footer .icons-only .twitter-icon {
+  background: #00acec !important;
+}
+#ftl-footer .icons-only .facebook-icon {
+  background: #3B5998 !important;
+}
+#ftl-footer .icons-only .google-icon {
+  background: #dd4b39;
+}
+#ftl-footer .icons-only .linkedin-icon {
+  background: #007bb5;
+}
+#ftl-footer .icons-only.open,
+#ftl-footer .icons-only.active {
+  background: #DFE0E1;
+}
+#ftl-footer .icons-only.open .social-dropdown,
+#ftl-footer .icons-only.active .social-dropdown {
+  display: block;
+}
+#ftl-footer .icons-only.open .social-dropdown li,
+#ftl-footer .icons-only.active .social-dropdown li {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+@media screen and (max-width: 400px) {
+  #ftl-footer .footer-mobile {
+    display: block !important;
+  }
+  #ftl-footer .footer-wide {
+    display: none !important;
+  }
+  #ftl-footer .social-media-icons {
+    margin-bottom: 20px;
+  }
+  #ftl-footer .left {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  #ftl-footer .connect-text {
+    display: none !important;
+  }
+  #ftl-footer .powered-by {
+    margin-top: 30px;
+  }
+  #ftl-footer .footerContainer .link-group li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://chemprop.readthedocs.io/en/latest/ -->
+<html class="writer-html5" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chemprop — chemprop 1.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="./Chemprop — chemprop 1.3.0 documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./Chemprop — chemprop 1.3.0 documentation_files/pygments.css" type="text/css">
+  <link rel="stylesheet" href="./Chemprop — chemprop 1.3.0 documentation_files/pygments.css" type="text/css">
+  <link rel="stylesheet" href="./Chemprop — chemprop 1.3.0 documentation_files/theme.css" type="text/css">
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="https://chemprop.readthedocs.io/en/latest/index.html">
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" async="" src="./Chemprop — chemprop 1.3.0 documentation_files/analytics.js"></script><script type="text/javascript" id="documentation_options" data-url_root="./" src="./Chemprop — chemprop 1.3.0 documentation_files/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="./Chemprop — chemprop 1.3.0 documentation_files/documentation_options.js"></script>
+        <script src="./Chemprop — chemprop 1.3.0 documentation_files/jquery.js"></script>
+        <script src="./Chemprop — chemprop 1.3.0 documentation_files/underscore.js"></script>
+        <script src="./Chemprop — chemprop 1.3.0 documentation_files/doctools.js"></script>
+        <script async="async" src="./Chemprop — chemprop 1.3.0 documentation_files/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="./Chemprop — chemprop 1.3.0 documentation_files/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="https://chemprop.readthedocs.io/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://chemprop.readthedocs.io/en/latest/search.html">
+    <link rel="next" title="Requirements" href="https://chemprop.readthedocs.io/en/latest/requirements.html"> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="./Chemprop — chemprop 1.3.0 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-05-13T17:07:34Z", "builder": "sphinx", "canonical_url": null, "commit": "736530ac", "docroot": "/docs/source/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "index", "programming_language": "words", "project": "chemprop", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="./Chemprop — chemprop 1.3.0 documentation_files/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+<script src="./Chemprop — chemprop 1.3.0 documentation_files/ethicalads.min.js" type="text/javascript" async="" id="ethicaladsjs"></script><script src="./Chemprop — chemprop 1.3.0 documentation_files/js" type="text/javascript" async=""></script><style>[data-ea-publisher].loaded,[data-ea-type].loaded{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-weight:normal;font-style:normal;leter-spacing:0px;vertical-align:baseline;line-height:1.3em}[data-ea-publisher].loaded a,[data-ea-type].loaded a{text-decoration:none}[data-ea-publisher].loaded .ea-pixel,[data-ea-type].loaded .ea-pixel{display:none}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{margin:1em 1em 0.5em 1em;padding:1em;background:rgba(0,0,0,0.03);color:#505050}[data-ea-publisher].loaded .ea-content a:link,[data-ea-type].loaded .ea-content a:link{color:#505050}[data-ea-publisher].loaded .ea-content a:visited,[data-ea-type].loaded .ea-content a:visited{color:#505050}[data-ea-publisher].loaded .ea-content a:hover,[data-ea-type].loaded .ea-content a:hover{color:#373737}[data-ea-publisher].loaded .ea-content a:active,[data-ea-type].loaded .ea-content a:active{color:#373737}[data-ea-publisher].loaded .ea-content a strong,[data-ea-publisher].loaded .ea-content a b,[data-ea-type].loaded .ea-content a strong,[data-ea-type].loaded .ea-content a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a:link,[data-ea-type].loaded .ea-callout a:link{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:visited,[data-ea-type].loaded .ea-callout a:visited{color:#6a6a6a}[data-ea-publisher].loaded .ea-callout a:hover,[data-ea-type].loaded .ea-callout a:hover{color:#505050}[data-ea-publisher].loaded .ea-callout a:active,[data-ea-type].loaded .ea-callout a:active{color:#505050}[data-ea-publisher].loaded .ea-callout a strong,[data-ea-publisher].loaded .ea-callout a b,[data-ea-type].loaded .ea-callout a strong,[data-ea-type].loaded .ea-callout a b{color:#088cdb}[data-ea-publisher].loaded .ea-callout a,[data-ea-type].loaded .ea-callout a{font-size:0.8em}[data-ea-publisher].loaded.dark .ea-content,[data-ea-type].loaded.dark .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:link,[data-ea-type].loaded.dark .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:visited,[data-ea-type].loaded.dark .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-content a:hover,[data-ea-type].loaded.dark .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a:active,[data-ea-type].loaded.dark .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.dark .ea-content a strong,[data-ea-publisher].loaded.dark .ea-content a b,[data-ea-type].loaded.dark .ea-content a strong,[data-ea-type].loaded.dark .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.dark .ea-callout a:link,[data-ea-type].loaded.dark .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:visited,[data-ea-type].loaded.dark .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.dark .ea-callout a:hover,[data-ea-type].loaded.dark .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a:active,[data-ea-type].loaded.dark .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.dark .ea-callout a strong,[data-ea-publisher].loaded.dark .ea-callout a b,[data-ea-type].loaded.dark .ea-callout a strong,[data-ea-type].loaded.dark .ea-callout a b{color:#50baf9}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.adaptive .ea-content,[data-ea-type].loaded.adaptive .ea-content{background:rgba(255,255,255,0.05);color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:link,[data-ea-type].loaded.adaptive .ea-content a:link{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:visited,[data-ea-type].loaded.adaptive .ea-content a:visited{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-content a:hover,[data-ea-type].loaded.adaptive .ea-content a:hover{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a:active,[data-ea-type].loaded.adaptive .ea-content a:active{color:#f6f6f6}[data-ea-publisher].loaded.adaptive .ea-content a strong,[data-ea-publisher].loaded.adaptive .ea-content a b,[data-ea-type].loaded.adaptive .ea-content a strong,[data-ea-type].loaded.adaptive .ea-content a b{color:#50baf9}[data-ea-publisher].loaded.adaptive .ea-callout a:link,[data-ea-type].loaded.adaptive .ea-callout a:link{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:visited,[data-ea-type].loaded.adaptive .ea-callout a:visited{color:#c3c3c3}[data-ea-publisher].loaded.adaptive .ea-callout a:hover,[data-ea-type].loaded.adaptive .ea-callout a:hover{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a:active,[data-ea-type].loaded.adaptive .ea-callout a:active{color:#dcdcdc}[data-ea-publisher].loaded.adaptive .ea-callout a strong,[data-ea-publisher].loaded.adaptive .ea-callout a b,[data-ea-type].loaded.adaptive .ea-callout a strong,[data-ea-type].loaded.adaptive .ea-callout a b{color:#50baf9}}[data-ea-publisher].loaded .ea-content,[data-ea-type].loaded .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.raised .ea-content,[data-ea-type].loaded.raised .ea-content{border:0px;border-radius:3px;box-shadow:0px 2px 3px rgba(0,0,0,0.15)}[data-ea-publisher].loaded.bordered .ea-content,[data-ea-type].loaded.bordered .ea-content{border:1px solid rgba(0,0,0,0.04);border-radius:3px;box-shadow:none}[data-ea-publisher].loaded.bordered.dark .ea-content,[data-ea-type].loaded.bordered.dark .ea-content{border:1px solid rgba(255,255,255,0.07)}@media (prefers-color-scheme: dark){[data-ea-publisher].loaded.bordered.adaptive .ea-content,[data-ea-type].loaded.bordered.adaptive .ea-content{border:1px solid rgba(255,255,255,0.07)}}[data-ea-publisher].loaded.flat .ea-content,[data-ea-type].loaded.flat .ea-content{border:0px;border-radius:3px;box-shadow:none}[data-ea-type="image"].loaded,[data-ea-publisher]:not([data-ea-type]).loaded,.ea-type-image{display:inline-block}[data-ea-type="image"].loaded .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content,.ea-type-image .ea-content{max-width:180px;overflow:auto;text-align:center}[data-ea-type="image"].loaded .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>a>img,.ea-type-image .ea-content>a>img{width:120px;height:90px;display:inline-block}[data-ea-type="image"].loaded .ea-content>.ea-text,[data-ea-publisher]:not([data-ea-type]).loaded .ea-content>.ea-text,.ea-type-image .ea-content>.ea-text{margin-top:1em;font-size:1em;text-align:center}[data-ea-type="image"].loaded .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded .ea-callout,.ea-type-image .ea-callout{max-width:180px;margin:0em 1em 1em 1em;padding-left:1em;padding-right:1em;font-style:italic;text-align:right}[data-ea-type="image"].loaded.horizontal .ea-content,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content,.ea-type-image.horizontal .ea-content{max-width:320px}[data-ea-type="image"].loaded.horizontal .ea-content>a>img,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content>a>img,.ea-type-image.horizontal .ea-content>a>img{float:left;margin-right:1em}[data-ea-type="image"].loaded.horizontal .ea-content .ea-text,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-content .ea-text,.ea-type-image.horizontal .ea-content .ea-text{margin-top:0em;text-align:left;overflow:auto}[data-ea-type="image"].loaded.horizontal .ea-callout,[data-ea-publisher]:not([data-ea-type]).loaded.horizontal .ea-callout,.ea-type-image.horizontal .ea-callout{max-width:320px;text-align:right}[data-ea-type="text"].loaded,.ea-type-text{font-size:14px}[data-ea-type="text"].loaded .ea-content,.ea-type-text .ea-content{text-align:left}[data-ea-type="text"].loaded .ea-callout,.ea-type-text .ea-callout{margin:0.5em 1em 1em 1em;padding-left:1em;padding-right:1em;text-align:right;font-style:italic}
+</style><script src="./Chemprop — chemprop 1.3.0 documentation_files/saved_resource" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav" style="">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://chemprop.readthedocs.io/en/latest/#" class="icon icon-home"> chemprop
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://chemprop.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/web.html">Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html">Training and Predicting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/hyperopt.html">Hyperparameter Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/interpret.html">Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html">Command Line Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/nn_utils.html">Neural Network Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/utils.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/sklearn.html">Scikit-Learn Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/scripts.html">Useful Scripts</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://chemprop.readthedocs.io/en/latest/#">chemprop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://chemprop.readthedocs.io/en/latest/#" class="icon icon-home"></a> »</li>
+        
+      <li>Chemprop</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/chemprop/chemprop/blob/master/docs/source/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chemprop">
+<h1>Chemprop<a class="headerlink" href="https://chemprop.readthedocs.io/en/latest/#chemprop" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/chemprop/chemprop">Chemprop</a> is a message passing neural network for molecular property prediction.</p>
+<p>At its core, Chemprop contains a directed message passing neural network (D-MPNN), which was first presented in <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.9b00237">Analyzing Learned Molecular Representations for Property Prediction</a>. The Chemprop D-MPNN shows strong molecular property prediction capabilities across a range of properties, from quantum mechanical energy to human toxicity.</p>
+<p>Chemprop was later used in the paper <a class="reference external" href="https://www.cell.com/cell/fulltext/S0092-8674(20)30102-1">A Deep Learning Approach to Antibiotic Discovery</a> to discover promising new antibiotics by predicting the likelihood that a molecule would inhibit the growth of <em>E. coli</em>.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html#conda">Conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html#option-1-installing-from-pypi">Option 1: Installing from PyPi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html#option-2-installing-from-source">Option 2: Installing from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/installation.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/tutorial.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/tutorial.html#training">Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/tutorial.html#predicting">Predicting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/tutorial.html#web-interface">Web Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/web.html">Web Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/web.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/web.html#flask">Flask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/web.html#gunicorn">Gunicorn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/data.html">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/data.html#id1">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/data.html#scaffold">Scaffold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/data.html#scaler">Scaler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/data.html#utils">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/features.html">Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/features.html#featurization">Featurization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/features.html#features-generators">Features Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/features.html#utils">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/models.html#model">Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/models.html#mpn">MPN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html">Training and Predicting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html#train">Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html#run-training">Run Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html#cross-validation">Cross-Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html#predict">Predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html#make-predictions">Make Predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/train.html#evaluate">Evaluate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/hyperopt.html">Hyperparameter Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/interpret.html">Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html">Command Line Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#common-arguments">Common Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#train-arguments">Train Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#predict-arguments">Predict Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#interpret-arguments">Interpret Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#hyperparameter-optimization-arguments">Hyperparameter Optimization Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#scikit-learn-train-arguments">Scikit-Learn Train Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#scikit-learn-predict-arguments">Scikit-Learn Predict Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/args.html#module-chemprop.args">Utility Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/nn_utils.html">Neural Network Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/utils.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/sklearn.html">Scikit-Learn Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/sklearn.html#scikit-learn-train">Scikit-Learn Train</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/sklearn.html#scikit-learn-predict">Scikit-Learn Predict</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/scripts.html">Useful Scripts</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="https://chemprop.readthedocs.io/en/latest/#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="https://chemprop.readthedocs.io/en/latest/search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="https://chemprop.readthedocs.io/en/latest/requirements.html" class="btn btn-neutral float-right" title="Requirements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr><div><div id="rtd-sidebar" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" data-ea-manual="true" class="ethical-rtd loaded" data-ea-keywords="only words|readthedocs-project-615402|readthedocs-project-chemprop" data-ea-campaign-types="community|house|paid"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://server.ethicalads.io/proxy/click/1417/3bc5b951-144a-4fbe-b200-bfdfb34740f1/" rel="nofollow" target="_blank" class="ethical-image-link"><img src="./Chemprop — chemprop 1.3.0 documentation_files/triplebyte-dec_fj3NzKA_DRtGe1d_rRPFqWY.png"></a><div class="ethical-text"><a href="https://server.ethicalads.io/proxy/click/1417/3bc5b951-144a-4fbe-b200-bfdfb34740f1/" rel="nofollow" target="_blank"><span>Beat Triplebyte's online coding quiz. Get offers from top companies.</span><strong> Skip resumes &amp; recruiters.</strong></a></div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2020, Kyle Swanson, Kevin Yang, Wengong Jin, Lior Hirschfeld, Allison Tam.
+      <span class="commit">
+        
+        Revision <code>736530ac</code>.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="https://chemprop.readthedocs.io/en/latest/">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="https://chemprop.readthedocs.io/en/stable/">stable</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://chemprop.readthedocs.io/_/downloads/en/latest/pdf/">PDF</a></dd>
+        
+        <dd><a href="https://chemprop.readthedocs.io/_/downloads/en/latest/htmlzip/">HTML</a></dd>
+        
+        <dd><a href="https://chemprop.readthedocs.io/_/downloads/en/latest/epub/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/chemprop/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/chemprop/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/chemprop/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/chemprop/chemprop/blob/master/docs/source/index.rst">View</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/chemprop/chemprop/edit/master/docs/source/index.rst">Edit</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/chemprop/search/" method="get">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      
+      
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+<span id="copylAddress" style="display: inline-block; position: absolute; left: -9999em;"></span></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://towardsdatascience.com/media/d9b59abe02da494dee9a7aec19dfb802 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>deepchem_dataload.py – Medium</title><meta name="description" content="You can&#39;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./d64c9299e58730a4af35c65a1a48ff00.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-ab3fc29e40b8e21f977a65dbb1934c0d.css"><div id="gist100166462" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-deepchem_dataload-py" class="file my-2">
+    
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8" data-paste-markdown-skip="">
+      <tbody><tr>
+        <td id="file-deepchem_dataload-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-deepchem_dataload-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">import</span> <span class="pl-s1">deepchem</span> <span class="pl-k">as</span> <span class="pl-s1">dc</span></td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-deepchem_dataload-py-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">_</span>, (<span class="pl-s1">train</span>, <span class="pl-s1">valid</span>, <span class="pl-s1">test</span>), <span class="pl-s1">_</span> <span class="pl-c1">=</span> <span class="pl-s1">dc</span>.<span class="pl-s1">molnet</span>.<span class="pl-en">load_bace_regression</span>(<span class="pl-s1">featurizer</span><span class="pl-c1">=</span><span class="pl-s">'Raw'</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-deepchem_dataload-py-LC3" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-deepchem_dataload-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">bs</span> <span class="pl-c1">=</span> <span class="pl-c1">32</span></td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-deepchem_dataload-py-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-deepchem_dataload-py-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">train_loader</span>, <span class="pl-s1">_</span> <span class="pl-c1">=</span> <span class="pl-en">prepare_dataloader</span>(<span class="pl-en">list</span>(<span class="pl-s1">train</span>.<span class="pl-v">X</span>), <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-s1">bs</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-deepchem_dataload-py-LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">valid_loader</span>, <span class="pl-s1">_</span> <span class="pl-c1">=</span> <span class="pl-en">prepare_dataloader</span>(<span class="pl-s1">valid</span>.<span class="pl-v">X</span>, <span class="pl-s1">bs</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-deepchem_dataload-py-LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">test_loader</span>, <span class="pl-s1">_</span> <span class="pl-c1">=</span> <span class="pl-en">prepare_dataloader</span>(<span class="pl-s1">test</span>.<span class="pl-v">X</span>, <span class="pl-s1">bs</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-deepchem_dataload-py-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-deepchem_dataload-py-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">train_labels_loader</span> <span class="pl-c1">=</span> <span class="pl-s1">torch</span>.<span class="pl-s1">utils</span>.<span class="pl-s1">data</span>.<span class="pl-v">DataLoader</span>(<span class="pl-s1">train</span>.<span class="pl-s1">y</span>, <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-s1">bs</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-deepchem_dataload-py-LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">valid_labels_loader</span> <span class="pl-c1">=</span> <span class="pl-s1">torch</span>.<span class="pl-s1">utils</span>.<span class="pl-s1">data</span>.<span class="pl-v">DataLoader</span>(<span class="pl-s1">valid</span>.<span class="pl-s1">y</span>, <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-s1">bs</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-deepchem_dataload-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-deepchem_dataload-py-LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">test_labels_loader</span> <span class="pl-c1">=</span> <span class="pl-s1">torch</span>.<span class="pl-s1">utils</span>.<span class="pl-s1">data</span>.<span class="pl-v">DataLoader</span>(<span class="pl-s1">test</span>.<span class="pl-s1">y</span>, <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-s1">bs</span>)</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/aced125/d64c9299e58730a4af35c65a1a48ff00/raw/3ee8e3c52e921e9a772a80dcc74bb505530b1c8c/deepchem_dataload.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/aced125/d64c9299e58730a4af35c65a1a48ff00#file-deepchem_dataload-py">deepchem_dataload.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; if (document) {document.domain = document.domain;}function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height);var elements = document.getElementsByClassName("gist-data"); for (var i = 0; i < elements.length; i++) {elements[i].style.overflow = "visible"}resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {try {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);} catch(error) {console.log('maybeResize error: ', error)}}maybeResize();</script></body></html>
