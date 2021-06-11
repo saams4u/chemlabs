@@ -7,11 +7,11 @@ from fastapi.responses import RedirectResponse
 from http import HTTPStatus
 from pydantic import BaseModel
 
-from drug_discovery import config, utils
+import config, utils
 
 app = FastAPI(
-    title="drug_discovery",
-    description="Malaria Bioactivity: EC50 Analysis for Inhibiting Malaria",
+    title="AttentiveFP",
+    description="Pushing the Boundaries of Molecular Representation for Drug Discovery with the Graph Attention Mechanism",
     version="1.0.0",
 )
 
