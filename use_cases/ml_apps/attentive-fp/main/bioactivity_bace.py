@@ -145,7 +145,7 @@ def remove_low_variance(input_data, threshold=0.1):
     selection.fit(input_data)
     return input_data[input_data.columns[selection.get_support(indices=True)]]
 
-remained_df = remove_low_variance(X, threshold=0.1)
+remained_df = remove_low_variance(remained_df, threshold=0.1)
 remained_df.to_csv('descriptor_list.csv', index = False)
 
 x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([canonical_smiles_list[0]],feature_dicts)
