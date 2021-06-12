@@ -3,3 +3,4 @@ wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/del
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/cep-processed.csv -O dataset/cep-processed.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/bace.csv -O dataset/bace.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/HIV.csv -O dataset/HIV.csv
+wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/muv.csv -O dataset/muv.csv
