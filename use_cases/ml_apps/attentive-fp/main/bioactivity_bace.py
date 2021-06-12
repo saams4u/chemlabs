@@ -117,8 +117,6 @@ output_units_num = len(tasks) * per_task_output_units_num
 remained_df = smiles_tasks_df[smiles_tasks_df["cano_smiles"].isin(feature_dicts['smiles_to_atom_mask'].keys())]
 uncovered_df = smiles_tasks_df.drop(remained_df.index)
 
-remained_df = remained_df.drop(['pIC50', 'CID', 'Model', 'canvasUID'], axis=1)
-
 weights = []
 
 for i,task in enumerate(tasks):    
@@ -137,6 +135,8 @@ train_df = training_data.drop(valid_df.index) # train set
 train_df = train_df.reset_index(drop=True)
 valid_df = valid_df.reset_index(drop=True)
 test_df = test_df.reset_index(drop=True)
+
+remained_df = remained_df.drop(['mol', 'pIC50', 'CID', 'Model', 'canvasUID', 'cano_smiles'], axis=1)
 
 from sklearn.feature_selection import VarianceThreshold
 
