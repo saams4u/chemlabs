@@ -19,10 +19,6 @@ torch.nn.Module.dump_patches = True
 import numpy as np
 import pandas as pd
 
-# from sklearn.metrics import roc_auc_score, matthews_corrcoef, recall_score, accuracy_score, r2_score
-# from sklearn.metrics import mean_squared_error, mean_absolute_error, precision_score, precision_recall_curve
-# from sklearn.metrics import auc, f1_score
-
 from rdkit import Chem
 from rdkit.Chem import AllChem, QED, rdMolDescriptors, MolSurf, rdDepictor
 from rdkit.Chem.Draw import SimilarityMaps, rdMolDraw2D

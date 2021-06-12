@@ -78,7 +78,7 @@ print("number of successfully processed smiles: ", len(remained_smiles))
 smiles_tasks_df = smiles_tasks_df[smiles_tasks_df["mol"].isin(remained_smiles)]
 
 print(smiles_tasks_df)
-smiles_tasks_df['cano_smiles'] =canonical_smiles_list
+smiles_tasks_df['cano_smiles'] = canonical_smiles_list
 
 assert canonical_smiles_list[8]==Chem.MolToSmiles(Chem.MolFromSmiles(smiles_tasks_df['cano_smiles'][8]), isomericSmiles=True)
 
@@ -136,17 +136,7 @@ train_df = train_df.reset_index(drop=True)
 valid_df = valid_df.reset_index(drop=True)
 test_df = test_df.reset_index(drop=True)
 
-remained_df = remained_df.drop(['mol', 'pIC50', 'CID', 'Model', 'canvasUID', 'cano_smiles'], axis=1)
-
-from sklearn.feature_selection import VarianceThreshold
-
-def remove_low_variance(input_data, threshold=0.1):
-    selection = VarianceThreshold(threshold)
-    selection.fit(input_data)
-    return input_data[input_data.columns[selection.get_support(indices=True)]]
-
-remained_df = remove_low_variance(remained_df, threshold=0.1)
-remained_df.to_csv('descriptor_list.csv', index = False)
+print(len(test_df), sorted(test_df.cano_smiles.values))
 
 x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([canonical_smiles_list[0]],feature_dicts)
 
