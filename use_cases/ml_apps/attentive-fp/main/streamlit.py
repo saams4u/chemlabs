@@ -9,7 +9,7 @@ import pickle
 # Molecular descriptor calculator
 def desc_calc():
     # Performs the descriptor calculation
-    bashCommand = "java -Xms2G -Xmx2G -Djava.awt.headless=true -jar ./PaDEL-Descriptor/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -descriptortypes ./PaDEL-Descriptor/PubchemFingerprinter.xml -dir ./ -file descriptors_output.csv"
+    bashCommand = "java -Xms2G -Xmx2G -Djava.awt.headless=true -jar ./padelpy/padelpy/PaDEL-Descriptor/PaDEL-Descriptor.jar -removesalt -standardizenitro -fingerprints -dir ./ -file descriptors_output.csv"
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
     os.remove('molecule.smi')
@@ -55,11 +55,11 @@ This app allows you to predict the bioactivity towards inhibting the `Acetylchol
 with st.sidebar.header('1. Upload your CSV data'):
     uploaded_file = st.sidebar.file_uploader("Upload your input file", type=['csv'])
     st.sidebar.markdown("""
-[Example input file](https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/bace.csv)
+[Example input file](https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/bace.csv)
 """)
 
 if st.sidebar.button('Predict'):
-    load_data = pd.read_table(uploaded_file, sep=' ', header=None)
+    load_data = pd.read_csv(uploaded_file, header=None)
     load_data.to_csv('molecule.smi', sep = '\t', header = False, index = False)
 
     st.header('**Original input data**')
