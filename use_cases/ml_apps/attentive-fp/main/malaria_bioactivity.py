@@ -204,7 +204,7 @@ best_param["test_epoch"] = 0
 best_param["train_MSE"] = 9e8
 best_param["test_MSE"] = 9e8
 
-for epoch in range(800):
+for epoch in range(epochs):
     train_MAE, train_MSE = eval(model, train_df)
     test_MAE, test_MSE = eval(model, test_df)
 
@@ -230,5 +230,6 @@ best_model_wts = copy.deepcopy(best_model_dict)
 
 model.load_state_dict(best_model_wts)
 (best_model.align[0].weight == model.align[0].weight).all()
+
 test_MAE, test_MSE = eval(model, test_df)
 print("best epoch:", best_param["test_epoch"],"\n", "test MSE:", test_MSE)

@@ -192,7 +192,7 @@ best_param["test_epoch"] = 0
 best_param["train_MSE"] = 9e8
 best_param["test_MSE"] = 9e8
 
-for epoch in range(800):
+for epoch in range(epochs):
     train_MAE, train_MSE = eval(model, train_df)
     test_MAE, test_MSE = eval(model, test_df)
 
