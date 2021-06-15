@@ -13,4 +13,4 @@ sklearn
 tqdm
 tensorboard
 mols2grid
-wandb
+wandb==0.8.34
