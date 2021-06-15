@@ -45,7 +45,7 @@ from network.AttentiveFP.AttentiveLayers import Fingerprint
 
 import config, wandb
 
-wandb.init(project="bioactivity-muv")
+wandb.init(project="bioactivity-muv", )
 wandb.log({"run_dir": wandb.run.dir})
 
 task_name = 'muv'
@@ -327,9 +327,7 @@ for epoch in range(epochs):
         )
 
     config.logger.info(
-        f"Epoch: {epoch+1} | "
-        f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, train_prc_mean: {train_prc_mean:.2f}, "
-        f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}, valid_prc_mean: {valid_prc_mean:.2f}")
+        f"Epoch: {epoch+1} | train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, train_prc_mean: {train_prc_mean:.2f}, val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}, valid_prc_mean: {valid_prc_mean:.2f}")
     wandb.log({
         "train_loss": train_loss,
         "train_roc": train_roc,
