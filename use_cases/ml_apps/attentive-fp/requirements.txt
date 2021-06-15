@@ -13,4 +13,4 @@ sklearn
 tqdm
 tensorboard
 mols2grid
-streamlit
+wandb

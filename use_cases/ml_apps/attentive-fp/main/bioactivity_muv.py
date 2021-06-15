@@ -43,6 +43,11 @@ import network.AttentiveFP.getFeatures, network.AttentiveFP.getFeatures_aromatic
 from network.AttentiveFP.getFeatures import save_smiles_dicts, get_smiles_array
 from network.AttentiveFP.AttentiveLayers import Fingerprint
 
+import config, wandb
+
+wandb.init(project="bioactivity-muv")
+wandb.log({"run_dir": wandb.run.dir})
+
 task_name = 'muv'
 tasks = [
     "MUV-466","MUV-548","MUV-600","MUV-644","MUV-652","MUV-689","MUV-692","MUV-712","MUV-713","MUV-733","MUV-737","MUV-810","MUV-832","MUV-846","MUV-852","MUV-858","MUV-859"
@@ -161,6 +166,11 @@ model.cuda()
 # tensorboard = SummaryWriter(log_dir="runs/"+start_time+"_"+prefix_filename+"_"+str(fingerprint_dim)+"_"+str(p_dropout))
 # optimizer = optim.Adam(model.parameters(), learning_rate, weight_decay=weight_decay)
 
+wandb.watch(model)
+config.logger.info(
+        "Model:\n"
+        f"  {model.named_parameters}")
+
 optimizer = optim.Adam(model.parameters(), 10**-learning_rate, weight_decay=10**-weight_decay)
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
 
@@ -196,7 +206,7 @@ def train(model, dataset, optimizer, loss_function):
 
         # Step 4. Compute your loss function. (Again, Torch wants the target wrapped in a variable)
         loss = 0.0
-        for i,task in enumerate(tasks):
+        for i, task in enumerate(tasks):
             y_pred = mol_prediction[:, i * per_task_output_units_num:(i + 1) *
                                     per_task_output_units_num]
             y_val = batch_df[task].values
@@ -237,7 +247,7 @@ def eval(model, dataset):
         atoms_prediction, mol_prediction = model(torch.Tensor(x_atom),torch.Tensor(x_bonds),torch.cuda.LongTensor(x_atom_index),torch.cuda.LongTensor(x_bond_index),torch.Tensor(x_mask))
         atom_pred = atoms_prediction.data[:,:,1].unsqueeze(2).cpu().numpy()
 
-        for i,task in enumerate(tasks):
+        for i, task in enumerate(tasks):
             y_pred = mol_prediction[:, i * per_task_output_units_num:(i + 1) *
                                     per_task_output_units_num]
             y_val = batch_df[task].values
@@ -282,9 +292,12 @@ best_param["loss_epoch"] = 0
 best_param["valid_roc"] = 0
 best_param["valid_loss"] = 9e8
 
+config.logger.info("Training:")
+
 for epoch in range(epochs):    
     train_roc, train_prc, train_loss = eval(model, train_df)
     valid_roc, valid_prc, valid_loss = eval(model, valid_df)
+
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
     train_prc_mean = np.array(train_prc).mean()
@@ -297,7 +310,8 @@ for epoch in range(epochs):
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
         if valid_roc_mean > 0.75:
-             torch.save(model, 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt')             
+            checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            torch.save(model, os.path.join(wandb.run.dir, checkpoint))             
     
     if valid_loss < best_param["valid_loss"]:
         best_param["loss_epoch"] = epoch
@@ -311,6 +325,21 @@ for epoch in range(epochs):
         +"train_prc_mean"+":"+str(train_prc_mean)+'\n'\
         +"valid_prc_mean"+":"+str(valid_prc_mean)+'\n'\
         )
+
+    config.logger.info(
+        f"Epoch: {epoch+1} | "
+        f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, train_prc_mean: {train_prc_mean:.2f}, "
+        f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}, valid_prc_mean: {valid_prc_mean:.2f}")
+    wandb.log({
+        "train_loss": train_loss,
+        "train_roc": train_roc,
+        "train_roc_mean": train_roc_mean,
+        "train_prc_mean": train_prc_mean,
+        "val_loss": val_loss,
+        "valid_roc": valid_roc,
+        "valid_roc_mean": valid_roc_mean,
+        "valid_prc_mean": valid_prc_mean})
+    
     if (epoch - best_param["roc_epoch"] >6) and (epoch - best_param["loss_epoch"] >8):        
         break
         
@@ -332,3 +361,10 @@ print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
       +"\n"+"test_prc_mean:",str(np.array(test_prc).mean())
      )
+    
+config.logger.info(
+    "Test performance:\n"
+    f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
+wandb.log({
+    "test_loss": test_loss,
+    "test_roc": test_roc})
