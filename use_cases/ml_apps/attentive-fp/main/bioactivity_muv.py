@@ -354,7 +354,7 @@ best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'
 # model.load_state_dict(best_model_wts)
 # (best_model.align[0].weight == model.align[0].weight).all()
 
-test_roc, test_prc, test_losses = eval(best_model, test_df)
+test_roc, test_prc, test_loss = eval(best_model, test_df)
 
 print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_roc:"+str(test_roc)
@@ -364,7 +364,8 @@ print("best epoch:"+str(best_param["roc_epoch"])
     
 config.logger.info(
     "Test performance:\n"
-    f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
+    f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}, test_prc: {test_prc:.2f}")
 wandb.log({
     "test_loss": test_loss,
-    "test_roc": test_roc})
+    "test_roc": test_roc,
+    "test_prc": test_prc})
