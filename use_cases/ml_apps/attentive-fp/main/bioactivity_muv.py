@@ -366,6 +366,7 @@ print("best epoch:"+str(best_param["roc_epoch"])
 config.logger.info(
     "Test performance:\n"
     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}, test_prc: {test_prc:.2f}")
+    
 wandb.log({
     "test_loss": test_loss,
     "test_roc": test_roc,
