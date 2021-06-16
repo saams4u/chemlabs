@@ -205,8 +205,8 @@ best_param["test_MSE"] = 9e8
 # config.logger.info("Training:")
 
 for epoch in range(epochs):
-    train_MAE, train_MSE = eval(model, train_df)
-    test_MAE, test_MSE = eval(model, test_df)
+    _, _, train_MAE, train_MSE = eval(model, train_df)
+    _, _, test_MAE, test_MSE = eval(model, test_df)
 
     if train_MSE < best_param["train_MSE"]:
         best_param["train_epoch"] = epoch
