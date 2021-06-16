@@ -274,7 +274,7 @@ def eval(model, dataset):
     
     return eval_roc, eval_loss #eval_prc, eval_precision, eval_recall,
 
-best_param ={}
+best_param = {}
 best_param["roc_epoch"] = 0
 best_param["loss_epoch"] = 0
 best_param["valid_roc"] = 0
@@ -285,9 +285,11 @@ best_param["valid_loss"] = 9e8
 for epoch in range(epochs):    
     train_roc, train_loss = eval(model, train_df)
     valid_roc, valid_loss = eval(model, valid_df)
-    
+    test_roc, test_loss = eval(model, test_df)
+
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
+    test_roc_mean = np.array(test_roc).mean()
     
 #     tensorboard.add_scalars('ROC',{'train_roc':train_roc_mean,'valid_roc':valid_roc_mean},epoch)
 #     tensorboard.add_scalars('Losses',{'train_losses':train_loss,'valid_losses':valid_loss},epoch)
@@ -308,8 +310,10 @@ for epoch in range(epochs):
     print("EPOCH:\t"+str(epoch)+'\n'\
         +"train_roc"+":"+str(train_roc)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
+        +"test_roc"+":"+str(test_roc)+'\n'\
         +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
         +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
+        +"test_roc_mean"+":"+str(test_roc_mean)+'\n'\
         )
 
      # config.logger.info(
@@ -323,7 +327,10 @@ for epoch in range(epochs):
         "train_roc_mean": train_roc_mean,
         "val_loss": valid_loss,
         "valid_roc": valid_roc,
-        "valid_roc_mean": valid_roc_mean})
+        "valid_roc_mean": valid_roc_mean,
+        "test_loss": test_loss,
+        "test_roc": test_roc,
+        "test_roc_mean": test_roc_mean})
 
     if (epoch - best_param["roc_epoch"] >18) and (epoch - best_param["loss_epoch"] >28):        
         break
@@ -332,7 +339,7 @@ for epoch in range(epochs):
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt'
+checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["roc_epoch"])+'.pt'
 best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))     
 
 best_model_dict = best_model.state_dict()
@@ -352,8 +359,3 @@ print("best epoch:"+str(best_param["roc_epoch"])
 # config.logger.info(
 #     "Test performance:\n"
 #     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
-    
-wandb.log({
-    "test_loss": test_loss,
-    "test_roc": test_roc,
-    "test_roc_mean": test_roc_mean})

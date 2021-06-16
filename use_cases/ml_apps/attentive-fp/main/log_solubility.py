@@ -232,7 +232,9 @@ for epoch in range(epochs):
 
     wandb.log({
         "train_MAE": train_MAE,
-        "train_MSE": train_MSE})
+        "train_MSE": train_MSE,
+        "test_MAE": test_MAE,
+        "test_MSE": test_MSE})
     
     if (epoch - best_param["train_epoch"] >10) and (epoch - best_param["test_epoch"] >18):        
         break
@@ -251,12 +253,9 @@ model.load_state_dict(best_model_wts)
 (best_model.align[0].weight == model.align[0].weight).all()
 
 test_MAE, test_MSE = eval(model, test_df)
+
 print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE, "\n","test MSE:",test_MSE)
 
 # config.logger.info(
 #     "Test performance:\n"
 #     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
-    
-wandb.log({
-    "test_MAE": test_MAE,
-    "test_MSE": test_MSE})

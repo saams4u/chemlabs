@@ -237,7 +237,9 @@ for epoch in range(epochs):
 
     wandb.log({
         "train_MAE": train_MAE,
-        "train_MSE": train_MSE})
+        "train_MSE": train_MSE,
+        "test_MAE": test_MAE,
+        "test_MSE": test_MSE})
 
     if (epoch - best_param["train_epoch"] >2) and (epoch - best_param["test_epoch"] >18):        
         break
@@ -262,8 +264,4 @@ print("best epoch:", best_param["test_epoch"],"\n", "test MAE:", test_MAE, "\n",
 # config.logger.info(
 #     "Test performance:\n"
 #     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
-    
-wandb.log({
-    "test_MAE": test_MAE,
-    "test_MSE": test_MSE})
     

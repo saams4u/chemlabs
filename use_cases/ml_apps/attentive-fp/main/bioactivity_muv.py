@@ -297,6 +297,7 @@ best_param["valid_loss"] = 9e8
 for epoch in range(epochs):    
     train_roc, train_prc, train_loss = eval(model, train_df)
     valid_roc, valid_prc, valid_loss = eval(model, valid_df)
+    test_roc, test_prc, test_loss = eval(model, test_df)
 
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
@@ -341,7 +342,12 @@ for epoch in range(epochs):
         "val_loss": valid_loss,
         "valid_roc": valid_roc,
         "valid_roc_mean": valid_roc_mean,
-        "valid_prc_mean": valid_prc_mean})
+        "valid_prc_mean": valid_prc_mean,
+        "test_loss": test_loss,
+        "test_roc": test_roc,
+        "test_prc": test_prc,
+        "test_roc_mean": test_roc_mean,
+        "test_prc_mean": test_prc_mean})
     
     if (epoch - best_param["roc_epoch"] >6) and (epoch - best_param["loss_epoch"] >8):        
         break
@@ -349,7 +355,7 @@ for epoch in range(epochs):
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt'
+checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["roc_epoch"])+'.pt'
 best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))     
 
 # best_model_dict = best_model.state_dict()
@@ -371,10 +377,3 @@ print("best epoch:"+str(best_param["roc_epoch"])
 # config.logger.info(
 #     "Test performance:\n"
 #     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}, test_prc: {test_prc:.2f}")
-    
-wandb.log({
-    "test_loss": test_loss,
-    "test_roc": test_roc,
-    "test_prc": test_prc,
-    "test_roc_mean": test_roc_mean,
-    "test_prc_mean": test_prc_mean})
