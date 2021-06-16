@@ -248,7 +248,7 @@ best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))
 # (best_model.align[0].weight == model.align[0].weight).all()
 
 atoms_prediction, mol_prediction, test_MAE, test_MSE = eval(best_model, test_df)
-print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE, "\n","test MSE:",test_MSE)
+print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE,"\n","test MSE:",test_MSE,"\n","atoms prediction:",atoms_prediction,"\n","mol prediction:",mol_prediction)
 
 def get_run_components(run_dir):
     return best_model, test_df
