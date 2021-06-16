@@ -206,7 +206,7 @@ best_param["test_MSE"] = 9e8
 
 for epoch in range(epochs):
     _, _, train_MAE, train_MSE = eval(model, train_df)
-    _, _, test_MAE, test_MSE = eval(model, test_df)
+    atoms_prediction, mol_prediction, test_MAE, test_MSE = eval(model, test_df)
 
     if train_MSE < best_param["train_MSE"]:
         best_param["train_epoch"] = epoch
@@ -247,7 +247,7 @@ best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))
 # model.load_state_dict(best_model_wts)
 # (best_model.align[0].weight == model.align[0].weight).all()
 
-_, _, test_MAE, test_MSE = eval(best_model, test_df)
+atoms_prediction, mol_prediction, test_MAE, test_MSE = eval(best_model, test_df)
 print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE, "\n","test MSE:",test_MSE)
 
 def get_run_components(run_dir):
