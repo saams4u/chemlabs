@@ -308,24 +308,22 @@ for epoch in range(epochs):
     print("EPOCH:\t"+str(epoch)+'\n'\
         +"train_roc"+":"+str(train_roc)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
-#         +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
-#         +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
+        +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
+        +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
         )
 
      # config.logger.info(
     #     f"Epoch: {epoch+1} | "
-    #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, train_prc_mean: {train_prc_mean:.2f}, "
-    #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}, valid_prc_mean: {valid_prc_mean:.2f}")
+    #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, "
+    #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}")
 
     wandb.log({
         "train_loss": train_loss,
         "train_roc": train_roc,
         "train_roc_mean": train_roc_mean,
-        "train_prc_mean": train_prc_mean,
         "val_loss": valid_loss,
         "valid_roc": valid_roc,
-        "valid_roc_mean": valid_roc_mean,
-        "valid_prc_mean": valid_prc_mean})
+        "valid_roc_mean": valid_roc_mean})
 
     if (epoch - best_param["roc_epoch"] >18) and (epoch - best_param["loss_epoch"] >28):        
         break
@@ -334,26 +332,27 @@ for epoch in range(epochs):
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-# best_model = torch.load(checkpoint)
 best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))     
+# best_model = torch.load(checkpoint)
 
 best_model_dict = best_model.state_dict()
 best_model_wts = copy.deepcopy(best_model_dict)
 
 model.load_state_dict(best_model_wts)
 (best_model.align[0].weight == model.align[0].weight).all()
-test_roc, test_losses = eval(model, test_df)
+
+test_roc, test_loss = eval(model, test_df)
 
 print("best epoch:"+str(best_param["roc_epoch"])
+      +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc:"+str(test_roc)
       +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
      )
 
 # config.logger.info(
 #     "Test performance:\n"
-#     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}, test_prc: {test_prc:.2f}")
+#     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
     
 wandb.log({
     "test_loss": test_loss,
-    "test_roc": test_roc,
-    "test_prc": test_prc})
+    "test_roc": test_roc})
