@@ -45,7 +45,7 @@ from network.AttentiveFP.AttentiveLayers import Fingerprint
 
 import config, wandb
 
-wandb.init(project="bioactivity-muv", )
+wandb.init(project="bioactivity-muv")
 wandb.log({"run_dir": wandb.run.dir})
 
 task_name = 'muv'
@@ -167,9 +167,9 @@ model.cuda()
 # optimizer = optim.Adam(model.parameters(), learning_rate, weight_decay=weight_decay)
 
 wandb.watch(model)
-config.logger.info(
-        "Model:\n"
-        f"  {model.named_parameters}")
+# config.logger.info(
+#         "Model:\n"
+#         f"  {model.named_parameters}")
 
 optimizer = optim.Adam(model.parameters(), 10**-learning_rate, weight_decay=10**-weight_decay)
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
@@ -292,7 +292,7 @@ best_param["loss_epoch"] = 0
 best_param["valid_roc"] = 0
 best_param["valid_loss"] = 9e8
 
-config.logger.info("Training:")
+# config.logger.info("Training:")
 
 for epoch in range(epochs):    
     train_roc, train_prc, train_loss = eval(model, train_df)
@@ -310,7 +310,9 @@ for epoch in range(epochs):
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
         if valid_roc_mean > 0.75:
-            checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            # checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            # torch.save(model, checkpoint)   
+            checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
             torch.save(model, os.path.join(wandb.run.dir, checkpoint))             
     
     if valid_loss < best_param["valid_loss"]:
@@ -326,17 +328,17 @@ for epoch in range(epochs):
         +"valid_prc_mean"+":"+str(valid_prc_mean)+'\n'\
         )
 
-    config.logger.info(
-        f"Epoch: {epoch+1} | "
-        f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, train_prc_mean: {train_prc_mean:.2f}, "
-        f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}, valid_prc_mean: {valid_prc_mean:.2f}")
+    # config.logger.info(
+    #     f"Epoch: {epoch+1} | "
+    #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, train_prc_mean: {train_prc_mean:.2f}, "
+    #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}, valid_prc_mean: {valid_prc_mean:.2f}")
     
     wandb.log({
         "train_loss": train_loss,
         "train_roc": train_roc,
         "train_roc_mean": train_roc_mean,
         "train_prc_mean": train_prc_mean,
-        "val_loss": val_loss,
+        "val_loss": valid_loss,
         "valid_roc": valid_roc,
         "valid_roc_mean": valid_roc_mean,
         "valid_prc_mean": valid_prc_mean})
@@ -347,7 +349,8 @@ for epoch in range(epochs):
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(best_param["roc_epoch"])+'.pt')     
+# best_model = torch.load(checkpoint)     
+best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))     
 
 # best_model_dict = best_model.state_dict()
 # best_model_wts = copy.deepcopy(best_model_dict)
@@ -363,9 +366,9 @@ print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_prc_mean:",str(np.array(test_prc).mean())
      )
     
-config.logger.info(
-    "Test performance:\n"
-    f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}, test_prc: {test_prc:.2f}")
+# config.logger.info(
+#     "Test performance:\n"
+#     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}, test_prc: {test_prc:.2f}")
     
 wandb.log({
     "test_loss": test_loss,
