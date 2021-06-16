@@ -227,8 +227,8 @@ for epoch in range(epochs):
         if test_MSE < 1.1:
             # checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
             # torch.save(model, checkpoint)   
-            checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
-            torch.save(model, os.path.join(wandb.run.dir, checkpoint))  
+            saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            torch.save(model, os.path.join(wandb.run.dir, saved_model))  
 
     # config.logger.info(
     #     f"Epoch: {epoch+1} | "
@@ -246,8 +246,8 @@ for epoch in range(epochs):
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
+checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt'
 best_model = torch.load(os.path.join(wandb.run.dir, checkpoint)) 
-# best_model = torch.load(checkpoint)
  
 best_model_dict = best_model.state_dict()
 best_model_wts = copy.deepcopy(best_model_dict)
