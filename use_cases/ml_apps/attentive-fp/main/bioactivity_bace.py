@@ -355,4 +355,5 @@ print("best epoch:"+str(best_param["roc_epoch"])
     
 wandb.log({
     "test_loss": test_loss,
-    "test_roc": test_roc})
+    "test_roc": test_roc,
+    "test_roc_mean": test_roc_mean})

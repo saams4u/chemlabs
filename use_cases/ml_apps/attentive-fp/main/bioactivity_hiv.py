@@ -43,6 +43,11 @@ import network.AttentiveFP.getFeatures, network.AttentiveFP.getFeatures_aromatic
 from network.AttentiveFP.getFeatures import save_smiles_dicts, get_smiles_array
 from network.AttentiveFP.AttentiveLayers import Fingerprint
 
+import config, wandb
+
+wandb.init(project="bioactivity-hiv")
+wandb.log({"run_dir": wandb.run.dir})
+
 task_name = 'HIV'
 tasks = ['HIV_active']
 raw_filename = "dataset/HIV.csv"
@@ -142,6 +147,11 @@ model.cuda()
 
 # tensorboard = SummaryWriter(log_dir="runs/"+start_time+"_"+prefix_filename+"_"+str(fingerprint_dim)+"_"+str(p_dropout))
 # optimizer = optim.Adam(model.parameters(), learning_rate, weight_decay=weight_decay)
+
+wandb.watch(model)
+# config.logger.info(
+#         "Model:\n"
+#         f"  {model.named_parameters}")
 
 optimizer = optim.Adam(model.parameters(), 10**-learning_rate, weight_decay=10**-weight_decay)
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
@@ -256,11 +266,13 @@ def eval(model, dataset):
     
     return eval_roc, eval_loss #eval_prc, eval_precision, eval_recall, 
 
-best_param ={}
+best_param = {}
 best_param["roc_epoch"] = 0
 best_param["loss_epoch"] = 0
 best_param["valid_roc"] = 0
 best_param["valid_loss"] = 9e8
+
+# config.logger.info("Training:")
 
 for epoch in range(epochs):    
     train_roc, train_loss = eval(model, train_df)
@@ -275,7 +287,10 @@ for epoch in range(epochs):
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
         if valid_roc_mean > 0.80:
-             torch.save(model, 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt')             
+            # checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            # torch.save(model, checkpoint)   
+            checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            torch.save(model, os.path.join(wandb.run.dir, checkpoint)) 
     
     if valid_loss < best_param["valid_loss"]:
         best_param["loss_epoch"] = epoch
@@ -284,16 +299,31 @@ for epoch in range(epochs):
     print("EPOCH:\t"+str(epoch)+'\n'\
         +"train_roc"+":"+str(train_roc)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
-#         +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
-#         +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
+        +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
+        +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
         )
+
+     # config.logger.info(
+    #     f"Epoch: {epoch+1} | "
+    #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, "
+    #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}")
+
+    wandb.log({
+        "train_loss": train_loss,
+        "train_roc": train_roc,
+        "train_roc_mean": train_roc_mean,
+        "val_loss": valid_loss,
+        "valid_roc": valid_roc,
+        "valid_roc_mean": valid_roc_mean})
+
     if (epoch - best_param["roc_epoch"] >16) and (epoch - best_param["loss_epoch"] >18):        
         break
         
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(best_param["roc_epoch"])+'.pt')     
+best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))     
+# best_model = torch.load(checkpoint)
 
 # best_model_dict = best_model.state_dict()
 # best_model_wts = copy.deepcopy(best_model_dict)
@@ -301,9 +331,19 @@ best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'
 # model.load_state_dict(best_model_wts)
 # (best_model.align[0].weight == model.align[0].weight).all()
 
-test_roc, test_losses = eval(best_model, test_df)
+test_roc, test_loss = eval(best_model, test_df)
 
 print("best epoch:"+str(best_param["roc_epoch"])
+      +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc:"+str(test_roc)
       +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
      )
+
+# config.logger.info(
+#     "Test performance:\n"
+#     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
+    
+wandb.log({
+    "test_loss": test_loss,
+    "test_roc": test_roc,
+    "test_roc_mean": test_roc_mean})

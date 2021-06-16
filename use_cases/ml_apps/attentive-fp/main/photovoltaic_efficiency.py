@@ -39,6 +39,11 @@ import network.AttentiveFP.getFeatures, network.AttentiveFP.getFeatures_aromatic
 from network.AttentiveFP.getFeatures import save_smiles_dicts, get_smiles_array
 from network.AttentiveFP.AttentiveLayers import Fingerprint
 
+import config, wandb
+
+wandb.init(project="photovoltaic-efficiency")
+wandb.log({"run_dir": wandb.run.dir})
+
 task_name = 'Photovoltaic efficiency'
 tasks = ['PCE']
 
@@ -125,6 +130,11 @@ optimizer = optim.Adam(model.parameters(), 10**-learning_rate, weight_decay=10**
 # optimizer = optim.SGD(model.parameters(), 10**-learning_rate, weight_decay=10**-weight_decay)
 # tensorboard = SummaryWriter(log_dir="runs/"+start_time+"_"+prefix_filename+"_"+str(fingerprint_dim)+"_"+str(p_dropout))
 
+wandb.watch(model)
+# config.logger.info(
+#         "Model:\n"
+#         f"  {model.named_parameters}")
+
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
 params = sum([np.prod(p.size()) for p in model_parameters])
 print(params)
@@ -186,11 +196,13 @@ def eval(model, dataset):
         
     return np.array(test_MAE_list).mean(), np.array(test_MSE_list).mean()
 
-best_param ={}
+best_param = {}
 best_param["train_epoch"] = 0
 best_param["test_epoch"] = 0
 best_param["train_MSE"] = 9e8
 best_param["test_MSE"] = 9e8
+
+# config.logger.info("Training:")
 
 for epoch in range(epochs):
     train_MAE, train_MSE = eval(model, train_df)
@@ -203,15 +215,29 @@ for epoch in range(epochs):
         best_param["test_epoch"] = epoch
         best_param["test_MSE"] = test_MSE
         if test_MSE < 0.9:
-             torch.save(model, 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt')
+            # checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            # torch.save(model, checkpoint)   
+            checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            torch.save(model, os.path.join(wandb.run.dir, checkpoint)) 
+    
+    # config.logger.info(
+    #     f"Epoch: {epoch+1} | "
+    #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, "
+    #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}")
+
+    wandb.log({
+        "train_MAE": train_MAE,
+        "train_MSE": train_MSE})
+
     if (epoch - best_param["train_epoch"] >2) and (epoch - best_param["test_epoch"] >18):        
         break
-    print(epoch, train_MSE, test_MSE)
     
+    print(epoch, train_MSE, test_MSE)
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt')     
+best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))  
+# best_model = torch.load(checkpoint)
 
 # best_model_dict = best_model.state_dict()
 # best_model_wts = copy.deepcopy(best_model_dict)
@@ -220,4 +246,12 @@ best_model = torch.load('saved_models/model_'+prefix_filename+'_'+start_time+'_'
 # (best_model.align[0].weight == model.align[0].weight).all()
 
 test_MAE, test_MSE = eval(best_model, test_df)
-print("best epoch:",best_param["test_epoch"],"\n","test MSE:",test_MSE)
+print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE, "\n","test MSE:",test_MSE)
+
+# config.logger.info(
+#     "Test performance:\n"
+#     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
+    
+wandb.log({
+    "test_MAE": test_MAE,
+    "test_MSE": test_MSE})
