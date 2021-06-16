@@ -1,5 +1,6 @@
 # utils.py - utility functions to aid app operations.
 import os
+import numpy as np
 
 from datetime import datetime
 from functools import wraps
@@ -10,6 +11,7 @@ import json
 import utils
 import torch
 import wandb
+import config
 
 def create_dirs(dirpath):
     """Creating directories."""

@@ -4,6 +4,10 @@ import json
 from fastapi import FastAPI, Path
 from fastapi.responses import RedirectResponse
 
+import nest_asyncio
+from pyngrok import ngrok
+import uvicorn
+
 from http import HTTPStatus
 from pydantic import BaseModel
 
@@ -61,3 +65,8 @@ async def _predict(payload: PredictPayload):
     }
     config.logger.info(json.dumps(response, indent=2))
     return response
+
+ngrok_tunnel = ngrok.connect(8000)
+print('Public URL:', ngrok_tunnel.public_url)
+nest_asyncio.apply()
+uvicorn.run(app, port=8000)
