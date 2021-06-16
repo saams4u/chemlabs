@@ -206,7 +206,7 @@ best_param["test_MSE"] = 9e8
 
 for epoch in range(epochs):
     _, _, train_MAE, train_MSE = eval(model, train_df)
-    atoms_prediction, mol_prediction, test_MAE, test_MSE = eval(model, test_df)
+    _, _, test_MAE, test_MSE = eval(model, test_df)
 
     if train_MSE < best_param["train_MSE"]:
         best_param["train_epoch"] = epoch
