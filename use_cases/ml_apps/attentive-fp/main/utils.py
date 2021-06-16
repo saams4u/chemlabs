@@ -9,13 +9,7 @@ import csv
 import json
 import utils
 import torch
-
-from network.AttentiveFP.AttentiveLayers import Fingerprint
-
-from photovoltaic_efficiency import radius, T, num_atom_features, num_bond_features
-from photovoltaic_efficiency import fingerprint_dim, output_units_num, p_dropout, best_params, checkpoint
-from photovoltaic_efficiency import raw_filename, feature_filename, filename, smilesList, prefix_filename, start_time
-from photovoltaic_efficiency import smiles_tasks_df, feature_dicts, remained_smiles, remained_df, test_df, random_seed
+import wandb
 
 def create_dirs(dirpath):
     """Creating directories."""
@@ -54,18 +48,6 @@ def construct_response(f):
 
         return response
     return wrap
-
-def get_run_components(run_dir):
-    model = Fingerprint(radius, T, num_atom_features, num_bond_features,
-            fingerprint_dim, output_units_num, p_dropout)
-    model.load_state_dict(torch.load(os.path.join(run_dir, checkpoint)))
-
-    device = torch.device('cuda' if (torch.cuda.is_available()) else 'cpu')
-    model = model.to(device)
-
-    dataset = test_df
-
-    return model, dataset
 
 def get_best_run(project, metric, objective):
     # Get all runs

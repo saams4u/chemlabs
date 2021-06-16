@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 import config, utils
 
-from photovoltaic_efficiency import eval
+from photovoltaic_efficiency import eval, get_run_components
 
 app = FastAPI(
     title="AttentiveFP",
@@ -30,7 +30,7 @@ best_run = utils.get_best_run(project=f"mahjouri-saamahn/{project_list[3]}",
 best_run_dir = utils.load_run(run=best_run)
 
 # Get run components for prediction
-model, dataset = utils.get_run_components(run_dir=best_run_dir)
+model, dataset = get_run_components(run_dir=best_run_dir)
 
 @utils.construct_response
 @app.get("/")
@@ -53,11 +53,11 @@ class PredictPayload(BaseModel):
 @utils.construct_response
 @app.post("/predict")
 async def _predict(payload: PredictPayload):
-    prediction = eval(model=model, dataset=dataset)
+    atoms_prediction, mol_prediction, _, _ = eval(model=model, dataset=dataset)
     response = {
         'message': HTTPStatus.OK.phrase,
         'status-code': HTTPStatus.OK,
-        'data': {"prediction": prediction}
+        'data': {"atoms prediction": atoms_prediction, "mols prediction": mol_prediction}
     }
     config.logger.info(json.dumps(response, indent=2))
     return response

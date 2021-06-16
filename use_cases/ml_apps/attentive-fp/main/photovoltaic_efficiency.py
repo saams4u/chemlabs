@@ -194,7 +194,7 @@ def eval(model, dataset):
         test_MAE_list.extend(MAE.data.squeeze().cpu().numpy())
         test_MSE_list.extend(MSE.data.squeeze().cpu().numpy())
         
-    return np.array(test_MAE_list).mean(), np.array(test_MSE_list).mean()
+    return atoms_prediction, mol_prediction, np.array(test_MAE_list).mean(), np.array(test_MSE_list).mean()
 
 best_param = {}
 best_param["train_epoch"] = 0
@@ -247,8 +247,11 @@ best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))
 # model.load_state_dict(best_model_wts)
 # (best_model.align[0].weight == model.align[0].weight).all()
 
-test_MAE, test_MSE = eval(best_model, test_df)
+_, _, test_MAE, test_MSE = eval(best_model, test_df)
 print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE, "\n","test MSE:",test_MSE)
+
+def get_run_components(run_dir):
+    return best_model, test_df
 
 # config.logger.info(
 #     "Test performance:\n"
