@@ -77,7 +77,7 @@ for smiles in smilesList:
 
 print("number of successfully processed smiles: ", len(remained_smiles))
 smiles_tasks_df = smiles_tasks_df[smiles_tasks_df["smiles"].isin(remained_smiles)]
-smiles_tasks_df['cano_smiles'] =canonical_smiles_list
+smiles_tasks_df['cano_smiles'] = canonical_smiles_list
 
 plt.figure(figsize=(5, 3))
 sns.set(font_scale=1.5)
@@ -252,4 +252,4 @@ print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE, "\n","te
 
 # config.logger.info(
 #     "Test performance:\n"
-#     f"  test_loss: {test_loss:.2f}, test_roc: {test_roc:.2f}")
+#     f"  test_MAE: {test_MAE:.2f}, test_MSE: {test_MSE:.2f}")
