@@ -301,8 +301,11 @@ for epoch in range(epochs):
 
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
+    test_roc_mean = np.array(test_roc).mean()
+
     train_prc_mean = np.array(train_prc).mean()
     valid_prc_mean = np.array(valid_prc).mean()
+    test_prc_mean = np.array(test_prc).mean()
     
 #     tensorboard.add_scalars('ROC',{'train_roc':train_roc_mean,'valid_roc':valid_roc_mean},epoch)
 #     tensorboard.add_scalars('Losses',{'train_losses':train_loss,'valid_losses':valid_loss},epoch)
