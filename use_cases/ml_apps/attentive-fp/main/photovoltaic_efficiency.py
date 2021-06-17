@@ -251,7 +251,11 @@ atoms_prediction, mol_prediction, test_MAE, test_MSE = eval(best_model, test_df)
 print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE,"\n","test MSE:",test_MSE,"\n","atoms prediction:",atoms_prediction,"\n","mol prediction:",mol_prediction)
 
 def get_run_components(run_dir):
-    return best_model, test_df
+    checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt'
+    model = torch.load(os.path.join(run_dir, checkpoint)) 
+    dataset = test_df.reset_index(drop=True)
+
+    return model, dataset
 
 # config.logger.info(
 #     "Test performance:\n"
