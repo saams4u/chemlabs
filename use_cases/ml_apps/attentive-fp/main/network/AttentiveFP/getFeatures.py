@@ -294,6 +294,7 @@ def get_smiles_dicts(smilesList):
         'smiles_to_rdkit_list': smiles_to_rdkit_list
     }
     return feature_dicts
+    
 def save_smiles_dicts(smilesList,filename):
     #first need to get the max atom length
     max_atom_len = 0

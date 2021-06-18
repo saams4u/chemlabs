@@ -194,7 +194,7 @@ def eval(model, dataset):
         test_MAE_list.extend(MAE.data.squeeze().cpu().numpy())
         test_MSE_list.extend(MSE.data.squeeze().cpu().numpy())
         
-    return atoms_prediction, mol_prediction, np.array(test_MAE_list).mean(), np.array(test_MSE_list).mean()
+    return np.array(test_MAE_list).mean(), np.array(test_MSE_list).mean()
 
 best_param = {}
 best_param["train_epoch"] = 0
@@ -205,8 +205,8 @@ best_param["test_MSE"] = 9e8
 # config.logger.info("Training:")
 
 for epoch in range(epochs):
-    _, _, train_MAE, train_MSE = eval(model, train_df)
-    _, _, test_MAE, test_MSE = eval(model, test_df)
+    train_MAE, train_MSE = eval(model, train_df)
+    test_MAE, test_MSE = eval(model, test_df)
 
     if train_MSE < best_param["train_MSE"]:
         best_param["train_epoch"] = epoch
@@ -247,15 +247,8 @@ best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))
 # model.load_state_dict(best_model_wts)
 # (best_model.align[0].weight == model.align[0].weight).all()
 
-atoms_prediction, mol_prediction, test_MAE, test_MSE = eval(best_model, test_df)
-print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE,"\n","test MSE:",test_MSE,"\n","atoms prediction:",atoms_prediction,"\n","mol prediction:",mol_prediction)
-
-def get_run_components(run_dir):
-    checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt'
-    model = torch.load(os.path.join(run_dir, checkpoint)) 
-    dataset = test_df.reset_index(drop=True)
-
-    return model, dataset
+test_MAE, test_MSE = eval(best_model, test_df)
+print("best epoch:",best_param["test_epoch"],"\n","test MAE:",test_MAE,"\n","test MSE:",test_MSE)
 
 # config.logger.info(
 #     "Test performance:\n"
