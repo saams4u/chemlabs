@@ -45,15 +45,16 @@ from network.AttentiveFP.AttentiveLayers import Fingerprint
 
 import config, wandb
 
-wandb.init(project="physiology-or-toxicity-sider")
+wandb.init(project="physiology-or-toxicity-tox21")
 wandb.log({"run_dir": wandb.run.dir})
 
-task_name = 'sider'
+task_name = 'tox21'
 tasks = [
-'SIDER1','SIDER2','SIDER3','SIDER4','SIDER5','SIDER6','SIDER7','SIDER8','SIDER9','SIDER10','SIDER11','SIDER12','SIDER13','SIDER14','SIDER15','SIDER16','SIDER17','SIDER18','SIDER19','SIDER20','SIDER21','SIDER22','SIDER23','SIDER24','SIDER25','SIDER26','SIDER27'
+  'NR-AR', 'NR-AR-LBD', 'NR-AhR', 'NR-Aromatase', 'NR-ER', 'NR-ER-LBD',
+  'NR-PPAR-gamma', 'SR-ARE', 'SR-ATAD5', 'SR-HSE', 'SR-MMP', 'SR-p53'
 ]
 
-raw_filename = "dataset/sider.csv"
+raw_filename = "dataset/tox21.csv"
 feature_filename = raw_filename.replace('.csv','.pickle')
 
 filename = raw_filename.replace('.csv','')
@@ -92,7 +93,7 @@ plt.savefig("atom_num_dist_"+prefix_filename+".png",dpi=200)
 
 print(len([i for i in atom_num_dist if i<51]),len([i for i in atom_num_dist if i>50]))
 
-random_seed = 68
+random_seed = 888
 start_time = str(time.ctime()).replace(':','-').replace(' ','_')
 start = time.time()
 
@@ -107,8 +108,6 @@ weight_decay = 3 # also known as l2_regularization_lambda
 learning_rate = 3.5
 per_task_output_units_num = 2 # for classification model with 2 classes
 output_units_num = len(tasks) * per_task_output_units_num
-
-smilesList = [smiles for smiles in canonical_smiles_list if len(Chem.MolFromSmiles(smiles).GetAtoms())<151]
 
 if os.path.isfile(feature_filename):
     feature_dicts = pickle.load(open(feature_filename, "rb" ))
@@ -126,18 +125,18 @@ for i,task in enumerate(tasks):
     weights.append([(positive_df.shape[0]+negative_df.shape[0])/negative_df.shape[0],\
                     (positive_df.shape[0]+negative_df.shape[0])/positive_df.shape[0]])
 
-test_df = remained_df.sample(frac=1/10, random_state=3) # test set
+test_df = remained_df.sample(frac=1/10, random_state=random_seed) # test set
 training_data = remained_df.drop(test_df.index) # training data
 
 # training data is further divided into validation set and train set
-valid_df = training_data.sample(frac=1/9, random_state=3) # validation set
+valid_df = training_data.sample(frac=1/9, random_state=random_seed) # validation set
 train_df = training_data.drop(valid_df.index) # train set
 
 train_df = train_df.reset_index(drop=True)
 valid_df = valid_df.reset_index(drop=True)
 test_df = test_df.reset_index(drop=True)
 
-x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([canonical_smiles_list[0]],feature_dicts)
+x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([smilesList[0]],feature_dicts)
 
 num_atom_features = x_atom.shape[-1]
 num_bond_features = x_bonds.shape[-1]
@@ -272,6 +271,7 @@ best_param["valid_loss"] = 9e8
 for epoch in range(epochs):    
     train_roc, train_loss = eval(model, train_df)
     valid_roc, valid_loss = eval(model, valid_df)
+
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
     
@@ -281,17 +281,17 @@ for epoch in range(epochs):
     if valid_roc_mean > best_param["valid_roc"]:
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
-        if valid_roc_mean > 0.52:
+        if valid_roc_mean > 0.85:
             saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
-            torch.save(model, os.path.join(wandb.run.dir, saved_model))  
-
+            torch.save(model, os.path.join(wandb.run.dir, saved_model))     
+    
     if valid_loss < best_param["valid_loss"]:
         best_param["loss_epoch"] = epoch
         best_param["valid_loss"] = valid_loss
 
     print("EPOCH:\t"+str(epoch)+'\n'\
-        +"train_loss"+":"+str(train_loss)+'\n'\
-        +"valid_loss"+":"+str(valid_loss)+'\n'\
+#         +"train_roc"+":"+str(train_roc)+'\n'\
+#         +"valid_roc"+":"+str(valid_roc)+'\n'\
         +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
         +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
         )
@@ -307,14 +307,14 @@ for epoch in range(epochs):
         "valid_loss": valid_loss,
         "valid_roc_mean": valid_roc_mean})
 
-    if (epoch - best_param["roc_epoch"] >18) and (epoch - best_param["loss_epoch"] >28):        
+    if (epoch - best_param["roc_epoch"] >10) and (epoch - best_param["loss_epoch"] >20):        
         break
         
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
 checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["roc_epoch"])+'.pt'
-best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))  
+best_model = torch.load(os.path.join(wandb.run.dir, checkpoint)) 
 
 best_model_dict = best_model.state_dict()
 best_model_wts = copy.deepcopy(best_model_dict)
@@ -327,7 +327,7 @@ print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
      )
-    
+
 # config.logger.info(
 #     "Test performance:\n"
 #     f"  test_MAE: {test_MAE:.2f}, test_MSE: {test_MSE:.2f}")
