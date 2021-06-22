@@ -300,9 +300,6 @@ for epoch in range(epochs):
 
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
-
-    train_prc_mean = np.array(train_prc).mean()
-    valid_prc_mean = np.array(valid_prc).mean()
     
 #     tensorboard.add_scalars('ROC',{'train_roc':train_roc_mean,'valid_roc':valid_roc_mean},epoch)
 #     tensorboard.add_scalars('Losses',{'train_losses':train_loss,'valid_losses':valid_loss},epoch)
@@ -319,14 +316,12 @@ for epoch in range(epochs):
         best_param["valid_loss"] = valid_loss
 
     print("EPOCH:\t"+str(epoch)+'\n'\
+        +"train_loss"+":"+str(train_loss)+'\n'\
+        +"val_loss"+":"+str(valid_loss)+'\n'\
         +"train_roc"+":"+str(train_roc)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
-        +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
-        +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
         +"train_prc"+":"+str(train_roc)+'\n'\
         +"valid_prc"+":"+str(valid_prc)+'\n'\
-        +"train_prc_mean"+":"+str(train_prc_mean)+'\n'\
-        +"valid_prc_mean"+":"+str(valid_prc_mean)+'\n'\
         )
 
     # config.logger.info(
@@ -336,13 +331,11 @@ for epoch in range(epochs):
     
     wandb.log({
         "train_loss": train_loss,
-        "train_roc": train_roc,
-        "train_roc_mean": train_roc_mean,
-        "train_prc_mean": train_prc_mean,
         "val_loss": valid_loss,
+        "train_roc": train_roc,
         "valid_roc": valid_roc,
-        "valid_roc_mean": valid_roc_mean,
-        "valid_prc_mean": valid_prc_mean})
+        "train_prc": train_prc,
+        "valid_prc": valid_prc})
     
     if (epoch - best_param["roc_epoch"] >6) and (epoch - best_param["loss_epoch"] >8):        
         break
@@ -365,8 +358,6 @@ print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc:"+str(test_roc)
       +"\n"+"test_prc:"+str(test_prc)
-      +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
-      +"\n"+"test_prc_mean:",str(np.array(test_prc).mean())
      )
     
 # config.logger.info(

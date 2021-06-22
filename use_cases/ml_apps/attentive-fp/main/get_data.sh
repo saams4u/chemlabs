@@ -7,3 +7,4 @@ wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/muv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/SAMPL.csv -O dataset/SAMPL.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/Lipophilicity.csv -O dataset/Lipophilicity.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/BBBP.csv -O dataset/BBBP.csv
+wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/clintox.csv -O dataset/clintox.csv

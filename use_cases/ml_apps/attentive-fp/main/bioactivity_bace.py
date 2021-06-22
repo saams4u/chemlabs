@@ -289,7 +289,6 @@ for epoch in range(epochs):
 
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
-    test_roc_mean = np.array(test_roc).mean()
     
 #     tensorboard.add_scalars('ROC',{'train_roc':train_roc_mean,'valid_roc':valid_roc_mean},epoch)
 #     tensorboard.add_scalars('Losses',{'train_losses':train_loss,'valid_losses':valid_loss},epoch)
@@ -309,9 +308,6 @@ for epoch in range(epochs):
         +"train_roc"+":"+str(train_roc)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
         +"test_roc"+":"+str(test_roc)+'\n'\
-        +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
-        +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
-        +"test_roc_mean"+":"+str(test_roc_mean)+'\n'\
         )
 
      # config.logger.info(
@@ -322,13 +318,10 @@ for epoch in range(epochs):
     wandb.log({
         "train_loss": train_loss,
         "train_roc": train_roc,
-        "train_roc_mean": train_roc_mean,
         "val_loss": valid_loss,
         "valid_roc": valid_roc,
-        "valid_roc_mean": valid_roc_mean,
         "test_loss": test_loss,
-        "test_roc": test_roc,
-        "test_roc_mean": test_roc_mean})
+        "test_roc": test_roc})
 
     if (epoch - best_param["roc_epoch"] >18) and (epoch - best_param["loss_epoch"] >28):        
         break
@@ -351,7 +344,6 @@ test_roc, test_loss = eval(model, test_df)
 print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc:"+str(test_roc)
-      +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
      )
 
 # config.logger.info(

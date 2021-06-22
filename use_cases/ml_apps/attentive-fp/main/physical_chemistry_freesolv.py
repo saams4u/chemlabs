@@ -210,8 +210,10 @@ best_param["valid_MSE"] = 9e8
 for epoch in range(epochs):
     train_MAE, train_MSE = eval(model, train_df)
     valid_MAE, valid_MSE = eval(model, valid_df)
+
 #     tensorboard.add_scalars('MAE',{'train_MAE':valid_MAE, 'test_MAE':valid_MSE}, epoch)
 #     tensorboard.add_scalars('MSE',{'train_MSE':valid_MAE, 'test_MSE':valid_MSE}, epoch)
+
     if train_MSE < best_param["train_MSE"]:
         best_param["train_epoch"] = epoch
         best_param["train_MSE"] = train_MSE

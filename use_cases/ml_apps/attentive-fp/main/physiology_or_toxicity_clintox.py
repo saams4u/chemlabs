@@ -45,14 +45,17 @@ from network.AttentiveFP.AttentiveLayers import Fingerprint
 
 import config, wandb
 
-wandb.init(project="physiology-or-toxicity-bbbp")
+wandb.init(project="physiology-or-toxicity-clintox")
 wandb.log({"run_dir": wandb.run.dir})
 
-task_name = 'BBBP'
-tasks = ['BBBP']
-raw_filename = "dataset/BBBP.csv"
+task_name = 'clintox'
+tasks = [
+    'FDA_APPROVED','CT_TOX'
+]
 
+raw_filename = "dataset/clintox.csv"
 feature_filename = raw_filename.replace('.csv','.pickle')
+
 filename = raw_filename.replace('.csv','')
 prefix_filename = raw_filename.split('/')[-1].replace('.csv','')
 
@@ -79,7 +82,6 @@ smiles_tasks_df = smiles_tasks_df[smiles_tasks_df["smiles"].isin(remained_smiles
 
 # print(smiles_tasks_df)
 smiles_tasks_df['cano_smiles'] =canonical_smiles_list
-assert canonical_smiles_list[8]==Chem.MolToSmiles(Chem.MolFromSmiles(smiles_tasks_df['cano_smiles'][8]), isomericSmiles=True)
 
 plt.figure(figsize=(5, 3))
 sns.set(font_scale=1.5)
@@ -90,30 +92,23 @@ plt.savefig("atom_num_dist_"+prefix_filename+".png",dpi=200)
 
 print(len([i for i in atom_num_dist if i<51]),len([i for i in atom_num_dist if i>50]))
 
-random_seed = 188
-random_seed = int(time.time())
-
+random_seed = 888
 start_time = str(time.ctime()).replace(':','-').replace(' ','_')
 start = time.time()
 
 batch_size = 100
 epochs = 800
-p_dropout = 0.1
-fingerprint_dim = 150
+p_dropout = 0.5
+fingerprint_dim = 200
 
 radius = 3
-T = 2
-
-weight_decay = 2.9 # also known as l2_regularization_lambda
+T = 3
+weight_decay = 3 # also known as l2_regularization_lambda
 learning_rate = 3.5
-
 per_task_output_units_num = 2 # for classification model with 2 classes
 output_units_num = len(tasks) * per_task_output_units_num
 
-smilesList = [smiles for smiles in canonical_smiles_list if len(Chem.MolFromSmiles(smiles).GetAtoms())<101]
-uncovered = [smiles for smiles in canonical_smiles_list if len(Chem.MolFromSmiles(smiles).GetAtoms())>100]
-
-smiles_tasks_df = smiles_tasks_df[~smiles_tasks_df["cano_smiles"].isin(uncovered)]
+smilesList = [smiles for smiles in canonical_smiles_list if len(Chem.MolFromSmiles(smiles).GetAtoms())<151]
 
 if os.path.isfile(feature_filename):
     feature_dicts = pickle.load(open(feature_filename, "rb" ))
@@ -131,18 +126,18 @@ for i,task in enumerate(tasks):
     weights.append([(positive_df.shape[0]+negative_df.shape[0])/negative_df.shape[0],\
                     (positive_df.shape[0]+negative_df.shape[0])/positive_df.shape[0]])
 
-test_df = remained_df.sample(frac=1/10, random_state=random_seed) # test set
+test_df = remained_df.sample(frac=1/10, random_state=3) # test set
 training_data = remained_df.drop(test_df.index) # training data
 
 # training data is further divided into validation set and train set
-valid_df = training_data.sample(frac=1/9, random_state=random_seed) # validation set
+valid_df = training_data.sample(frac=1/9, random_state=3) # validation set
 train_df = training_data.drop(valid_df.index) # train set
 
 train_df = train_df.reset_index(drop=True)
 valid_df = valid_df.reset_index(drop=True)
 test_df = test_df.reset_index(drop=True)
 
-x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([smilesList[0]],feature_dicts)
+x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array([canonical_smiles_list[0]],feature_dicts)
 
 num_atom_features = x_atom.shape[-1]
 num_bond_features = x_bonds.shape[-1]
@@ -162,6 +157,7 @@ wandb.watch(model)
 
 optimizer = optim.Adam(model.parameters(), 10**-learning_rate, weight_decay=10**-weight_decay)
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
+
 params = sum([np.prod(p.size()) for p in model_parameters])
 print(params)
 
@@ -187,8 +183,7 @@ def train(model, dataset, optimizer, loss_function):
         atoms_prediction, mol_prediction = model(torch.Tensor(x_atom),torch.Tensor(x_bonds),torch.cuda.LongTensor(x_atom_index),torch.cuda.LongTensor(x_bond_index),torch.Tensor(x_mask))
 #         print(torch.Tensor(x_atom).size(),torch.Tensor(x_bonds).size(),torch.cuda.LongTensor(x_atom_index).size(),torch.cuda.LongTensor(x_bond_index).size(),torch.Tensor(x_mask).size())
         
-        model.zero_grad()
-        # Step 4. Compute your loss function. (Again, Torch wants the target wrapped in a variable)
+        optimizer.zero_grad()
         loss = 0.0
         for i,task in enumerate(tasks):
             y_pred = mol_prediction[:, i * per_task_output_units_num:(i + 1) *
@@ -207,7 +202,6 @@ def train(model, dataset, optimizer, loss_function):
                 y_pred_adjust,
                 torch.cuda.LongTensor(y_val_adjust))
         # Step 5. Do the backward pass and update the gradient
-#             print(y_val,y_pred,validInds,y_val_adjust,y_pred_adjust)
         loss.backward()
         optimizer.step()
         
@@ -221,8 +215,8 @@ def eval(model, dataset):
     for i in range(0, dataset.shape[0], batch_size):
         batch = valList[i:i+batch_size]
         batch_list.append(batch)   
-    for counter, test_batch in enumerate(batch_list):
-        batch_df = dataset.loc[test_batch,:]
+    for counter, eval_batch in enumerate(batch_list):
+        batch_df = dataset.loc[eval_batch,:]
         smiles_list = batch_df.cano_smiles.values
         
         x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array(smiles_list,feature_dicts)
@@ -234,18 +228,18 @@ def eval(model, dataset):
             y_val = batch_df[task].values
 
             validInds = np.where((y_val==0) | (y_val==1))[0]
-#             validInds = np.where((y_val=='0') | (y_val=='1'))[0]
-#             print(validInds)
+            validInds = np.where((y_val=='0') | (y_val=='1'))[0]
+            print(validInds)
             if len(validInds) == 0:
                 continue
             y_val_adjust = np.array([y_val[v] for v in validInds]).astype(float)
             validInds = torch.cuda.LongTensor(validInds).squeeze()
             y_pred_adjust = torch.index_select(y_pred, 0, validInds)
-#             print(validInds)
+            print(validInds)
             loss = loss_function[i](
                 y_pred_adjust,
                 torch.cuda.LongTensor(y_val_adjust))
-#             print(y_pred_adjust)
+            print(y_pred_adjust)
             y_pred_adjust = F.softmax(y_pred_adjust,dim=-1).data.cpu().numpy()[:,1]
             losses_list.append(loss.cpu().detach().numpy())
             try:
@@ -256,17 +250,16 @@ def eval(model, dataset):
                 y_pred_list[i] = []
                 y_val_list[i].extend(y_val_adjust)
                 y_pred_list[i].extend(y_pred_adjust)
-#             print(y_val,y_pred,validInds,y_val_adjust,y_pred_adjust)            
-    test_roc = [roc_auc_score(y_val_list[i], y_pred_list[i]) for i in range(len(tasks))]
-    test_prc = [auc(precision_recall_curve(y_val_list[i], y_pred_list[i])[1],precision_recall_curve(y_val_list[i], y_pred_list[i])[0]) for i in range(len(tasks))]
-#     test_prc = auc(recall, precision)
-    test_precision = [precision_score(y_val_list[i],
-                                     (np.array(y_pred_list[i]) > 0.5).astype(int)) for i in range(len(tasks))]
-    test_recall = [recall_score(y_val_list[i],
-                               (np.array(y_pred_list[i]) > 0.5).astype(int)) for i in range(len(tasks))]
-    test_loss = np.array(losses_list).mean()
+                
+    eval_roc = [roc_auc_score(y_val_list[i], y_pred_list[i]) for i in range(len(tasks))]
+#     eval_prc = [auc(precision_recall_curve(y_val_list[i], y_pred_list[i])[1],precision_recall_curve(y_val_list[i], y_pred_list[i])[0]) for i in range(len(tasks))]
+#     eval_precision = [precision_score(y_val_list[i],
+#                                      (np.array(y_pred_list[i]) > 0.5).astype(int)) for i in range(len(tasks))]
+#     eval_recall = [recall_score(y_val_list[i],
+#                                (np.array(y_pred_list[i]) > 0.5).astype(int)) for i in range(len(tasks))]
+    eval_loss = np.array(losses_list).mean()
     
-    return test_roc, test_prc, test_precision, test_recall, test_loss
+    return eval_roc, eval_loss #eval_prc, eval_precision, eval_recall,
 
 best_param = {}
 best_param["roc_epoch"] = 0
@@ -277,8 +270,8 @@ best_param["valid_loss"] = 9e8
 # config.logger.info("Training:")
 
 for epoch in range(epochs):    
-    train_roc, train_prc, train_precision, train_recall, train_loss = eval(model, train_df)
-    valid_roc, valid_prc, valid_precision, valid_recall, valid_loss = eval(model, valid_df)
+    train_roc, train_loss = eval(model, train_df)
+    valid_roc, valid_loss = eval(model, valid_df)
 
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
@@ -289,9 +282,9 @@ for epoch in range(epochs):
     if valid_roc_mean > best_param["valid_roc"]:
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
-        if valid_roc_mean > 0.87:
+        if valid_roc_mean > 0.85:
             saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
-            torch.save(model, os.path.join(wandb.run.dir, saved_model))   
+            torch.save(model, os.path.join(wandb.run.dir, saved_model))  
 
     if valid_loss < best_param["valid_loss"]:
         best_param["loss_epoch"] = epoch
@@ -302,12 +295,6 @@ for epoch in range(epochs):
         +"valid_loss"+":"+str(valid_loss)+'\n'\
         +"train_roc"+":"+str(train_roc)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
-        +"train_prc"+":"+str(train_prc)+'\n'\
-        +"valid_prc"+":"+str(valid_prc)+'\n'\
-        +"train_precision:"+str(train_precision)+'\n'\
-        +"train_recall:"+str(train_recall)+'\n'\
-        +"valid_precision:"+str(valid_precision)+'\n'\
-        +"valid_recall:"+str(valid_recall)+'\n'\
         )
 
     # config.logger.info(
@@ -318,16 +305,10 @@ for epoch in range(epochs):
     wandb.log({
         "train_loss": train_loss,
         "train_roc": train_roc,
-        "train_prc": train_prc,
-        "train_precision": train_precision,
-        "train_recall": train_recall,
         "val_loss": valid_loss,
-        "valid_roc": valid_roc,
-        "valid_prc": valid_prc,
-        "valid_precision": valid_precision,
-        "valid_recall": valid_recall})
-    
-    if (epoch - best_param["roc_epoch"] >18) and (epoch - best_param["loss_epoch"] >28):        
+        "valid_roc": valid_roc})
+
+    if (epoch - best_param["roc_epoch"] >10) and (epoch - best_param["loss_epoch"] >20):        
         break
         
     train(model, train_df, optimizer, loss_function)
@@ -336,20 +317,16 @@ for epoch in range(epochs):
 checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["roc_epoch"])+'.pt'
 best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))  
 
-# best_model_dict = best_model.state_dict()
-# best_model_wts = copy.deepcopy(best_model_dict)
+best_model_dict = best_model.state_dict()
+best_model_wts = copy.deepcopy(best_model_dict)
 
-# model.load_state_dict(best_model_wts)
-# (best_model.align[0].weight == model.align[0].weight).all()
-
-test_roc, test_prc, test_precision, test_recall, test_loss = eval(best_model, test_df)
+model.load_state_dict(best_model_wts)
+(best_model.align[0].weight == model.align[0].weight).all()
+test_roc, test_loss = eval(model, test_df)
 
 print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc:"+str(test_roc)
-      +"\n"+"test_prc:"+str(test_prc)
-      +"\n"+"test_precision:"+str(test_precision)
-      +"\n"+"test_recall:"+str(test_recall)
      )
 
 # config.logger.info(
