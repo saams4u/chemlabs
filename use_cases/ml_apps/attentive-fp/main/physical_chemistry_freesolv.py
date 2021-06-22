@@ -201,13 +201,14 @@ def eval(model, dataset):
 
 best_param = {}
 best_param["train_epoch"] = 0
-best_param["valid_epoch"] = 0
+# best_param["valid_epoch"] = 0
+best_param["test_epoch"] = 0
 best_param["train_MSE"] = 9e8
 best_param["valid_MSE"] = 9e8
 
 # config.logger.info("Training:")
 
-for epoch in range(800):
+for epoch in range(epochs):
     train_MAE, train_MSE = eval(model, train_df)
     valid_MAE, valid_MSE = eval(model, valid_df)
 #     tensorboard.add_scalars('MAE',{'train_MAE':valid_MAE, 'test_MAE':valid_MSE}, epoch)
@@ -230,8 +231,8 @@ for epoch in range(800):
     wandb.log({
         "train_MAE": train_MAE,
         "train_MSE": train_MSE,
-        "test_MAE": test_MAE,
-        "test_MSE": test_MSE})
+        "valid_MAE": valid_MAE,
+        "valid_MSE": valid_MSE})
     
     if (epoch - best_param["train_epoch"] >8) and (epoch - best_param["valid_epoch"] >18):        
         break
@@ -250,7 +251,7 @@ model.load_state_dict(best_model_wts)
 (best_model.align[0].weight == model.align[0].weight).all()
 
 test_MAE, test_MSE = eval(model, test_df)
-print("best epoch:",best_param["valid_epoch"],"\n","test RMSE:",np.sqrt(test_MSE))
+print("best epoch:",best_param["test_epoch"],"\n","test RMSE:",np.sqrt(test_MSE))
 
 # config.logger.info(
 #     "Test performance:\n"
