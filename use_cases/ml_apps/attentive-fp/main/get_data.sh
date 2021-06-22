@@ -5,3 +5,4 @@ wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/bac
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/HIV.csv -O dataset/HIV.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/muv.csv -O dataset/muv.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/SAMPL.csv -O dataset/SAMPL.csv
+wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/Lipophilicity.csv -O dataset/Lipophilicity.csv
