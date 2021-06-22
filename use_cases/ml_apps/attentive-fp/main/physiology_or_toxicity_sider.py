@@ -45,13 +45,15 @@ from network.AttentiveFP.AttentiveLayers import Fingerprint
 
 import config, wandb
 
-wandb.init(project="physiology-or-toxicity-clintox")
+wandb.init(project="physiology-or-toxicity-sider")
 wandb.log({"run_dir": wandb.run.dir})
 
-task_name = 'clintox'
-tasks = ['FDA_APPROVED','CT_TOX']
+task_name = 'sider'
+tasks = [
+'SIDER1','SIDER2','SIDER3','SIDER4','SIDER5','SIDER6','SIDER7','SIDER8','SIDER9','SIDER10','SIDER11','SIDER12','SIDER13','SIDER14','SIDER15','SIDER16','SIDER17','SIDER18','SIDER19','SIDER20','SIDER21','SIDER22','SIDER23','SIDER24','SIDER25','SIDER26','SIDER27'
+]
 
-raw_filename = "dataset/clintox.csv"
+raw_filename = "dataset/sider.csv"
 feature_filename = raw_filename.replace('.csv','.pickle')
 
 filename = raw_filename.replace('.csv','')
@@ -79,7 +81,7 @@ print("number of successfully processed smiles: ", len(remained_smiles))
 smiles_tasks_df = smiles_tasks_df[smiles_tasks_df["smiles"].isin(remained_smiles)]
 
 # print(smiles_tasks_df)
-smiles_tasks_df['cano_smiles'] = canonical_smiles_list
+smiles_tasks_df['cano_smiles'] =canonical_smiles_list
 
 plt.figure(figsize=(5, 3))
 sns.set(font_scale=1.5)
@@ -90,7 +92,7 @@ plt.savefig("atom_num_dist_"+prefix_filename+".png",dpi=200)
 
 print(len([i for i in atom_num_dist if i<51]),len([i for i in atom_num_dist if i>50]))
 
-random_seed = 888
+random_seed = 68
 start_time = str(time.ctime()).replace(':','-').replace(' ','_')
 start = time.time()
 
@@ -226,7 +228,7 @@ def eval(model, dataset):
             y_val = batch_df[task].values
 
             validInds = np.where((y_val==0) | (y_val==1))[0]
-            # validInds = np.where((y_val=='0') | (y_val=='1'))[0]
+#             validInds = np.where((y_val=='0') | (y_val=='1'))[0]
             print(validInds)
             if len(validInds) == 0:
                 continue
@@ -248,7 +250,7 @@ def eval(model, dataset):
                 y_pred_list[i] = []
                 y_val_list[i].extend(y_val_adjust)
                 y_pred_list[i].extend(y_pred_adjust)
-    
+                
     eval_roc = [roc_auc_score(y_val_list[i], y_pred_list[i]) for i in range(len(tasks))]
 #     eval_prc = [auc(precision_recall_curve(y_val_list[i], y_pred_list[i])[1],precision_recall_curve(y_val_list[i], y_pred_list[i])[0]) for i in range(len(tasks))]
 #     eval_precision = [precision_score(y_val_list[i],
@@ -270,7 +272,6 @@ best_param["valid_loss"] = 9e8
 for epoch in range(epochs):    
     train_roc, train_loss = eval(model, train_df)
     valid_roc, valid_loss = eval(model, valid_df)
-
     train_roc_mean = np.array(train_roc).mean()
     valid_roc_mean = np.array(valid_roc).mean()
     
@@ -280,7 +281,7 @@ for epoch in range(epochs):
     if valid_roc_mean > best_param["valid_roc"]:
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
-        if valid_roc_mean > 0.85:
+        if valid_roc_mean > 0.52:
             saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
             torch.save(model, os.path.join(wandb.run.dir, saved_model))  
 
@@ -302,11 +303,11 @@ for epoch in range(epochs):
     
     wandb.log({
         "train_loss": train_loss,
-        "valid_loss": valid_loss,
         "train_roc_mean": train_roc_mean,
+        "valid_loss": valid_loss,
         "valid_roc_mean": valid_roc_mean})
 
-    if (epoch - best_param["roc_epoch"] >10) and (epoch - best_param["loss_epoch"] >20):        
+    if (epoch - best_param["roc_epoch"] >18) and (epoch - best_param["loss_epoch"] >28):        
         break
         
     train(model, train_df, optimizer, loss_function)
@@ -326,7 +327,3 @@ print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
       +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
      )
-
-# config.logger.info(
-#     "Test performance:\n"
-#     f"  test_MAE: {test_MAE:.2f}, test_MSE: {test_MSE:.2f}")
