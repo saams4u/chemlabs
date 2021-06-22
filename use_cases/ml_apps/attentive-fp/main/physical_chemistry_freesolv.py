@@ -186,14 +186,14 @@ def eval(model, dataset):
     for counter, eval_batch in enumerate(batch_list):
         batch_df = dataset.loc[eval_batch,:]
         smiles_list = batch_df.cano_smiles.values
-#         print(batch_df)
+        print(batch_df)
         y_val = batch_df[tasks[0]].values
         
         x_atom, x_bonds, x_atom_index, x_bond_index, x_mask, smiles_to_rdkit_list = get_smiles_array(smiles_list,feature_dicts)
         atoms_prediction, mol_prediction = model(torch.Tensor(x_atom),torch.Tensor(x_bonds),torch.cuda.LongTensor(x_atom_index),torch.cuda.LongTensor(x_bond_index),torch.Tensor(x_mask))
         MAE = F.l1_loss(mol_prediction, torch.Tensor(y_val).view(-1,1), reduction='none')        
         MSE = F.mse_loss(mol_prediction, torch.Tensor(y_val).view(-1,1), reduction='none')
-#         print(x_mask[:2],atoms_prediction.shape, mol_prediction,MSE)
+        print(x_mask[:2],atoms_prediction.shape, mol_prediction,MSE)
         
         eval_MAE_list.extend(MAE.data.squeeze().cpu().numpy())
         eval_MSE_list.extend(MSE.data.squeeze().cpu().numpy())
