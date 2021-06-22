@@ -234,18 +234,18 @@ def eval(model, dataset):
             y_val = batch_df[task].values
 
             validInds = np.where((y_val==0) | (y_val==1))[0]
-#             validInds = np.where((y_val=='0') | (y_val=='1'))[0]
-#             print(validInds)
+            validInds = np.where((y_val=='0') | (y_val=='1'))[0]
+            print(validInds)
             if len(validInds) == 0:
                 continue
             y_val_adjust = np.array([y_val[v] for v in validInds]).astype(float)
             validInds = torch.cuda.LongTensor(validInds).squeeze()
             y_pred_adjust = torch.index_select(y_pred, 0, validInds)
-#             print(validInds)
+            print(validInds)
             loss = loss_function[i](
                 y_pred_adjust,
                 torch.cuda.LongTensor(y_val_adjust))
-#             print(y_pred_adjust)
+            print(y_pred_adjust)
             y_pred_adjust = F.softmax(y_pred_adjust,dim=-1).data.cpu().numpy()[:,1]
             losses_list.append(loss.cpu().detach().numpy())
             try:
@@ -256,10 +256,11 @@ def eval(model, dataset):
                 y_pred_list[i] = []
                 y_val_list[i].extend(y_val_adjust)
                 y_pred_list[i].extend(y_pred_adjust)
-#             print(y_val,y_pred,validInds,y_val_adjust,y_pred_adjust)            
+            print(y_val,y_pred,validInds,y_val_adjust,y_pred_adjust)      
+                  
     test_roc = [roc_auc_score(y_val_list[i], y_pred_list[i]) for i in range(len(tasks))]
     test_prc = [auc(precision_recall_curve(y_val_list[i], y_pred_list[i])[1],precision_recall_curve(y_val_list[i], y_pred_list[i])[0]) for i in range(len(tasks))]
-#     test_prc = auc(recall, precision)
+    test_prc = auc(recall, precision)
     test_precision = [precision_score(y_val_list[i],
                                      (np.array(y_pred_list[i]) > 0.5).astype(int)) for i in range(len(tasks))]
     test_recall = [recall_score(y_val_list[i],

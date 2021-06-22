@@ -49,9 +49,7 @@ wandb.init(project="physiology-or-toxicity-clintox")
 wandb.log({"run_dir": wandb.run.dir})
 
 task_name = 'clintox'
-tasks = [
-    'FDA_APPROVED','CT_TOX'
-]
+tasks = ['FDA_APPROVED','CT_TOX']
 
 raw_filename = "dataset/clintox.csv"
 feature_filename = raw_filename.replace('.csv','.pickle')
@@ -81,7 +79,7 @@ print("number of successfully processed smiles: ", len(remained_smiles))
 smiles_tasks_df = smiles_tasks_df[smiles_tasks_df["smiles"].isin(remained_smiles)]
 
 # print(smiles_tasks_df)
-smiles_tasks_df['cano_smiles'] =canonical_smiles_list
+smiles_tasks_df['cano_smiles'] = canonical_smiles_list
 
 plt.figure(figsize=(5, 3))
 sns.set(font_scale=1.5)
@@ -250,7 +248,7 @@ def eval(model, dataset):
                 y_pred_list[i] = []
                 y_val_list[i].extend(y_val_adjust)
                 y_pred_list[i].extend(y_pred_adjust)
-                
+    
     eval_roc = [roc_auc_score(y_val_list[i], y_pred_list[i]) for i in range(len(tasks))]
 #     eval_prc = [auc(precision_recall_curve(y_val_list[i], y_pred_list[i])[1],precision_recall_curve(y_val_list[i], y_pred_list[i])[0]) for i in range(len(tasks))]
 #     eval_precision = [precision_score(y_val_list[i],
