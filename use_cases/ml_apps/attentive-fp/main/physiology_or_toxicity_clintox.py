@@ -292,7 +292,9 @@ for epoch in range(epochs):
         +"train_loss"+":"+str(train_loss)+'\n'\
         +"valid_loss"+":"+str(valid_loss)+'\n'\
         +"train_roc"+":"+str(train_roc)+'\n'\
+        +"train_roc_mean"+":"+str(train_roc_mean)+'\n'\
         +"valid_roc"+":"+str(valid_roc)+'\n'\
+        +"valid_roc_mean"+":"+str(valid_roc_mean)+'\n'\
         )
 
     # config.logger.info(
@@ -302,9 +304,9 @@ for epoch in range(epochs):
     
     wandb.log({
         "train_loss": train_loss,
-        "train_roc": train_roc,
+        "train_roc_mean": train_roc_mean,
         "valid_loss": valid_loss,
-        "valid_roc": valid_roc})
+        "valid_roc_mean": valid_roc_mean})
 
     if (epoch - best_param["roc_epoch"] >10) and (epoch - best_param["loss_epoch"] >20):        
         break
@@ -324,7 +326,7 @@ test_roc, test_loss = eval(model, test_df)
 
 print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
-      +"\n"+"test_roc:"+str(test_roc)
+      +"\n"+"test_roc_mean:",str(np.array(test_roc).mean())
      )
 
 # config.logger.info(
