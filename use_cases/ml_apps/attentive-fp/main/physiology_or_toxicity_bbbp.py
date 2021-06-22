@@ -349,7 +349,7 @@ best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))
 # model.load_state_dict(best_model_wts)
 # (best_model.align[0].weight == model.align[0].weight).all()
 
-test_roc, test_prc, test_precision, test_recall, test_losses = eval(best_model, test_df)
+test_roc, test_prc, test_precision, test_recall, test_loss = eval(best_model, test_df)
 
 print("best epoch:"+str(best_param["roc_epoch"])
       +"\n"+"test_loss:"+str(test_loss)
