@@ -10,3 +10,4 @@ wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/BBB
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/clintox.csv -O dataset/clintox.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/sider.csv -O dataset/sider.csv
 wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/tox21.csv -O dataset/tox21.csv
+wget -c https://raw.githubusercontent.com/OpenDrugAI/AttentiveFP/master/data/toxcast_data.csv -O dataset/toxcast_data.csv
