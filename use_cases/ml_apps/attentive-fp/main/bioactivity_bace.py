@@ -297,9 +297,7 @@ for epoch in range(epochs):
     if valid_roc_mean > best_param["valid_roc"]:
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
-        if valid_roc_mean > 0.85:
-            # checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
-            # torch.save(model, checkpoint)   
+        if valid_roc_mean > 0.85: 
             saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
             torch.save(model, os.path.join(wandb.run.dir, saved_model))  
 

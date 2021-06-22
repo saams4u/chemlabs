@@ -201,8 +201,7 @@ def eval(model, dataset):
 
 best_param = {}
 best_param["train_epoch"] = 0
-# best_param["valid_epoch"] = 0
-best_param["test_epoch"] = 0
+best_param["valid_epoch"] = 0
 best_param["train_MSE"] = 9e8
 best_param["valid_MSE"] = 9e8
 
@@ -241,7 +240,7 @@ for epoch in range(epochs):
     train(model, train_df, optimizer, loss_function)
 
 # evaluate model
-checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["test_epoch"])+'.pt'
+checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(best_param["valid_epoch"])+'.pt'
 best_model = torch.load(os.path.join(wandb.run.dir, checkpoint))     
 
 best_model_dict = best_model.state_dict()
@@ -251,7 +250,7 @@ model.load_state_dict(best_model_wts)
 (best_model.align[0].weight == model.align[0].weight).all()
 
 test_MAE, test_MSE = eval(model, test_df)
-print("best epoch:",best_param["test_epoch"],"\n","test RMSE:",np.sqrt(test_MSE))
+print("best epoch:",best_param["valid_epoch"],"\n","test RMSE:",np.sqrt(test_MSE))
 
 # config.logger.info(
 #     "Test performance:\n"

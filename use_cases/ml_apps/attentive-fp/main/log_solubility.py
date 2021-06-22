@@ -220,8 +220,6 @@ for epoch in range(epochs):
         best_param["test_epoch"] = epoch
         best_param["test_MSE"] = test_MSE
         if test_MSE < 0.35:
-            # checkpoint = 'saved_models/model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
-            # torch.save(model, checkpoint)   
             saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
             torch.save(model, os.path.join(wandb.run.dir, saved_model))  
     
