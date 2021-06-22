@@ -234,7 +234,7 @@ def eval(model, dataset):
             y_val = batch_df[task].values
 
             validInds = np.where((y_val==0) | (y_val==1))[0]
-            validInds = np.where((y_val=='0') | (y_val=='1'))[0]
+            # validInds = np.where((y_val=='0') | (y_val=='1'))[0]
             print(validInds)
             if len(validInds) == 0:
                 continue
@@ -257,7 +257,7 @@ def eval(model, dataset):
                 y_val_list[i].extend(y_val_adjust)
                 y_pred_list[i].extend(y_pred_adjust)
             print(y_val,y_pred,validInds,y_val_adjust,y_pred_adjust)      
-                  
+
     test_roc = [roc_auc_score(y_val_list[i], y_pred_list[i]) for i in range(len(tasks))]
     test_prc = [auc(precision_recall_curve(y_val_list[i], y_pred_list[i])[1],precision_recall_curve(y_val_list[i], y_pred_list[i])[0]) for i in range(len(tasks))]
     test_prc = auc(recall, precision)
@@ -322,7 +322,7 @@ for epoch in range(epochs):
         "train_prc": train_prc,
         "train_precision": train_precision,
         "train_recall": train_recall,
-        "val_loss": valid_loss,
+        "valid_loss": valid_loss,
         "valid_roc": valid_roc,
         "valid_prc": valid_prc,
         "valid_precision": valid_precision,

@@ -226,7 +226,7 @@ def eval(model, dataset):
             y_val = batch_df[task].values
 
             validInds = np.where((y_val==0) | (y_val==1))[0]
-            validInds = np.where((y_val=='0') | (y_val=='1'))[0]
+            # validInds = np.where((y_val=='0') | (y_val=='1'))[0]
             print(validInds)
             if len(validInds) == 0:
                 continue
@@ -303,7 +303,7 @@ for epoch in range(epochs):
     wandb.log({
         "train_loss": train_loss,
         "train_roc": train_roc,
-        "val_loss": valid_loss,
+        "valid_loss": valid_loss,
         "valid_roc": valid_roc})
 
     if (epoch - best_param["roc_epoch"] >10) and (epoch - best_param["loss_epoch"] >20):        
