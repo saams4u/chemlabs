@@ -114,10 +114,10 @@ training_data = remained_df.drop(test_df.index) # training data
 # get the stats of the seen dataset (the training data)
 # which will be used to noramlize the dataset. 
 columns = ['Task','Mean','Standard deviation', 'Mean absolute deviation','ratio']
-mean_list=[]
-std_list=[]
-mad_list=[]
-ratio_list=[]
+mean_list = []
+std_list = [] 
+mad_list = []
+ratio_list = []
 
 for task in tasks:
     mean = training_data[task].mean()
