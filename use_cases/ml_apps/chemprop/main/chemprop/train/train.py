@@ -43,7 +43,6 @@ def train(model: MoleculeModel,
     """
     debug = logger.debug if logger is not None else print
 
-    wandb.watch(model)
     model.train()
     loss_sum = iter_count = 0
 
