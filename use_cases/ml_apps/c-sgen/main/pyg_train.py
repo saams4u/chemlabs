@@ -6,14 +6,12 @@ import pickle
 import numpy as np
 import timeit
 import os
-# import config
+import wandb
 
 from torch_geometric.data import DataLoader
 from sklearn.metrics import mean_squared_error
 from torch_geometric.transforms import AddSelfLoops
 from utils import GAT, AGNN, SGC, ARMA
-
-import wandb
 
 project = "pyg-train"
 
@@ -153,9 +151,6 @@ for seed in seed_list:
     model = ARMA().to(device)
 
     wandb.watch(model)
-    # config.logger.info(
-    #         "Model:\n"
-    #         f"  {model.named_parameters}")
 
     trainer = Trainer(model.train(), std, mean)
     Tester = tester(model.eval(), std, mean)
@@ -175,11 +170,6 @@ for seed in seed_list:
             'ARMA-epoch:%d,---train loss: %.3f,valid loss: %.3f,test loss: %.3f, valid rmse: %.3f, test rmse: %.3f, time: %.3f' %
             (epoch, train_loss, valid_loss, test_loss, RMSE_valid, RMSE_test, time))
         
-        # config.logger.info(
-        #     f"Epoch: {epoch+1} | "
-        #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, "
-        #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}")
-
         wandb.log({
             "train_loss": train_loss,
             "valid_loss": valid_loss,

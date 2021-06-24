@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import timeit
+
 import torch.nn.functional as F
 import torch.optim as optim
 
@@ -10,7 +11,7 @@ from torch.utils.data import Dataset, DataLoader
 
 import os
 import pickle
-import config, wandb
+import wandb
 
 project = "c-sgen-train"
 
@@ -423,9 +424,6 @@ for seed in seed_list:
     model = C_SGEN().to(device)
 
     wandb.watch(model)
-    # config.logger.info(
-    #         "Model:\n"
-    #         f"  {model.named_parameters}")
 
     trainer = Trainer(model.train(), std, mean)
     tester = T(model.eval(), std, mean)
@@ -454,11 +452,6 @@ for seed in seed_list:
         print(
             'epoch:%d-train loss: %.3f,valid loss: %.3f,test loss: %.3f, valid rmse: %.3f, test rmse: %.3f, time: %.3f' %
             (epoch, train_loss, valid_loss, test_loss, RMSE_valid, RMSE_test, time))
-
-        # config.logger.info(
-        #     f"Epoch: {epoch+1} | "
-        #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, "
-        #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}")
 
         wandb.log({
             "train_loss": train_loss,
