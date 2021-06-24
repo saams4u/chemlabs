@@ -6,13 +6,14 @@ import pickle
 import numpy as np
 import timeit
 import os
+# import config
 
 from torch_geometric.data import DataLoader
 from sklearn.metrics import mean_squared_error
 from torch_geometric.transforms import AddSelfLoops
 from utils import GAT, AGNN, SGC, ARMA
 
-import config, wandb
+import wandb
 
 project = "pyg-train"
 
