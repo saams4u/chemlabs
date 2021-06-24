@@ -8,4 +8,4 @@ pip install torch-geometric \
   torch-spline-conv==latest+cu101 \
   -f https://pytorch-geometric.com/whl/torch-1.4.0.html
 
-pip install rdkit-pypi==2021.3.1.5
+pip install rdkit-pypi==2021.3.1.5 wandb

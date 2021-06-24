@@ -297,8 +297,8 @@ for epoch in range(epochs):
         best_param["roc_epoch"] = epoch
         best_param["valid_roc"] = valid_roc_mean
         if valid_roc_mean > 0.85: 
-            saved_model = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
-            torch.save(model, os.path.join(wandb.run.dir, saved_model))  
+            checkpoint = 'model_'+prefix_filename+'_'+start_time+'_'+str(epoch)+'.pt'
+            torch.save(model, os.path.join(wandb.run.dir, checkpoint))  
 
     if valid_loss < best_param["valid_loss"]:
         best_param["loss_epoch"] = epoch

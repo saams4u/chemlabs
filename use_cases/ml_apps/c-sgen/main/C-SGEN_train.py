@@ -10,6 +10,12 @@ from torch.utils.data import Dataset, DataLoader
 
 import os
 import pickle
+import config, wandb
+
+project = "c-sgen-train"
+
+wandb.init(project=project)
+wandb.log({"run_dir": wandb.run.dir})
 
 def load_pickle(file_name):
     with open(file_name, 'rb') as f:
@@ -416,6 +422,11 @@ for seed in seed_list:
     torch.cuda.manual_seed_all(seed)
     model = C_SGEN().to(device)
 
+    wandb.watch(model)
+    # config.logger.info(
+    #         "Model:\n"
+    #         f"  {model.named_parameters}")
+
     trainer = Trainer(model.train(), std, mean)
     tester = T(model.eval(), std, mean)
 
@@ -440,12 +451,26 @@ for seed in seed_list:
         end = timeit.default_timer()
         time = end - start
 
+        checkpoint = 'model_'+project+'_'+start+'_'+str(epoch)+'.pt'
+        torch.save(model, os.path.join(wandb.run.dir, checkpoint))  
+
         print(
             'epoch:%d-train loss: %.3f,valid loss: %.3f,test loss: %.3f, valid rmse: %.3f, test rmse: %.3f, time: %.3f' %
             (epoch, train_loss, valid_loss, test_loss, RMSE_valid, RMSE_test, time))
 
-        if epoch == iteration:
+        # config.logger.info(
+        #     f"Epoch: {epoch+1} | "
+        #     f"train_loss: {train_loss:.2f}, train_roc: {train_roc:.2f}, train_roc_mean: {train_roc_mean:.2f}, "
+        #     f"val_loss: {valid_loss:.2f}, val_roc: {valid_roc:.2f}, valid_roc_mean: {valid_roc_mean:.2f}")
 
+        wandb.log({
+            "train_loss": train_loss,
+            "valid_loss": valid_loss,
+            "test_loss": test_loss,
+            "RMSE_valid": RMSE_valid,
+            "RMSE_test": RMSE_test})
+
+        if epoch == iteration:
             RMSE_k_valid.append(RMSE_valid)
             RMSE_k_test.append(RMSE_test)
 
