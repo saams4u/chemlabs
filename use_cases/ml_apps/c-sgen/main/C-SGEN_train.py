@@ -470,9 +470,9 @@ for seed in seed_list:
         if epoch == iteration:
             RMSE_k_valid.append(RMSE_valid)
             RMSE_k_test.append(RMSE_test)
-            
-            checkpoint = 'model_'+project+'_'+str(epoch)+'.pt'
-            torch.save(model, os.path.join(wandb.run.dir, checkpoint))  
+
+            # checkpoint = 'model_'+project+'_'+str(epoch)+'.pt'
+            # torch.save(model, os.path.join(wandb.run.dir, checkpoint))  
 
     print('RMSE_k_valid', RMSE_k_valid)
     print('RMSE_k_test', RMSE_k_test)
