@@ -9,7 +9,6 @@ __pycache__/
 venv/
 
 # Data
-data/
 embeddings/
 experiments/
 logs/
