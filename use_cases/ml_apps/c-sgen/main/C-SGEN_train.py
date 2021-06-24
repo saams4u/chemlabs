@@ -369,7 +369,7 @@ device = torch.device('cuda')
 
 std = 3.8448222046029543
 mean = -3.8030062305295975
-iteration = 33
+iteration = 50
 window = 5
 layer_cnn = 3
 batch = 8
