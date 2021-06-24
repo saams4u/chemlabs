@@ -450,9 +450,8 @@ for seed in seed_list:
 
         end = timeit.default_timer()
         time = end - start
-        start_time = str(time.ctime()).replace(':','-').replace(' ','_')
 
-        checkpoint = 'model_'+project+'_'+start_time+'_'+str(epoch)+'.pt'
+        checkpoint = 'model_'+project+'_'+str(epoch)+'.pt'
         torch.save(model, os.path.join(wandb.run.dir, checkpoint))  
 
         print(
