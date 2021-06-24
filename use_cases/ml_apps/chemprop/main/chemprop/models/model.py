@@ -10,6 +10,7 @@ from chemprop.args import TrainArgs
 from chemprop.features import BatchMolGraph
 from chemprop.nn_utils import get_activation_function, initialize_weights
 
+import wandb
 
 class MoleculeModel(nn.Module):
     """A :class:`MoleculeModel` is a model which contains a message passing network following by feed-forward layers."""
@@ -22,6 +23,8 @@ class MoleculeModel(nn.Module):
                            outputting the actual property predictions.
         """
         super(MoleculeModel, self).__init__()
+
+        wandb.watch(MoleculeModel)
 
         self.classification = args.dataset_type == 'classification'
         self.multiclass = args.dataset_type == 'multiclass'
