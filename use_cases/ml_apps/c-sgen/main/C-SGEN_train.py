@@ -20,7 +20,7 @@ def rms_score(y_true, y_pred):
     return np.sqrt(mean_squared_error(y_true, y_pred))
 
 def load_tensor(file_name, dtype):
-    return [dtype(d).to(device) for d in np.load(file_name + '.npy')]
+    return [dtype(d).to(device) for d in np.load(file_name + '.npy', allow_pickle=True)]
 
 class mydataset(torch.utils.data.Dataset):
 
@@ -402,9 +402,9 @@ RMSE_k_test = []
 
 seed_list = [256,512,1024]
 
-train_dataset = mydataset('train_data')
-valid_dataset = mydataset('valid_data')
-test_dataset = mydataset('test_data')
+train_dataset = mydataset('train')
+valid_dataset = mydataset('valid')
+test_dataset = mydataset('test')
 
 train_loader = DataLoader(train_dataset, batch_size=batch, shuffle=True, drop_last=True)
 valid_loader = DataLoader(valid_dataset, batch_size=batch, shuffle=True, drop_last=True)
