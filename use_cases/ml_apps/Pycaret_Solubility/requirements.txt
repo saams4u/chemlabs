@@ -1,0 +1,5 @@
+streamlit
+numpy
+pycaret==2.3
+Pillow
+
