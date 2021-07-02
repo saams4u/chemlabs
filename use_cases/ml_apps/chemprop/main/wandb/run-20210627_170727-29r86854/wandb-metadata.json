@@ -1,0 +1,24 @@
+{
+    "root": "/Users/saams4u/chemlabs",
+    "program": "web.py",
+    "git": {
+        "remote": "https://github.com/saams4u/chemlabs.git",
+        "commit": "ea7d4791381815c7aaca83e4b30cba45c7637331"
+    },
+    "email": "mahjouri.saamahn@gmail.com",
+    "codePath": "use_cases/ml_apps/chemprop/main/web.py",
+    "startedAt": "2021-06-27T17:08:19.931459",
+    "host": "bigmac.local",
+    "username": "saams4u",
+    "executable": "/Users/saams4u/opt/miniconda3/bin/python",
+    "os": "macOS-11.4-x86_64-i386-64bit",
+    "python": "3.8.10",
+    "cpu_count": 4,
+    "args": [],
+    "state": "killed",
+    "jobType": null,
+    "mode": "run",
+    "project": "chemprop-train",
+    "heartbeatAt": "2021-06-27T17:17:42.887211",
+    "exitcode": 255
+}
